@@ -1,0 +1,86 @@
+{
+  "date_local": "2026-10-15",
+  "scope": "P1 workflow and denominators; P2 run history/versioned CSV; selected P3 display and P4 timing; report/demo scaffolding",
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "90",
+    "time": "10.569",
+    "timestamp": "2026-10-15T22:52:18.098615+08:00",
+    "hostname": "MSI"
+  },
+  "verification": {
+    "documents": 1000,
+    "queries": 10,
+    "methods": 5,
+    "independent_cosine_scores_checked": 50000,
+    "maximum_cosine_error": 1.1102230246251565e-16,
+    "repeatability": {
+      "metrics_per_query.csv": true,
+      "metrics_summary.csv": true,
+      "query_status.csv": true,
+      "rankings.csv": true,
+      "normalization.csv": true,
+      "annotation_pool.csv": true,
+      "term_statistics.csv": true,
+      "judgments.json": true,
+      "queries.json": true,
+      "RQ_DISCUSSION.md": true
+    },
+    "normalization_passed": true,
+    "hw2_source": {
+      "checked": 93,
+      "changed": [],
+      "source_available": true
+    },
+    "judgment_source": "weak_rules",
+    "settings": {
+      "condition": "C",
+      "idf": "standard"
+    },
+    "runs": [
+      {
+        "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261015T145238.098257Z-c902cd9b",
+        "run_id": "20261015T145238.098257Z-c902cd9b",
+        "manifest_sha256": "f8a80171e481269aab27b8b9a179aaf1cb697f50c16266b308f715787c195e38"
+      },
+      {
+        "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261015T145238.918542Z-b1c846ca",
+        "run_id": "20261015T145238.918542Z-b1c846ca",
+        "manifest_sha256": "c22a67918c0308fbfffcad3e8b309ad7b208897ae9b3904383a7aa9767e9ac8f"
+      }
+    ]
+  },
+  "source_and_output_hashes_current": true,
+  "legacy_weak_outputs_unchanged": true,
+  "original_delivery_unchanged": true,
+  "manual_file_exists": false,
+  "manual_judgments": 0,
+  "approved_research_scope": "Human, animal and cell studies according to query intent; record study type in judgment reason.",
+  "performance_report": "C:\\成大專案\\IR-HW3\\reports\\performance\\20261015T145246Z-819e4278.json",
+  "history_archive": "C:\\成大專案\\IR-HW3\\reports\\history\\pre-p1-20261015-223437",
+  "independent_numeric_scope": "C preprocessing + standard IDF only",
+  "graph_start_generation": "2026-10-15T13:43:03Z; changed/excluded/new files verified directly from source",
+  "server_url": "http://127.0.0.1:8503/",
+  "ui_screenshot": "reports/ui-p1-annotation.jpg",
+  "remaining": [
+    "User relevance judgments and query-specific inclusion criteria",
+    "Formal human evaluation and RQ1-RQ5 empirical conclusions",
+    "Further responsive-table polish and optional full-setting independent numeric checks"
+  ],
+  "limitations": [
+    "Unsaved drafts survive navigation within the same session, but require saving or JSON backup before browser reload/close.",
+    "Legacy CSV opt-in cannot prove historical dataset version.",
+    "Only known-relevant queries enter metric means; exclusions and incomplete-annotation limits are disclosed.",
+    "Performance timings cover one backend process, not browser latency."
+  ],
+  "graph_final_generation": "2026-10-15T14:56:06Z",
+  "graph_final_coverage": "Operated indexed source/test paths metadata_match; docs/scripts/data/reports deliberately excluded and verified by direct reads and hashes.",
+  "browser_checked": [
+    "updated service search top10",
+    "manual annotation page 0/10, complete abstract first, pool progress",
+    "narrow default viewport layout"
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "completed_at_utc": "2026-10-16T10:07:48.946879+00:00",
+  "methods": [
+    "tf",
+    "log_tf",
+    "idf",
+    "tfidf",
+    "log_tfidf",
+    "bm25"
+  ],
+  "bm25_parameters": {
+    "version": "bm25-log10-v1",
+    "k1": 1.2,
+    "b": 0.75,
+    "logarithm_base": 10,
+    "idf": "log10(1 + (N - DF + 0.5) / (DF + 0.5))",
+    "query_tf": "linear actual count; no k3 saturation",
+    "length": "post-preprocessing abstract tokens; avgdl includes all N documents"
+  },
+  "tests_passed": 124,
+  "tests_failed": 0,
+  "verification": {
+    "logarithm_base": 10,
+    "weighting_version": "log10-v1",
+    "documents": 3000,
+    "queries": 10,
+    "methods": 6,
+    "independent_cosine_scores_checked": 900000,
+    "maximum_cosine_error": 1.6653345369377348e-16,
+    "independent_bm25_scores_checked": 180000,
+    "maximum_bm25_error": 1.7763568394002505e-15,
+    "bm25_parameters": {
+      "version": "bm25-log10-v1",
+      "k1": 1.2,
+      "b": 0.75,
+      "logarithm_base": 10,
+      "idf": "log10(1 + (N - DF + 0.5) / (DF + 0.5))",
+      "query_tf": "linear actual count; no k3 saturation",
+      "length": "post-preprocessing abstract tokens; avgdl includes all N documents"
+    },
+    "normalization_methods": [
+      "tf",
+      "log_tf",
+      "idf",
+      "tfidf",
+      "log_tfidf"
+    ],
+    "settings_checked": [
+      {
+        "condition": "B",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 1.7763568394002505e-15
+      },
+      {
+        "condition": "B",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.6653345369377348e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 1.7763568394002505e-15
+      },
+      {
+        "condition": "C",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 1.7763568394002505e-15
+      },
+      {
+        "condition": "C",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.6653345369377348e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 1.7763568394002505e-15
+      },
+      {
+        "condition": "D",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 1.7763568394002505e-15
+      },
+      {
+        "condition": "D",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.6653345369377348e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 1.7763568394002505e-15
+      }
+    ],
+    "repeatability": {
+      "metrics_per_query.csv": true,
+      "metrics_summary.csv": true,
+      "query_status.csv": true,
+      "rankings.csv": true,
+      "normalization.csv": true,
+      "annotation_pool.csv": true,
+      "term_statistics.csv": true,
+      "judgments.json": true,
+      "queries.json": true,
+      "RQ_DISCUSSION.md": true
+    },
+    "normalization_passed": true,
+    "hw2_source": {
+      "checked": 93,
+      "changed": [],
+      "source_available": true
+    },
+    "judgment_source": "weak_rules",
+    "settings": {
+      "condition": "C",
+      "idf": "standard"
+    },
+    "runs": [
+      {
+        "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261016T100420.861121Z-0a6eda7c",
+        "run_id": "20261016T100420.861121Z-0a6eda7c",
+        "manifest_sha256": "366ec88953dfdaec14c90933be239361fc9a0af55fefa6c07b1f9b17bd51150c"
+      },
+      {
+        "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261016T100424.276082Z-bb959ad8",
+        "run_id": "20261016T100424.276082Z-bb959ad8",
+        "manifest_sha256": "3f459d2b15b55390631c57759e1573c3f5b6e8b805c52af4fb82b492856f7e60"
+      }
+    ]
+  },
+  "protected_existing_files": 579,
+  "unchanged_existing_files": 577,
+  "updated_status_files_with_preserved_backups": [
+    "reports/pytest.xml",
+    "reports/verification.json"
+  ],
+  "original_five_method_exact_regression": {
+    "rankings.csv": true,
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true
+  },
+  "labels_unchanged": true,
+  "manual_unchanged": true,
+  "current_main_run": "reports/pubmed_hybrid/runs/20261016T100603.403989Z-90ca47c9",
+  "main_manifest_sha256": "ba65cb4048d4a19e773638013fa3b2b98c03efbe91b8ad1b2d6a0ff84f44f557",
+  "main_source_hashes_current": true,
+  "numeric_scoring_sources_current": true,
+  "report": "reports/HW3_REPORT_BM25.md",
+  "report_sha256": "2fb4e6b5d933a26fd32209cf590392157623ffec9093a8ae4ae390e41835ddad",
+  "independently_recomputed_metric_rows": 60,
+  "maximum_metric_error": 0,
+  "summary": [
+    {
+      "method": "tf",
+      "queries_total": "10",
+      "queries_evaluated": "10",
+      "queries_excluded": "0",
+      "queries_excluded_unjudged": "0",
+      "queries_excluded_no_known_relevant": "0",
+      "k": "10",
+      "judgment_source": "pubmed_hybrid",
+      "precision_at_k": "0.67",
+      "recall_at_k": "0.03220015241888755",
+      "reciprocal_rank": "0.875",
+      "ndcg_at_k": "0.6952966925382336",
+      "judged_at_k": "1.0"
+    },
+    {
+      "method": "log_tf",
+      "queries_total": "10",
+      "queries_evaluated": "10",
+      "queries_excluded": "0",
+      "queries_excluded_unjudged": "0",
+      "queries_excluded_no_known_relevant": "0",
+      "k": "10",
+      "judgment_source": "pubmed_hybrid",
+      "precision_at_k": "0.85",
+      "recall_at_k": "0.0455275995137051",
+      "reciprocal_rank": "0.95",
+      "ndcg_at_k": "0.8626429721448305",
+      "judged_at_k": "1.0"
+    },
+    {
+      "method": "idf",
+      "queries_total": "10",
+      "queries_evaluated": "10",
+      "queries_excluded": "0",
+      "queries_excluded_unjudged": "0",
+      "queries_excluded_no_known_relevant": "0",
+      "k": "10",
+      "judgment_source": "pubmed_hybrid",
+      "precision_at_k": "0.9400000000000001",
+      "recall_at_k": "0.050286131713516535",
+      "reciprocal_rank": "0.95",
+      "ndcg_at_k": "0.940693532876381",
+      "judged_at_k": "1.0"
+    },
+    {
+      "method": "tfidf",
+      "queries_total": "10",
+      "queries_evaluated": "10",
+      "queries_excluded": "0",
+      "queries_excluded_unjudged": "0",
+      "queries_excluded_no_known_relevant": "0",
+      "k": "10",
+      "judgment_source": "pubmed_hybrid",
+      "precision_at_k": "0.93",
+      "recall_at_k": "0.049868329060169136",
+      "reciprocal_rank": "1.0",
+      "ndcg_at_k": "0.948616627557006",
+      "judged_at_k": "1.0"
+    },
+    {
+      "method": "log_tfidf",
+      "queries_total": "10",
+      "queries_evaluated": "10",
+      "queries_excluded": "0",
+      "queries_excluded_unjudged": "0",
+      "queries_excluded_no_known_relevant": "0",
+      "k": "10",
+      "judgment_source": "pubmed_hybrid",
+      "precision_at_k": "0.93",
+      "recall_at_k": "0.050346142624591285",
+      "reciprocal_rank": "1.0",
+      "ndcg_at_k": "0.949182168767049",
+      "judged_at_k": "1.0"
+    },
+    {
+      "method": "bm25",
+      "queries_total": "10",
+      "queries_evaluated": "10",
+      "queries_excluded": "0",
+      "queries_excluded_unjudged": "0",
+      "queries_excluded_no_known_relevant": "0",
+      "k": "10",
+      "judgment_source": "pubmed_hybrid",
+      "precision_at_k": "0.9800000000000001",
+      "recall_at_k": "0.05257956305510018",
+      "reciprocal_rank": "1.0",
+      "ndcg_at_k": "0.9836458613379703",
+      "judged_at_k": "1.0"
+    }
+  ],
+  "screenshot": "reports/bm25-addition-20261016T095505Z/ui-bm25.png",
+  "server": {
+    "pid": 23252,
+    "started_at": "2026-10-16T10:03:11.2693354Z",
+    "app": "C:\\成大專案\\IR-HW3\\app.py",
+    "port": 8503,
+    "weighting_version": "log10-v1",
+    "methods": [
+      "tf",
+      "log_tf",
+      "idf",
+      "tfidf",
+      "log_tfidf",
+      "bm25"
+    ],
+    "bm25_version": "bm25-log10-v1"
+  }
+}

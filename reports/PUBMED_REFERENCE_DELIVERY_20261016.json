@@ -1,0 +1,24 @@
+{
+  "created_at_utc": "2026-10-15T16:13:01.452188+00:00",
+  "analysis": "C:\\成大專案\\IR-HW3\\reports\\pubmed_hybrid\\analysis\\20261015T161117Z-e9a66abe",
+  "run_source_hashes_current": true,
+  "all_run_output_hashes_valid": true,
+  "labels_identical_before_after_optimization": true,
+  "ranking_identical_between_reference_sources": true,
+  "independently_recomputed_metric_rows": 50,
+  "maximum_metric_error": 0,
+  "reference_csv_rows": 30000,
+  "csv_source_version_columns_valid": true,
+  "manual_files": {},
+  "tests": {
+    "full_suite_passed": 106,
+    "full_suite_seconds": 168.47,
+    "followup_reference_tests_passed": 7,
+    "followup_includes_one_new_csv_test": true,
+    "note": "Do not add 106 and 7: six follow-up tests were reruns."
+  },
+  "metadata_positive_pairs": 1141,
+  "fallback_positive_pairs": 1740,
+  "numeric_verification_sha256": "b0d8a5b45b58584f27e7bbba13b8f698649729e6fdcc384b58fbe7fed6b353b3",
+  "pytest_xml_sha256": "90300c8b3c9f514003019ba43a2f814f445c89ae46d47aab0bcbada721b6d84f"
+}

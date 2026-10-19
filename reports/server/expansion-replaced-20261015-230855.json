@@ -1,0 +1,10 @@
+[
+  {
+    "ProcessId": 8008,
+    "CommandLine": "\"C:\\成大專案\\IR-HW3\\.venv\\Scripts\\python.exe\" -B -X utf8 -m streamlit run C:\\成大專案\\IR-HW3\\app.py --server.address 127.0.0.1 --server.port 8503"
+  },
+  {
+    "ProcessId": 19032,
+    "CommandLine": "\"C:\\Users\\Huayi\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" -B -X utf8 -m streamlit run C:\\成大專案\\IR-HW3\\app.py --server.address 127.0.0.1 --server.port 8503"
+  }
+]

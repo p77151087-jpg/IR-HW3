@@ -1,0 +1,70 @@
+{
+  "documents": 3000,
+  "queries": 10,
+  "query_document_labels": 30000,
+  "source": "pubmed_hybrid",
+  "corpus_sha256": "1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7",
+  "queries_sha256": "9bd41035cfb0944ee65171f47575454433befb0a433866765b09dd12a5dd7c6d",
+  "judgments_sha256": "952a45a99409ea7dcbf169ff14f7e386ddb7157deb1866cb799414d9d7b9d2fe",
+  "rules_sha256": "d8cb0f4872c1ee9010b89ca1f7f058fed00f6ad74fb523f8dc772826ad010388",
+  "metadata_sha256": "f33c7f063b0959d7125c597a88146be79a1c8710db62282116f2bbea5862d963",
+  "metadata_counts": {
+    "mesh": 1672,
+    "chemical": 1547,
+    "supplementary_concept": 27,
+    "keyword": 2551,
+    "any_topic_metadata": 2846,
+    "publication_types": 3000
+  },
+  "fresh_label_generation_identical": true,
+  "repeatability": {
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "query_status.csv": true,
+    "rankings.csv": true,
+    "normalization.csv": true,
+    "annotation_pool.csv": true,
+    "term_statistics.csv": true,
+    "reference_labels.csv": true,
+    "reference_coverage.csv": true,
+    "reference_topk_sources.csv": true,
+    "judgments.json": true,
+    "queries.json": true,
+    "RQ_DISCUSSION.md": true,
+    "reference_rules.json": true,
+    "pubmed_metadata.json": true
+  },
+  "normalization_passed": true,
+  "manual_before": {},
+  "manual_after": {},
+  "manual_unchanged": true,
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "runs": [
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\pubmed_hybrid\\runs\\20261015T155126.580577Z-a7692749",
+      "run_id": "20261015T155126.580577Z-a7692749",
+      "source": "pubmed_hybrid",
+      "manifest_sha256": "18d0a3b39389dd9edc471dbb26ca814d1c2ae9aa1a77be800280c310c845a9e5"
+    },
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\pubmed_hybrid\\runs\\20261015T155150.717565Z-b67259dd",
+      "run_id": "20261015T155150.717565Z-b67259dd",
+      "source": "pubmed_hybrid",
+      "manifest_sha256": "7370b14d77fc7c358ed81281723c4573eefdce6fabd56b4067bcaa9d63c51cbb"
+    },
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261015T155202.163887Z-61b9451a",
+      "run_id": "20261015T155202.163887Z-61b9451a",
+      "source": "weak_rules",
+      "manifest_sha256": "fc7684deae77a2843c16d3f6b3cfc63d6f6e7f8bdfb6566a460763497d66cee5"
+    }
+  ],
+  "analysis_outputs_sha256": {
+    "REPORT.md": "1265517840fc633ad7fa66c936ec5f8b943c7e755cb640401e84c19a0f08c3af",
+    "source_sensitivity.csv": "768fa39af9d950ac8a2ac4aa9a41484ee90eb1917e1408f252ac714e5f59d1ef"
+  }
+}

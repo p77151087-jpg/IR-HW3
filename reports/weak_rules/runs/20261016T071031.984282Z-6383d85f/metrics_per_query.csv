@@ -1,0 +1,51 @@
+﻿qid,query,method,k,judgment_source,precision_at_k,recall_at_k,reciprocal_rank,ndcg_at_k,judged_at_k,known_relevant,judged_documents,retrieved
+Q01,semaglutide weight loss obesity,tf,10,weak_rules,0.7,0.014553014553014554,1.0,0.7421246259355072,1.0,481,3000,1997
+Q02,liraglutide obesity treatment,tf,10,weak_rules,0.4,0.026490066225165563,1.0,0.4779671403625728,1.0,151,3000,1994
+Q03,tirzepatide type 2 diabetes glycemic control,tf,10,weak_rules,0.6,0.023166023166023165,0.5,0.5658245193320781,1.0,259,3000,2187
+Q04,GLP-1 cardiovascular outcomes heart failure,tf,10,weak_rules,1.0,0.013812154696132596,1.0,1.0,1.0,724,3000,2445
+Q05,GLP-1 kidney disease renal protection,tf,10,weak_rules,1.0,0.02247191011235955,1.0,1.0,1.0,445,3000,2310
+Q06,GLP-1 gastric emptying gastrointestinal motility,tf,10,weak_rules,0.9,0.08737864077669903,1.0,0.9216017310213246,1.0,103,3000,1948
+Q07,GLP-1 nausea vomiting adverse effects,tf,10,weak_rules,0.1,0.009900990099009901,1.0,0.22009176629808017,1.0,101,3000,2398
+Q08,GLP-1 insulin secretion pancreatic beta cells,tf,10,weak_rules,0.8,0.06722689075630252,1.0,0.8364586133797036,1.0,119,3000,2084
+Q09,GLP-1 gut microbiota intestinal metabolism,tf,10,weak_rules,0.9,0.05625,1.0,0.9305687780632227,1.0,160,3000,1904
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,tf,10,weak_rules,0.3,0.01948051948051948,0.25,0.2583297509898471,1.0,154,3000,2236
+Q01,semaglutide weight loss obesity,log_tf,10,weak_rules,0.8,0.016632016632016633,1.0,0.8603818544462508,1.0,481,3000,1997
+Q02,liraglutide obesity treatment,log_tf,10,weak_rules,0.9,0.059602649006622516,1.0,0.9266360779006398,1.0,151,3000,1994
+Q03,tirzepatide type 2 diabetes glycemic control,log_tf,10,weak_rules,0.7,0.02702702702702703,1.0,0.7503359712972107,1.0,259,3000,2187
+Q04,GLP-1 cardiovascular outcomes heart failure,log_tf,10,weak_rules,1.0,0.013812154696132596,1.0,1.0,1.0,724,3000,2445
+Q05,GLP-1 kidney disease renal protection,log_tf,10,weak_rules,0.8,0.017977528089887642,0.5,0.7162874455029681,1.0,445,3000,2310
+Q06,GLP-1 gastric emptying gastrointestinal motility,log_tf,10,weak_rules,0.9,0.08737864077669903,1.0,0.933745776545611,1.0,103,3000,1948
+Q07,GLP-1 nausea vomiting adverse effects,log_tf,10,weak_rules,0.8,0.07920792079207921,1.0,0.8115558478722845,1.0,101,3000,2398
+Q08,GLP-1 insulin secretion pancreatic beta cells,log_tf,10,weak_rules,0.8,0.06722689075630252,1.0,0.7917063341896681,1.0,119,3000,2084
+Q09,GLP-1 gut microbiota intestinal metabolism,log_tf,10,weak_rules,1.0,0.0625,1.0,1.0,1.0,160,3000,1904
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,log_tf,10,weak_rules,0.7,0.045454545454545456,0.5,0.6156886473955917,1.0,154,3000,2236
+Q01,semaglutide weight loss obesity,idf,10,weak_rules,1.0,0.02079002079002079,1.0,1.0,1.0,481,3000,1997
+Q02,liraglutide obesity treatment,idf,10,weak_rules,0.8,0.052980132450331126,0.5,0.7162874455029681,1.0,151,3000,1994
+Q03,tirzepatide type 2 diabetes glycemic control,idf,10,weak_rules,0.9,0.03474903474903475,1.0,0.8899541168509599,1.0,259,3000,2187
+Q04,GLP-1 cardiovascular outcomes heart failure,idf,10,weak_rules,0.9,0.012430939226519336,0.5,0.7799082337019198,1.0,724,3000,2445
+Q05,GLP-1 kidney disease renal protection,idf,10,weak_rules,0.9,0.020224719101123594,0.5,0.7799082337019198,1.0,445,3000,2310
+Q06,GLP-1 gastric emptying gastrointestinal motility,idf,10,weak_rules,1.0,0.0970873786407767,1.0,1.0,1.0,103,3000,1948
+Q07,GLP-1 nausea vomiting adverse effects,idf,10,weak_rules,1.0,0.09900990099009901,1.0,1.0,1.0,101,3000,2398
+Q08,GLP-1 insulin secretion pancreatic beta cells,idf,10,weak_rules,0.6,0.05042016806722689,1.0,0.6906478832608418,1.0,119,3000,2084
+Q09,GLP-1 gut microbiota intestinal metabolism,idf,10,weak_rules,1.0,0.0625,1.0,1.0,1.0,160,3000,1904
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,idf,10,weak_rules,1.0,0.06493506493506493,1.0,1.0,1.0,154,3000,2236
+Q01,semaglutide weight loss obesity,tfidf,10,weak_rules,0.9,0.018711018711018712,1.0,0.9216017310213246,1.0,481,3000,1997
+Q02,liraglutide obesity treatment,tfidf,10,weak_rules,0.7,0.046357615894039736,1.0,0.7917267193679838,1.0,151,3000,1994
+Q03,tirzepatide type 2 diabetes glycemic control,tfidf,10,weak_rules,1.0,0.03861003861003861,1.0,1.0,1.0,259,3000,2187
+Q04,GLP-1 cardiovascular outcomes heart failure,tfidf,10,weak_rules,0.9,0.012430939226519336,0.5,0.7799082337019198,1.0,724,3000,2445
+Q05,GLP-1 kidney disease renal protection,tfidf,10,weak_rules,0.9,0.020224719101123594,1.0,0.8899541168509599,1.0,445,3000,2310
+Q06,GLP-1 gastric emptying gastrointestinal motility,tfidf,10,weak_rules,1.0,0.0970873786407767,1.0,1.0,1.0,103,3000,1948
+Q07,GLP-1 nausea vomiting adverse effects,tfidf,10,weak_rules,1.0,0.09900990099009901,1.0,1.0,1.0,101,3000,2398
+Q08,GLP-1 insulin secretion pancreatic beta cells,tfidf,10,weak_rules,0.6,0.05042016806722689,1.0,0.6627919420317118,1.0,119,3000,2084
+Q09,GLP-1 gut microbiota intestinal metabolism,tfidf,10,weak_rules,1.0,0.0625,1.0,1.0,1.0,160,3000,1904
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,tfidf,10,weak_rules,1.0,0.06493506493506493,1.0,1.0,1.0,154,3000,2236
+Q01,semaglutide weight loss obesity,log_tfidf,10,weak_rules,1.0,0.02079002079002079,1.0,1.0,1.0,481,3000,1997
+Q02,liraglutide obesity treatment,log_tfidf,10,weak_rules,0.8,0.052980132450331126,1.0,0.8357804136936718,1.0,151,3000,1994
+Q03,tirzepatide type 2 diabetes glycemic control,log_tfidf,10,weak_rules,0.7,0.02702702702702703,1.0,0.7917267193679838,1.0,259,3000,2187
+Q04,GLP-1 cardiovascular outcomes heart failure,log_tfidf,10,weak_rules,0.8,0.011049723756906077,0.5,0.6947651160602988,1.0,724,3000,2445
+Q05,GLP-1 kidney disease renal protection,log_tfidf,10,weak_rules,0.9,0.020224719101123594,0.5,0.7799082337019198,1.0,445,3000,2310
+Q06,GLP-1 gastric emptying gastrointestinal motility,log_tfidf,10,weak_rules,1.0,0.0970873786407767,1.0,1.0,1.0,103,3000,1948
+Q07,GLP-1 nausea vomiting adverse effects,log_tfidf,10,weak_rules,1.0,0.09900990099009901,1.0,1.0,1.0,101,3000,2398
+Q08,GLP-1 insulin secretion pancreatic beta cells,log_tfidf,10,weak_rules,0.7,0.058823529411764705,1.0,0.7542686714597936,1.0,119,3000,2084
+Q09,GLP-1 gut microbiota intestinal metabolism,log_tfidf,10,weak_rules,1.0,0.0625,1.0,1.0,1.0,160,3000,1904
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,log_tfidf,10,weak_rules,1.0,0.06493506493506493,1.0,1.0,1.0,154,3000,2236

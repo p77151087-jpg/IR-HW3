@@ -1,0 +1,6 @@
+﻿method,queries_total,queries_evaluated,queries_excluded,queries_excluded_unjudged,queries_excluded_no_known_relevant,k,judgment_source,precision_at_k,recall_at_k,reciprocal_rank,ndcg_at_k,judged_at_k
+tf,10,10,0,0,0,10,weak_rules,0.67,0.03407302098652264,0.875,0.6952966925382336,1.0
+log_tf,10,10,0,0,0,10,weak_rules,0.8400000000000001,0.047681937323131265,0.9,0.8406337955150225,1.0
+idf,10,10,0,0,0,10,weak_rules,0.9099999999999999,0.051512735895019715,0.85,0.885670591301861,1.0
+tfidf,10,10,0,0,0,10,weak_rules,0.9,0.05102868441759075,0.95,0.9045982742973899,1.0
+log_tfidf,10,10,0,0,0,10,weak_rules,0.89,0.051442749710311396,0.9,0.8856449154283668,1.0

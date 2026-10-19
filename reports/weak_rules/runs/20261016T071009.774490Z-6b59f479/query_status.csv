@@ -1,0 +1,11 @@
+﻿qid,query,judgment_source,status,judged_documents,known_relevant,included_in_mean,exclusion_reason
+Q01,semaglutide weight loss obesity,weak_rules,has_known_relevant,3000,481,True,
+Q02,liraglutide obesity treatment,weak_rules,has_known_relevant,3000,151,True,
+Q03,tirzepatide type 2 diabetes glycemic control,weak_rules,has_known_relevant,3000,259,True,
+Q04,GLP-1 cardiovascular outcomes heart failure,weak_rules,has_known_relevant,3000,724,True,
+Q05,GLP-1 kidney disease renal protection,weak_rules,has_known_relevant,3000,445,True,
+Q06,GLP-1 gastric emptying gastrointestinal motility,weak_rules,has_known_relevant,3000,103,True,
+Q07,GLP-1 nausea vomiting adverse effects,weak_rules,has_known_relevant,3000,101,True,
+Q08,GLP-1 insulin secretion pancreatic beta cells,weak_rules,has_known_relevant,3000,119,True,
+Q09,GLP-1 gut microbiota intestinal metabolism,weak_rules,has_known_relevant,3000,160,True,
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,weak_rules,has_known_relevant,3000,154,True,

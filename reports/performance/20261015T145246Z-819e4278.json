@@ -1,0 +1,84 @@
+{
+  "created_at_utc": "2026-10-15T14:52:46.354886+00:00",
+  "python": "3.12.14",
+  "scope": "Single-process backend wall times; shared preprocessing caches; no browser latency. Engine build includes preprocessing/indexing; first search builds log_tfidf vectors; batch evaluation may build other methods' vectors. No optimization applied.",
+  "documents": 1000,
+  "queries": 10,
+  "judgment_source": "weak_rules",
+  "corpus_sha256": "9738b68d03a6e39bed010803aa878cfdc66e0bbcaf005e8ee83d3bcfeb7b2631",
+  "queries_sha256": "9bd41035cfb0944ee65171f47575454433befb0a433866765b09dd12a5dd7c6d",
+  "source_sha256": {
+    "scripts/profile_hw3.py": "bc7360c166d98419303abd21e6a2476ba9ccce74231d0b7228bd8bc575cf8d2e",
+    "ir_hw1/preprocessing.py": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2",
+    "ir_hw1/models.py": "a92e02b3bf648631b42efd3fa5b94318aabf07aec4470dbfc5760c9b5e37b225",
+    "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+    "ir_hw3/__init__.py": "9d023d375f8d11ffaddba139988d4498a9749d8926b79d7a496d11f7916e646d",
+    "ir_hw3/cli.py": "9d639a026950c31d04c373988c83d32cf5127154622691d7c405553678e46532",
+    "ir_hw3/core.py": "55901dcc1d26d670b9527d5f1ca55044f15ba75b109c152167743935e0cc53e1",
+    "ir_hw3/corpus.py": "cacb23c0d0e30b3e25fc2e2af0cb57febf4b94618e4c1f6afc7bacfd99bc4b4d",
+    "ir_hw3/evaluation.py": "5fb0a41048854da1731b54a5498a26c43b213da7f1005c82b5fbf05f7fff124b",
+    "ir_hw3/experiments.py": "3b03fde1a071cca2ff120cd50a559bed6bef094d442b4c0d257ce4d0cd4ba28b"
+  },
+  "load_corpus_seconds": [
+    0.0847422000952065,
+    0.0867127999663353,
+    0.07236410002224147
+  ],
+  "load_corpus_median_seconds": 0.0847422000952065,
+  "settings": [
+    {
+      "condition": "C",
+      "idf": "standard",
+      "engine_build_seconds": 0.34048850019462407,
+      "first_search_seconds": 0.036391699919477105,
+      "warm_search_median_seconds": 0.0012962999753654003,
+      "five_methods_ten_queries_evaluation_seconds": 0.2106443999800831,
+      "queries_evaluated": 10
+    },
+    {
+      "condition": "C",
+      "idf": "smooth",
+      "engine_build_seconds": 0.37424349994398654,
+      "first_search_seconds": 0.03436610009521246,
+      "warm_search_median_seconds": 0.0012642999645322561,
+      "five_methods_ten_queries_evaluation_seconds": 0.19902439997531474,
+      "queries_evaluated": 10
+    },
+    {
+      "condition": "B",
+      "idf": "standard",
+      "engine_build_seconds": 0.3514396999962628,
+      "first_search_seconds": 0.03913960000500083,
+      "warm_search_median_seconds": 0.001312799984589219,
+      "five_methods_ten_queries_evaluation_seconds": 0.22305839997716248,
+      "queries_evaluated": 10
+    },
+    {
+      "condition": "B",
+      "idf": "smooth",
+      "engine_build_seconds": 0.3472364000044763,
+      "first_search_seconds": 0.03715030010789633,
+      "warm_search_median_seconds": 0.0014007999561727047,
+      "five_methods_ten_queries_evaluation_seconds": 0.21570009994320571,
+      "queries_evaluated": 10
+    },
+    {
+      "condition": "D",
+      "idf": "standard",
+      "engine_build_seconds": 0.44776610005646944,
+      "first_search_seconds": 0.027269900077953935,
+      "warm_search_median_seconds": 0.0011732999701052904,
+      "five_methods_ten_queries_evaluation_seconds": 0.17572880000807345,
+      "queries_evaluated": 10
+    },
+    {
+      "condition": "D",
+      "idf": "smooth",
+      "engine_build_seconds": 0.34669239982031286,
+      "first_search_seconds": 0.02947800001129508,
+      "warm_search_median_seconds": 0.0015855999663472176,
+      "five_methods_ten_queries_evaluation_seconds": 0.17886330001056194,
+      "queries_evaluated": 10
+    }
+  ]
+}

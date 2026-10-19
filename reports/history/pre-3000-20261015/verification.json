@@ -1,0 +1,42 @@
+{
+  "documents": 1000,
+  "queries": 10,
+  "methods": 5,
+  "independent_cosine_scores_checked": 50000,
+  "maximum_cosine_error": 1.1102230246251565e-16,
+  "repeatability": {
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "query_status.csv": true,
+    "rankings.csv": true,
+    "normalization.csv": true,
+    "annotation_pool.csv": true,
+    "term_statistics.csv": true,
+    "judgments.json": true,
+    "queries.json": true,
+    "RQ_DISCUSSION.md": true
+  },
+  "normalization_passed": true,
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "judgment_source": "weak_rules",
+  "settings": {
+    "condition": "C",
+    "idf": "standard"
+  },
+  "runs": [
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261015T145238.098257Z-c902cd9b",
+      "run_id": "20261015T145238.098257Z-c902cd9b",
+      "manifest_sha256": "f8a80171e481269aab27b8b9a179aaf1cb697f50c16266b308f715787c195e38"
+    },
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261015T145238.918542Z-b1c846ca",
+      "run_id": "20261015T145238.918542Z-b1c846ca",
+      "manifest_sha256": "c22a67918c0308fbfffcad3e8b309ad7b208897ae9b3904383a7aa9767e9ac8f"
+    }
+  ]
+}

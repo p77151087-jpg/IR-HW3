@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "settings": {
+    "condition": "C",
+    "idf": "standard"
+  },
+  "documents": 1000,
+  "vocabulary": 17792,
+  "tokens": 179304,
+  "corpus_sha256": "9738b68d03a6e39bed010803aa878cfdc66e0bbcaf005e8ee83d3bcfeb7b2631",
+  "queries_sha256": "9bd41035cfb0944ee65171f47575454433befb0a433866765b09dd12a5dd7c6d",
+  "judgments_sha256": "c1e03138a5a999d87b08e5e20d1c409198c08c29678368009c5000d5ccafb728",
+  "judgment_source": "weak_rules",
+  "queries_total": 10,
+  "k": 10,
+  "python": "3.12.14",
+  "dependencies": {
+    "regex": "2026.9.29",
+    "nltk": "3.9.2",
+    "streamlit": "1.66.0"
+  },
+  "source_sha256": {
+    "app.py": "57de0221c5ea292ca0e370659e2475868e29ad3086db98c08913514de14d9187",
+    "ir_hw1/preprocessing.py": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2",
+    "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+    "ir_hw3/__init__.py": "9d023d375f8d11ffaddba139988d4498a9749d8926b79d7a496d11f7916e646d",
+    "ir_hw3/cli.py": "0054434da27f4a3ee2588b47acb07261aa8994e96706132ba3dcc94ef6a9a62b",
+    "ir_hw3/core.py": "55901dcc1d26d670b9527d5f1ca55044f15ba75b109c152167743935e0cc53e1",
+    "ir_hw3/corpus.py": "cacb23c0d0e30b3e25fc2e2af0cb57febf4b94618e4c1f6afc7bacfd99bc4b4d",
+    "ir_hw3/evaluation.py": "2d47e5f897a9a4cca1bb349b55fa55dc140d0626169ebd63d97c3e08153aa88b",
+    "ir_hw3/experiments.py": "89364736c4b135020a051af27ea4128d84e74b67a249e71836a2f47cc3940f88"
+  },
+  "outputs_sha256": {
+    "metrics_per_query.csv": "77e810fcd12e88d928e34dc087117b9605a6c99c2d1bb12899ac51e992d20653",
+    "metrics_summary.csv": "00f03f176b18062d9d97e50440ff99c24bff88695d9098c86422c68b8d28c710",
+    "rankings.csv": "980901f9534611840a7639d9534860f3e6f78652a5e428f1424d7bedc7dd6f17",
+    "normalization.csv": "a0170307452270e9a000e3b1a6b6b32944aec8b238ebfc227b79d508e23cf474",
+    "annotation_pool.csv": "056d3894dce3d3983efa26daccaf5a493bfc2f89965fea3a5b50618cfc903b47",
+    "term_statistics.csv": "c494994150aa57621be547e7bafa2280276bf4985e4f81a1f2a35388741c7161",
+    "judgments.json": "971fc9b72f1597528cce100c0a5549ce62dfc13c74fe9804b31d19e66e4ed0ac",
+    "queries.json": "fc73aa63bf72a9b6d90714f04596bd1427e1bdd214e153f3ccc414126fe4a65c"
+  },
+  "formulas": {
+    "tf": "f",
+    "log_tf": "1 + ln(f), f > 0",
+    "idf": "binary presence * IDF",
+    "tfidf": "f * IDF",
+    "log_tfidf": "(1 + ln(f)) * IDF",
+    "standard_idf": "ln(N / DF)",
+    "smooth_idf": "ln((N+1)/(DF+1)) + 1"
+  },
+  "tie_break": "score rounded to 12 decimal places, then PMID ascending",
+  "zero_vectors": "no retrieval; zero norm never divides by zero",
+  "query_tf": "actual term count; OOV terms excluded from vector norm",
+  "limitations": [
+    "Single-topic nonrandom PubMed snapshot; abstract body only.",
+    "Unjudged documents count as nonrelevant in ranking metrics; judged@k is reported.",
+    "Recall uses the known relevant set; incomplete human annotation does not give full-corpus recall.",
+    "Weak labels use lexical co-occurrence and are not human or clinical ground truth."
+  ]
+}

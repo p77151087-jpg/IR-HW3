@@ -1,0 +1,121 @@
+{
+  "status": "complete",
+  "date": "2026-10-18",
+  "changed_existing_files": [
+    "app.py",
+    "README.md"
+  ],
+  "added_files": [
+    "ir_hw3/spelling.py",
+    "tests/test_spelling.py",
+    "tests/test_spelling_ui.py",
+    "scripts/verify_spelling_port.py"
+  ],
+  "source_sha256": {
+    "app.py": "695f93dfdb0bcdc30e3545e6e7673ebd84725bcd874d7aaa08d6182910b1886d",
+    "README.md": "31cd845ee61bbaf08fd0540492c0deaa39374e802e0392228dd5f0b9ed9ef589",
+    "ir_hw3/spelling.py": "d6ee0b76c0f7a7f71a1621e4beb35aa3446a9ed07f4d9f12b769ac44c03f5c32",
+    "tests/test_spelling.py": "03891f061bc25673e0a9910a494d1865f4bf435e39792f17c90ad080c41d9d4a",
+    "tests/test_spelling_ui.py": "f6ce4e5b77c2188af3d2c0003545d2c403e74dd4dd911df52e585f7eb07c0eae",
+    "scripts/verify_spelling_port.py": "f35810a8fe104a7c59686afc1c804187c9eb64478c3ded96b2c07d799c7ede20"
+  },
+  "spelling_corpus": "data/corpus/glp1-1000-20260929",
+  "spelling_documents": 1000,
+  "search_and_evaluation_documents": 3000,
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "185",
+    "time": "43.017",
+    "timestamp": "2026-10-18T19:31:31.619527+08:00",
+    "hostname": "MSI"
+  },
+  "before_after": {
+    "rankings_compared": 360,
+    "settings_compared": 6,
+    "metric_sources": [
+      "human",
+      "weak_rules",
+      "pubmed_hybrid"
+    ],
+    "identical": true
+  },
+  "manual_judgments": 0,
+  "manual_note": "Actual manual judgments remain empty. UI tests verify original query input to human evaluation without inventing human labels.",
+  "numeric": {
+    "independent_cosine_scores_checked": 900000,
+    "maximum_cosine_error": 1.6653345369377348e-16,
+    "independent_bm25_scores_checked": 180000,
+    "maximum_bm25_error": 1.7763568394002505e-15,
+    "repeatability": {
+      "metrics_per_query.csv": true,
+      "metrics_summary.csv": true,
+      "query_status.csv": true,
+      "rankings.csv": true,
+      "normalization.csv": true,
+      "annotation_pool.csv": true,
+      "term_statistics.csv": true,
+      "judgments.json": true,
+      "queries.json": true,
+      "RQ_DISCUSSION.md": true
+    },
+    "normalization_passed": true
+  },
+  "numeric_source_freshness": [
+    {
+      "run_id": "20261018T113652.389018Z-e4bb9de1",
+      "source_files_checked": 40,
+      "all_current": true
+    },
+    {
+      "run_id": "20261018T113656.376835Z-447c3611",
+      "source_files_checked": 40,
+      "all_current": true
+    }
+  ],
+  "preservation": {
+    "existing_files_checked": 856,
+    "expected_changed_files": [
+      "C:\\成大專案\\IR-HW3\\app.py"
+    ],
+    "hw2_files_checked": 103,
+    "hw2_changed": [],
+    "existing_data_and_reports_unchanged": true
+  },
+  "browser": {
+    "url": "http://127.0.0.1:8503",
+    "verified": [
+      "Live per-word suggestions retain previous search results",
+      "Original typo query can be searched unchanged",
+      "Click insulin changes only its span and preserves glucosee and GLP-1",
+      "Input, adoption arrow, actual query and results agree",
+      "Acronyms, digits and compounds offer no replacement",
+      "Switch to evaluation keeps original Q01-Q10 and executes weak-rule evaluation",
+      "Returning to search retains committed corrected query"
+    ],
+    "evidence": [
+      "browser-candidates.jpg",
+      "browser-original.jpg",
+      "browser-protected.jpg",
+      "browser-adopted-final.jpg",
+      "browser-evaluation.txt",
+      "browser-evaluation.jpg",
+      "browser-final.jpg"
+    ]
+  },
+  "graph_verification": {
+    "tier": 2,
+    "hw3_generation": "2026-10-15T15:10:30Z",
+    "hw2_generation": "2026-10-13T09:19:53Z",
+    "limitation": "HW3 graph predates several current files. Changed, excluded and untracked source was directly read; graph absence was not treated as evidence of absence."
+  },
+  "commands": [
+    ".venv/Scripts/python.exe -B -X utf8 -m pytest -q --basetemp tmp/pytest-spelling-full --junitxml reports/spelling-port-20261018/pytest-full.xml",
+    "scripts/verify_spelling_port.py before/after --output reports/spelling-port-20261018",
+    "scripts/verify_spelling_port.py numeric --output reports/spelling-port-20261018 (executes existing scripts/verify_hw3.py with a new final evidence path)",
+    "ir_hw3.cli verify --source",
+    "ir_hw3.cli search insulinn"
+  ]
+}

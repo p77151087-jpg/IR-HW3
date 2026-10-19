@@ -1,0 +1,17 @@
+{
+  "configuration": {
+    "base_sha256": "9738b68d03a6e39bed010803aa878cfdc66e0bbcaf005e8ee83d3bcfeb7b2631",
+    "query": "(\"GLP-1\"[Title/Abstract] OR \"glucagon-like peptide-1\"[Title/Abstract]) AND english[Language] AND hasabstract AND (\"1900/01/01\"[Date - Publication] : \"2026/09/29\"[Date - Publication])",
+    "requested_count": 3000,
+    "sort": "pub date",
+    "batch_size": 100,
+    "candidate_page_size": 6000,
+    "tool": "ir_hw3_course_snapshot"
+  },
+  "started_at_utc": "2026-10-15T15:01:47.093160+00:00",
+  "status": "complete",
+  "selected_so_far": 3000,
+  "fetched_additional": 2100,
+  "updated_at_utc": "2026-10-15T15:03:10.527604+00:00",
+  "completed_at_utc": "2026-10-15T15:03:10.599759+00:00"
+}

@@ -1,0 +1,6 @@
+﻿method,queries_total,queries_evaluated,queries_excluded,queries_excluded_unjudged,queries_excluded_no_known_relevant,k,judgment_source,precision_at_k,recall_at_k,reciprocal_rank,ndcg_at_k,judged_at_k
+tf,10,10,0,0,0,10,pubmed_hybrid,0.67,0.03220015241888755,0.875,0.6952966925382336,1.0
+log_tf,10,10,0,0,0,10,pubmed_hybrid,0.8099999999999999,0.042299236571093926,0.95,0.8326981036143047,1.0
+idf,10,10,0,0,0,10,pubmed_hybrid,0.9400000000000001,0.050286131713516535,0.95,0.940693532876381,1.0
+tfidf,10,10,0,0,0,10,pubmed_hybrid,0.93,0.049868329060169136,1.0,0.948616627557006,1.0
+log_tfidf,10,10,0,0,0,10,pubmed_hybrid,0.9400000000000001,0.05088518800126264,1.0,0.954106475051289,1.0

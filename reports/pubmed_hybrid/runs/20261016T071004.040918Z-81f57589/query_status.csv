@@ -1,0 +1,11 @@
+﻿qid,query,judgment_source,status,judged_documents,known_relevant,included_in_mean,exclusion_reason
+Q01,semaglutide weight loss obesity,pubmed_hybrid,has_known_relevant,3000,533,True,
+Q02,liraglutide obesity treatment,pubmed_hybrid,has_known_relevant,3000,171,True,
+Q03,tirzepatide type 2 diabetes glycemic control,pubmed_hybrid,has_known_relevant,3000,282,True,
+Q04,GLP-1 cardiovascular outcomes heart failure,pubmed_hybrid,has_known_relevant,3000,770,True,
+Q05,GLP-1 kidney disease renal protection,pubmed_hybrid,has_known_relevant,3000,466,True,
+Q06,GLP-1 gastric emptying gastrointestinal motility,pubmed_hybrid,has_known_relevant,3000,107,True,
+Q07,GLP-1 nausea vomiting adverse effects,pubmed_hybrid,has_known_relevant,3000,101,True,
+Q08,GLP-1 insulin secretion pancreatic beta cells,pubmed_hybrid,has_known_relevant,3000,130,True,
+Q09,GLP-1 gut microbiota intestinal metabolism,pubmed_hybrid,has_known_relevant,3000,163,True,
+Q10,GLP-1 neuroprotection Alzheimer Parkinson disease,pubmed_hybrid,has_known_relevant,3000,158,True,

@@ -1,0 +1,24 @@
+{
+  "documents": 1000,
+  "queries": 10,
+  "methods": 5,
+  "independent_cosine_scores_checked": 50000,
+  "maximum_cosine_error": 1.1102230246251565e-16,
+  "repeatability": {
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "rankings.csv": true,
+    "normalization.csv": true,
+    "annotation_pool.csv": true,
+    "term_statistics.csv": true,
+    "judgments.json": true,
+    "queries.json": true
+  },
+  "normalization_passed": true,
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "judgment_source": "weak_rules"
+}

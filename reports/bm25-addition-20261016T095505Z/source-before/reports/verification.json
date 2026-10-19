@@ -1,0 +1,82 @@
+{
+  "logarithm_base": 10,
+  "weighting_version": "log10-v1",
+  "documents": 3000,
+  "queries": 10,
+  "methods": 5,
+  "independent_cosine_scores_checked": 900000,
+  "maximum_cosine_error": 1.6653345369377348e-16,
+  "settings_checked": [
+    {
+      "condition": "B",
+      "idf": "standard",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16
+    },
+    {
+      "condition": "B",
+      "idf": "smooth",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.6653345369377348e-16
+    },
+    {
+      "condition": "C",
+      "idf": "standard",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16
+    },
+    {
+      "condition": "C",
+      "idf": "smooth",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.6653345369377348e-16
+    },
+    {
+      "condition": "D",
+      "idf": "standard",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16
+    },
+    {
+      "condition": "D",
+      "idf": "smooth",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.6653345369377348e-16
+    }
+  ],
+  "repeatability": {
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "query_status.csv": true,
+    "rankings.csv": true,
+    "normalization.csv": true,
+    "annotation_pool.csv": true,
+    "term_statistics.csv": true,
+    "judgments.json": true,
+    "queries.json": true,
+    "RQ_DISCUSSION.md": true
+  },
+  "normalization_passed": true,
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "judgment_source": "weak_rules",
+  "settings": {
+    "condition": "C",
+    "idf": "standard"
+  },
+  "runs": [
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261016T071028.972333Z-fdd4cd9b",
+      "run_id": "20261016T071028.972333Z-fdd4cd9b",
+      "manifest_sha256": "a8c191f7bd80fe408aba7e6fc52c2e4c5309f297d05462e7c38a39b092d0269a"
+    },
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261016T071031.984282Z-6383d85f",
+      "run_id": "20261016T071031.984282Z-6383d85f",
+      "manifest_sha256": "0b0297227bddc54b43fbd2a8f2f9cdfaa227671824b19204a3f8f711677788fe"
+    }
+  ]
+}

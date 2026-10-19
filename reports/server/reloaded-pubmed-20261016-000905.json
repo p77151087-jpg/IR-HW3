@@ -1,0 +1,12 @@
+[
+  {
+    "ProcessId": 2172,
+    "ParentProcessId": 27020,
+    "CommandLine": "\"C:\\成大專案\\IR-HW3\\.venv\\Scripts\\python.exe\" -B -X utf8 -m streamlit run C:\\成大專案\\IR-HW3\\app.py --server.address 127.0.0.1 --server.port 8503"
+  },
+  {
+    "ProcessId": 16700,
+    "ParentProcessId": 2172,
+    "CommandLine": "\"C:\\Users\\Huayi\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" -B -X utf8 -m streamlit run C:\\成大專案\\IR-HW3\\app.py --server.address 127.0.0.1 --server.port 8503"
+  }
+]

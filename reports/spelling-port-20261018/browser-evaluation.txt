@@ -1,0 +1,89 @@
+- link "Skip to main content":
+  - /url: "#stMain"
+- region "Sidebar":
+  - paragraph: BIOMEDICAL INFORMATION RETRIEVAL
+  - heading "BioSearch · HW3" [level=1]
+  - paragraph: 工作頁
+  - radiogroup "工作頁":
+    - radio "語料與設定"
+    - paragraph: 語料與設定
+    - radio "搜尋與排名"
+    - paragraph: 搜尋與排名
+    - radio "方法比較"
+    - paragraph: 方法比較
+    - radio "效能評估" [checked]
+    - paragraph: 效能評估
+  - separator
+  - paragraph: 六種方法共用前處理；IDF 選項適用原五種向量方法
+  - paragraph: 前處理
+  - combobox "前處理": C：B＋移除停用詞
+  - button "Open":
+  - paragraph: IDF 定義
+  - combobox "IDF 定義": 標準 log10(N / DF)
+  - button "Open":
+  - paragraph: 固定 3,000 篇英文摘要
+  - paragraph: 截止：2026/10/27
+  - paragraph: 語料與搜尋皆可離線使用。
+- banner:
+  - button "Deploy":
+    - generic: Deploy
+  - button "Main menu":
+- main:
+  - heading "效能評估" [level=1]:
+    - text: 效能評估
+    - link "Link to heading":
+      - /url: "#fbdfcb16"
+  - paragraph: 用固定的 10 個查詢建立相關性集合，再比較六種方法的檢索品質。
+  - paragraph: 已有人工相關文件的查詢
+  - paragraph: 0 / 10
+  - tablist:
+    - tab "人工標註":
+      - paragraph: 人工標註
+    - tab "效能比較" [selected]:
+      - paragraph: 效能比較
+    - tab "重現與報告":
+      - paragraph: 重現與報告
+  - tabpanel "效能比較":
+    - paragraph: 評估標註來源
+    - radiogroup "評估標註來源":
+      - radio "人工標註"
+      - paragraph: 人工標註
+      - radio "PubMed 主題參考＋弱規則回退"
+      - paragraph: PubMed 主題參考＋弱規則回退
+      - radio "規則弱標籤（示範）" [checked]
+      - paragraph: 規則弱標籤（示範）
+    - paragraph: 評估 k
+    - combobox "評估 k": "10"
+    - button "Open":
+    - alert:
+      - paragraph: 規則弱標籤只用於示範：依摘要中概念詞共同出現判定，不是人工判讀，也不是醫學相關性的標準答案。
+    - generic "查看弱標籤規則與限制":
+      - generic: keyboard_arrow_right
+      - paragraph: 查看弱標籤規則與限制
+    - paragraph: 六方法一起評估：原五方法使用 cosine；BM25 固定 k1=1.2、b=0.75 與自己的 log10 IDF。標籤、查詢、語料與 k 相同；比較排名指標，原始分數尺度不同。
+    - status:
+      - paragraph: 平均指標實際納入 10 / 10 個查詢；排除 0 個。可計算指標不表示人工判讀完成；自動來源衡量的是對該參考規則的符合程度。
+    - button "Show/hide columns":
+    - button "Download as CSV":
+    - button "Search":
+    - button "Fullscreen":
+    - button "下載查詢納入與排除明細":
+      - paragraph: 下載查詢納入與排除明細
+    - button "執行六種方法評估" [active]:
+      - paragraph: 執行六種方法評估
+    - button "Show/hide columns":
+    - button "Download as CSV":
+    - button "Search":
+    - button "Fullscreen":
+    - button "Show data":
+    - button "Download as PNG":
+    - button "Copy Vega-Lite spec":
+    - button "Fullscreen":
+    - generic "Vega visualization":
+    - button "下載平均指標":
+      - paragraph: 下載平均指標
+    - button "下載逐查詢指標":
+      - paragraph: 下載逐查詢指標
+    - paragraph: P@k 分母固定為 k；MRR 使用完整返回排名；nDCG 的 gain=2^grade−1；judged@k 表示前 k 名的標註覆蓋率。
+    - button "匯出這組設定的完整實驗與 RQ 解讀":
+      - paragraph: 匯出這組設定的完整實驗與 RQ 解讀
