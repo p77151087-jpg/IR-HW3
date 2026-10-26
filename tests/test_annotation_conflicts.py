@@ -2,10 +2,9 @@
 import json
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from test_app import annotation_app
 
 from ir_hw3 import evaluation
-from ir_hw3.corpus import ROOT
 
 
 @pytest.fixture
@@ -25,8 +24,7 @@ def widget(app, kind, label):
 
 
 def saved_annotation_app():
-    app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=40).run()
-    app.sidebar.radio[0].set_value("效能評估").run()
+    app = annotation_app()
     pmid = widget(app, "selectbox", "閱讀待標註摘要").value
     widget(app, "selectbox", "這篇文件的相關性").set_value(1)
     widget(app, "text_area", "這篇文件的判斷依據").set_value("初始原因 A")
@@ -46,7 +44,7 @@ def external_update(path, pmid):
 def test_clean_widgets_refresh_latest_saved_record_before_further_edits(manual_path):
     app, pmid = saved_annotation_app()
     external_update(manual_path, pmid)
-    widget(app, "selectbox", "評估 k").set_value(5).run()
+    app.run()
     assert widget(app, "selectbox", "這篇文件的相關性").value == 2
     assert widget(app, "text_area", "這篇文件的判斷依據").value == "另一位判讀者的新原因 B"
     # Changing one field must not reintroduce the stale value of the other field.
@@ -61,7 +59,7 @@ def test_dirty_conflict_keeps_draft_and_restore_loads_latest_saved_record(manual
     app, pmid = saved_annotation_app()
     widget(app, "text_area", "這篇文件的判斷依據").set_value("本連線未儲存的原因 C").run()
     expected = external_update(manual_path, pmid)
-    widget(app, "selectbox", "評估 k").set_value(5).run()
+    app.run()
     assert widget(app, "text_area", "這篇文件的判斷依據").value == "本連線未儲存的原因 C"
     widget(app, "button", "儲存這篇人工標註").click().run()
     assert json.loads(manual_path.read_text(encoding="utf-8")) == expected

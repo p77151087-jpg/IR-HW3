@@ -1,0 +1,105 @@
+- link "Skip to main content":
+  - /url: "#stMain"
+- region "Sidebar":
+  - paragraph: BIOMEDICAL INFORMATION RETRIEVAL
+  - heading "BioSearch · HW3" [level=1]
+  - paragraph: 工作頁
+  - radiogroup "工作頁":
+    - radio "語料與設定"
+    - paragraph: 語料與設定
+    - radio "搜尋與排名"
+    - paragraph: 搜尋與排名
+    - radio "方法比較" [checked]
+    - paragraph: 方法比較
+    - radio "效能評估"
+    - paragraph: 效能評估
+  - separator
+  - paragraph: 六種方法共用前處理；IDF 選項適用原五種向量方法
+  - paragraph: 前處理
+  - combobox "前處理": C：B＋移除停用詞
+  - button "Open":
+  - paragraph: IDF 定義
+  - combobox "IDF 定義": 標準 log10(N / DF)
+  - button "Open":
+  - paragraph: 固定 3,000 篇英文摘要
+  - paragraph: 截止：2026/10/27
+  - paragraph: 語料與搜尋皆可離線使用。
+- banner:
+  - button "Deploy":
+    - generic: Deploy
+  - button "Main menu":
+- main [active]:
+  - heading "方法比較" [level=1]:
+    - text: 方法比較
+    - link "Link to heading":
+      - /url: "#778b2fc6"
+  - paragraph: 原五種方法固定 IDF 與 cosine，比較詞項權重；第六種 BM25 使用獨立公式。六種方法共用語料、前處理與查詢。
+  - paragraph: BM25 固定 k1=1.2、b=0.75，使用自己的 log10 IDF，不受側欄 IDF 影響。跨模型請比較名次與評估指標，原始分數不可直接比大小。
+  - paragraph: 對照查詢
+  - combobox "對照查詢": Q01 · semaglutide weight loss obesity
+  - button "Open":
+  - paragraph: 比較查詢文字
+  - textbox "比較查詢文字":
+    - /placeholder: ""
+    - text: semaglutide weight loss obesity
+  - button "Show/hide columns":
+  - button "Download as CSV":
+  - button "Search":
+  - button "Fullscreen":
+  - button "下載方法比較":
+    - paragraph: 下載方法比較
+  - tablist:
+    - tab "原始 TF" [selected]:
+      - paragraph: 原始 TF
+    - tab "Log TF":
+      - paragraph: Log TF
+    - tab "僅 IDF":
+      - paragraph: 僅 IDF
+    - tab "TF × IDF":
+      - paragraph: TF × IDF
+    - tab "Log TF × IDF":
+      - paragraph: Log TF × IDF
+    - tab "BM25":
+      - paragraph: BM25
+  - tabpanel "原始 TF":
+    - button "Show/hide columns":
+    - button "Download as CSV":
+    - button "Search":
+    - button "Fullscreen":
+  - heading "Top 10 文件與名次變化" [level=3]:
+    - text: Top 10 文件與名次變化
+    - link "Link to heading":
+      - /url: "#top-10"
+  - paragraph: 基準方法
+  - combobox "基準方法": 原始 TF
+  - button "Open":
+  - paragraph: 比較方法
+  - combobox "比較方法": Log TF × IDF
+  - button "Open":
+  - button "Show/hide columns":
+  - button "Download as CSV":
+  - button "Search":
+  - button "Fullscreen":
+  - paragraph: 名次改善＝基準名次－比較名次，正值表示上升。空白名次表示該方法 Top 10 之外，並不表示整份排名沒有此文件。
+  - button "下載 Top 10 變化":
+    - paragraph: 下載 Top 10 變化
+  - heading "raw dot 與 cosine 對照" [level=3]:
+    - text: raw dot 與 cosine 對照
+    - link "Link to heading":
+      - /url: "#raw-dot-cosine"
+  - status:
+    - paragraph: raw dot 是共同詞權重乘積的總和；cosine 再除以查詢與文件的向量長度。對照兩者可觀察向量大小對排名的影響。
+  - paragraph: 此對照使用相同查詢與詞項權重，只含原五種向量方法，BM25 不適用。
+  - paragraph: 對照的詞項權重
+  - combobox "對照的詞項權重": Log TF × IDF
+  - button "Open":
+  - paragraph: raw dot（未正規化點積，補充實驗）
+  - button "Show/hide columns":
+  - button "Download as CSV":
+  - button "Search":
+  - button "Fullscreen":
+  - paragraph: cosine（搜尋使用的相似度）
+  - button "Show/hide columns":
+  - button "Download as CSV":
+  - button "Search":
+  - button "Fullscreen":

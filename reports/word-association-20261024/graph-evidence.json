@@ -1,0 +1,137 @@
+{
+  "tier": "Tier 2",
+  "project": "C-e68890e5a4a7e5b088e6a188-IR-HW3",
+  "generation": "2026-10-19T02:24:17Z",
+  "reference_project": "C-e68890e5a4a7e5b088e6a188-IR-HW2",
+  "reference_generation": "2026-10-13T09:19:53Z",
+  "queries": [
+    "load_corpus/terms/search_page/run_experiment/main/normalize/tokenize/capture",
+    "HW2 embeddings.py Function symbols (all 6)",
+    "HW2 embedding_experiment.py Function symbols (all 10)",
+    "load_corpus both directions depth 1 (6 callees, 8 callers)",
+    "train_word2vec outbound depth 2 (17 callees)",
+    "sentence_splitter.py symbols (all 9)"
+  ],
+  "coverage": {
+    "project": "C-e68890e5a4a7e5b088e6a188-IR-HW3",
+    "signal": "best_effort",
+    "indexed_at": "2026-10-24T06:15:18Z",
+    "metadata": {
+      "generation": "2026-10-24T06:15:18Z",
+      "index_mode": "full",
+      "recorded_at": "2026-10-24T06:15:18Z",
+      "recording_status": "complete",
+      "ignored_files_stored": 0,
+      "ignored_files_total": 0,
+      "hash_records_complete": true,
+      "coverage_version": 3,
+      "generation_matches": true
+    },
+    "paths": [
+      {
+        "requested_path": "ir_hw3/word_association.py",
+        "path": "ir_hw3/word_association.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/association_sentences.py",
+        "path": "ir_hw3/association_sentences.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/embedding_training.py",
+        "path": "ir_hw3/embedding_training.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/association_report.py",
+        "path": "ir_hw3/association_report.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/association_validation.py",
+        "path": "ir_hw3/association_validation.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/association_ui.py",
+        "path": "ir_hw3/association_ui.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "tests/test_word_association.py",
+        "path": "tests/test_word_association.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "tests/test_association_ui.py",
+        "path": "tests/test_association_ui.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "app.py",
+        "path": "app.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/test_hw3.ps1",
+        "path": "scripts/test_hw3.ps1",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "scripts/test_hw3.ps1",
+            "kind": "parse_partial",
+            "detail": "7-7",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 7,
+                "end": 7
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "docs/WORD_ASSOCIATION.md",
+        "path": "docs/WORD_ASSOCIATION.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      }
+    ],
+    "scopes": [],
+    "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+  },
+  "source_fallback": "New unindexed modules and tests read directly; partial PowerShell script lines 6-7 read directly. Data/reports intentionally excluded: verified file contents and SHA256. Existing relevant paths had metadata_match before edits; source read after edits."
+}

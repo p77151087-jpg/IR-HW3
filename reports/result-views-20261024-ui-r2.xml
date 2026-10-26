@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="11" time="5.755" timestamp="2026-10-24T16:41:01.167635+08:00" hostname="MSI"><testcase classname="tests.test_result_views" name="test_details_count_unique_query_terms_and_preserve_raw_ranking" time="0.001" /><testcase classname="tests.test_result_views" name="test_overview_aligns_documents_and_shows_only_rank_or_outside_marker" time="0.001" /><testcase classname="tests.test_result_views" name="test_overview_ties_use_numeric_pmid_and_omit_documents_beyond_tenth" time="0.001" /><testcase classname="tests.test_result_views" name="test_changes_separate_shared_entering_exiting_and_explain_direction" time="0.001" /><testcase classname="tests.test_result_views" name="test_changes_empty_identical_and_disjoint_rankings[old0-new0-counts0]" time="0.002" /><testcase classname="tests.test_result_views" name="test_changes_empty_identical_and_disjoint_rankings[old1-new1-counts1]" time="0.001" /><testcase classname="tests.test_result_views" name="test_changes_empty_identical_and_disjoint_rankings[old2-new2-counts2]" time="0.001" /><testcase classname="tests.test_result_views" name="test_changes_empty_identical_and_disjoint_rankings[old3-new3-counts3]" time="0.002" /><testcase classname="tests.test_result_views" name="test_changes_empty_identical_and_disjoint_rankings[old4-new4-counts4]" time="0.001" /><testcase classname="tests.test_app" name="test_comparison_shows_raw_dot_and_cosine_from_the_same_query_and_weights" time="3.662"><failure message="AssertionError: assert (not ElementList() and 10 == 0)&#10; +  where ElementList() = AppTest(\n    _script_path='C:\\成大專案\\IR-HW3\\app.py',\n    default_timeout=120,\n    _session_state={$$STREAMLIT_INTERNA...              5: Caption()\n            }\n        ),\n        2: SpecialBlock(\n            type='event'\n        )\n    }\n).exception&#10; +  and   10 = len(ElementList(_list=[Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe()]))&#10; +    where ElementList(_list=[Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe()]) = AppTest(\n    _script_path='C:\\成大專案\\IR-HW3\\app.py',\n    default_timeout=120,\n    _session_state={$$STREAMLIT_INTERNA...              5: Caption()\n            }\n        ),\n        2: SpecialBlock(\n            type='event'\n        )\n    }\n).dataframe">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x00000266EE922F90&gt;
+
+    def test_comparison_shows_raw_dot_and_cosine_from_the_same_query_and_weights(monkeypatch):
+        from ir_hw3.core import Engine
+        calls = []
+        rank = Engine.rank
+    
+        def spy(self, query, method="log_tfidf", **kwargs):
+            calls.append((self, query, method, kwargs))
+            return rank(self, query, method, **kwargs)
+    
+        def unexpected_l2_check(*args, **kwargs):
+            raise AssertionError("The comparison UI should directly compare raw dot and cosine")
+    
+        monkeypatch.setattr(Engine, "rank", spy)
+        monkeypatch.setattr(Engine, "normalization_check", unexpected_l2_check)
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120).run()
+        calls.clear()
+        app.sidebar.radio[0].set_value("方法比較").run()
+        assert not app.exception
+        assert [call[3] for call in calls[-2:]] == [{"scoring": "dot"}, {"scoring": "cosine"}]
+        assert calls[-2][1:3] == calls[-1][1:3]
+        assert any(item.value == "raw dot 與 cosine 對照" for item in app.subheader)
+        assert not any("same_ranking" in frame.value.columns for frame in app.dataframe)
+        assert len(widget(app, "selectbox", "對照的詞項權重").options) == 5
+        for frame, (engine, query, method, kwargs) in zip(app.dataframe[-2:], calls[-2:]):
+            expected = rank(engine, query, method, **kwargs)
+            assert frame.value["pmid"].tolist() == [row["pmid"] for row in expected]
+            assert frame.value["score"].tolist() == [row["score"] for row in expected]
+        overview = app.dataframe[0].value
+        assert overview["pmid"].is_unique
+        assert {"title", "Top 10 方法數", "BM25"} &lt;= set(overview.columns)
+        _, weights, _ = engine.query(query, "tf")
+        from ir_hw3.core import METHODS
+        for frame, method in zip(app.dataframe[1:7], METHODS):
+            expected = rank(engine, query, method, limit=10)
+            assert frame.value["pmid"].tolist() == [row["pmid"] for row in expected]
+            assert frame.value["score"].tolist() == [row["score"] for row in expected]
+            assert frame.value["query_term_hits"].tolist() == [
+                sum(engine.counts[row["pmid"]][term] for term in weights) for row in expected]
+            assert frame.value["abstract_length_tokens"].tolist() == [engine.lengths[row["pmid"]] for row in expected]
+            config = json.loads(frame.proto.columns)
+            assert config["score"]["label"] == ("BM25 分數" if method == "bm25" else "cosine 分數")
+        assert any("兩者共有（" in tab.label for tab in app.tabs)
+        assert any("新進 Top 10（" in tab.label for tab in app.tabs)
+        assert any("移出 Top 10（" in tab.label for tab in app.tabs)
+        changes = [frame.value for frame in app.dataframe if "baseline_rank" in frame.value.columns or "compared_rank" in frame.value.columns]
+        assert changes and all(not frame.isna().any().any() for frame in changes)
+        widget(app, "selectbox", "比較方法").set_value("tf").run()
+        assert not app.exception
+        assert any("目前選擇相同方法" in item.value for item in app.info)
+        widget(app, "text_input", "比較查詢文字").set_value("no_such_query_987654321").run()
+&gt;       assert not app.exception and len(app.dataframe) == 0
+E       AssertionError: assert (not ElementList() and 10 == 0)
+E        +  where ElementList() = AppTest(\n    _script_path='C:\\成大專案\\IR-HW3\\app.py',\n    default_timeout=120,\n    _session_state={$$STREAMLIT_INTERNA...              5: Caption()\n            }\n        ),\n        2: SpecialBlock(\n            type='event'\n        )\n    }\n).exception
+E        +  and   10 = len(ElementList(_list=[Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe()]))
+E        +    where ElementList(_list=[Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe(), Dataframe()]) = AppTest(\n    _script_path='C:\\成大專案\\IR-HW3\\app.py',\n    default_timeout=120,\n    _session_state={$$STREAMLIT_INTERNA...              5: Caption()\n            }\n        ),\n        2: SpecialBlock(\n            type='event'\n        )\n    }\n).dataframe
+
+tests\test_app.py:187: AssertionError</failure></testcase><testcase classname="tests.test_app" name="test_search_top10_reader_and_oov" time="0.323" /></testsuite></testsuites>

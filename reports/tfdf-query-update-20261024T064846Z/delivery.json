@@ -1,0 +1,424 @@
+{
+  "query_design_version": "tfdf-v1",
+  "queries_sha256": "67bab3c355ae30e07ac7471ea8557b132f58dd0add5b22cd1986542cef3a5f61",
+  "queries": [
+    {
+      "qid": "Q01",
+      "text": "GLP-1",
+      "intent": "GLP-1 相關摘要",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "1",
+      "types": [
+        1
+      ]
+    },
+    {
+      "qid": "Q02",
+      "text": "receptor",
+      "intent": "受體相關摘要",
+      "groups": [
+        [
+          "receptor",
+          "receptors"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "2",
+      "types": [
+        2
+      ]
+    },
+    {
+      "qid": "Q03",
+      "text": "MASLD",
+      "intent": "代謝功能障礙相關脂肪性肝病摘要",
+      "groups": [
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "3",
+      "types": [
+        3
+      ]
+    },
+    {
+      "qid": "Q04",
+      "text": "hypertension",
+      "intent": "高血壓相關摘要",
+      "groups": [
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "4",
+      "types": [
+        4
+      ]
+    },
+    {
+      "qid": "Q05",
+      "text": "GLP-1 receptor",
+      "intent": "GLP-1 相關摘要；受體相關摘要（需同時涵蓋概念）",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ],
+        [
+          "receptor",
+          "receptors"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "1 搭配 2",
+      "types": [
+        1,
+        2
+      ]
+    },
+    {
+      "qid": "Q06",
+      "text": "GLP-1 MASLD",
+      "intent": "GLP-1 相關摘要；代謝功能障礙相關脂肪性肝病摘要（需同時涵蓋概念）",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ],
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "1 搭配 3",
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "qid": "Q07",
+      "text": "GLP-1 hypertension",
+      "intent": "GLP-1 相關摘要；高血壓相關摘要（需同時涵蓋概念）",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ],
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "1 搭配 4",
+      "types": [
+        1,
+        4
+      ]
+    },
+    {
+      "qid": "Q08",
+      "text": "receptor MASLD",
+      "intent": "受體相關摘要；代謝功能障礙相關脂肪性肝病摘要（需同時涵蓋概念）",
+      "groups": [
+        [
+          "receptor",
+          "receptors"
+        ],
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "2 搭配 3",
+      "types": [
+        2,
+        3
+      ]
+    },
+    {
+      "qid": "Q09",
+      "text": "receptor hypertension",
+      "intent": "受體相關摘要；高血壓相關摘要（需同時涵蓋概念）",
+      "groups": [
+        [
+          "receptor",
+          "receptors"
+        ],
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "2 搭配 4",
+      "types": [
+        2,
+        4
+      ]
+    },
+    {
+      "qid": "Q10",
+      "text": "MASLD hypertension",
+      "intent": "代謝功能障礙相關脂肪性肝病摘要；高血壓相關摘要（需同時涵蓋概念）",
+      "groups": [
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ],
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ],
+      "design_version": "tfdf-v1",
+      "case": "3 搭配 4",
+      "types": [
+        3,
+        4
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "type": 1,
+      "category": "高 TF／高 DF",
+      "term": "GLP-1",
+      "indexed_term": "glp-1",
+      "df": 1783,
+      "df_fraction": 0.5943333333333334,
+      "mean_positive_tf": 3.0807627593942795,
+      "median_positive_tf": 2,
+      "min_positive_tf": 1,
+      "max_positive_tf": 16,
+      "cf": 5493,
+      "idf": 0.22596991154430784
+    },
+    {
+      "type": 2,
+      "category": "低 TF／高 DF",
+      "term": "receptor",
+      "indexed_term": "receptor",
+      "df": 2354,
+      "df_fraction": 0.7846666666666666,
+      "mean_positive_tf": 1.4995751911639763,
+      "median_positive_tf": 1.0,
+      "min_positive_tf": 1,
+      "max_positive_tf": 18,
+      "cf": 3530,
+      "idf": 0.10531479621224657
+    },
+    {
+      "type": 3,
+      "category": "高 TF／低 DF",
+      "term": "MASLD",
+      "indexed_term": "masld",
+      "df": 110,
+      "df_fraction": 0.03666666666666667,
+      "mean_positive_tf": 3.4363636363636365,
+      "median_positive_tf": 3.0,
+      "min_positive_tf": 1,
+      "max_positive_tf": 11,
+      "cf": 378,
+      "idf": 1.4357285695614375
+    },
+    {
+      "type": 4,
+      "category": "低 TF／低 DF",
+      "term": "hypertension",
+      "indexed_term": "hypertension",
+      "df": 135,
+      "df_fraction": 0.045,
+      "mean_positive_tf": 1.4074074074074074,
+      "median_positive_tf": 1,
+      "min_positive_tf": 1,
+      "max_positive_tf": 6,
+      "cf": 190,
+      "idf": 1.3467874862246563
+    }
+  ],
+  "tests_passed": 221,
+  "tests_failed": 0,
+  "protected_existing_files": 913,
+  "unchanged_existing_files": 910,
+  "updated_files_with_original_backups": [
+    "data/queries.json",
+    "reports/pytest.xml",
+    "reports/verification.json"
+  ],
+  "legacy_Q01_all_six_full_rankings_unchanged": true,
+  "cross_query_version_comparison_rejected": true,
+  "old_queries_archive": "data/query_sets/9bd41035cfb0944ee65171f47575454433befb0a433866765b09dd12a5dd7c6d",
+  "manual_judgments": 0,
+  "manual_path": "data/judgments/by-corpus/1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7/by-queries/67bab3c355ae30e07ac7471ea8557b132f58dd0add5b22cd1986542cef3a5f61/manual.json",
+  "source_hashes_current": true,
+  "main_run": "reports/pubmed_hybrid/runs/20261024T065811.096543Z-1998df71",
+  "main_manifest_sha256": "be96c3cad963c7e4cbaaa6fd2085c7b8fe69c85236a679fc108793fee652f020",
+  "repeatability": {
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "query_status.csv": true,
+    "rankings.csv": true,
+    "normalization.csv": true,
+    "annotation_pool.csv": true,
+    "term_statistics.csv": true,
+    "reference_labels.csv": true,
+    "reference_coverage.csv": true,
+    "reference_topk_sources.csv": true,
+    "judgments.json": true,
+    "queries.json": true,
+    "RQ_DISCUSSION.md": true,
+    "reference_rules.json": true,
+    "pubmed_metadata.json": true,
+    "query_design.json": true
+  },
+  "numeric_verification": {
+    "logarithm_base": 10,
+    "weighting_version": "log10-v1",
+    "documents": 3000,
+    "queries": 10,
+    "methods": 6,
+    "independent_cosine_scores_checked": 900000,
+    "maximum_cosine_error": 1.1102230246251565e-16,
+    "independent_bm25_scores_checked": 180000,
+    "maximum_bm25_error": 0.0,
+    "bm25_parameters": {
+      "version": "bm25-log10-v1",
+      "k1": 1.2,
+      "b": 0.75,
+      "logarithm_base": 10,
+      "idf": "log10(1 + (N - DF + 0.5) / (DF + 0.5))",
+      "query_tf": "linear actual count; no k3 saturation",
+      "length": "post-preprocessing abstract tokens; avgdl includes all N documents"
+    },
+    "normalization_methods": [
+      "tf",
+      "log_tf",
+      "idf",
+      "tfidf",
+      "log_tfidf"
+    ],
+    "settings_checked": [
+      {
+        "condition": "B",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "B",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "C",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "C",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "D",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "D",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      }
+    ],
+    "repeatability": {
+      "metrics_per_query.csv": true,
+      "metrics_summary.csv": true,
+      "query_status.csv": true,
+      "rankings.csv": true,
+      "normalization.csv": true,
+      "annotation_pool.csv": true,
+      "term_statistics.csv": true,
+      "judgments.json": true,
+      "queries.json": true,
+      "RQ_DISCUSSION.md": true,
+      "query_design.json": true
+    },
+    "normalization_passed": true,
+    "hw2_source": {
+      "checked": 93,
+      "changed": [],
+      "source_available": true
+    },
+    "judgment_source": "weak_rules",
+    "settings": {
+      "condition": "C",
+      "idf": "standard"
+    },
+    "runs": [
+      {
+        "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261024T065948.825794Z-0b266d8a",
+        "run_id": "20261024T065948.825794Z-0b266d8a",
+        "manifest_sha256": "efeab1efda0adf7ff22059b8b6fefbc5be7881662881ad9fecc2737270e97036"
+      },
+      {
+        "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261024T065951.320078Z-369cda3c",
+        "run_id": "20261024T065951.320078Z-369cda3c",
+        "manifest_sha256": "278ea06592f9f0ee8cb6880344a773a1885a52f18218238e2fdf6ca1760e9e63"
+      }
+    ]
+  },
+  "report": "reports/HW3_REPORT_TFDF.md",
+  "report_sha256": "5a1b78192af9f0d58b50aed95d239f6093867a234600cc5630ae8ccb52a7e100",
+  "independently_recomputed_metric_rows": 60,
+  "maximum_metric_error": 0,
+  "screenshots": [
+    "reports/tfdf-query-update-20261024T064846Z/ui-presets.png",
+    "reports/tfdf-query-update-20261024T064846Z/ui-query-q10.png"
+  ],
+  "website": "http://127.0.0.1:8503/",
+  "website_checked": "Preset dropdown exposes all ten; Q10 fills correct text and actual search commits MASLD hypertension."
+}

@@ -5,9 +5,9 @@
   "queries": 10,
   "methods": 6,
   "independent_cosine_scores_checked": 900000,
-  "maximum_cosine_error": 1.6653345369377348e-16,
+  "maximum_cosine_error": 1.1102230246251565e-16,
   "independent_bm25_scores_checked": 180000,
-  "maximum_bm25_error": 1.7763568394002505e-15,
+  "maximum_bm25_error": 0.0,
   "bm25_parameters": {
     "version": "bm25-log10-v1",
     "k1": 1.2,
@@ -24,6 +24,10 @@
     "tfidf",
     "log_tfidf"
   ],
+  "normalization_scope": "documents_only",
+  "query_normalization": "none; unchanged query weights; original query norm remains in cosine denominator",
+  "normalization_evaluated": 50,
+  "normalization_skipped_zero_results": 0,
   "settings_checked": [
     {
       "condition": "B",
@@ -31,15 +35,15 @@
       "scores_checked": 150000,
       "maximum_cosine_error": 1.1102230246251565e-16,
       "bm25_scores_checked": 30000,
-      "maximum_bm25_error": 1.7763568394002505e-15
+      "maximum_bm25_error": 0.0
     },
     {
       "condition": "B",
       "idf": "smooth",
       "scores_checked": 150000,
-      "maximum_cosine_error": 1.6653345369377348e-16,
+      "maximum_cosine_error": 1.1102230246251565e-16,
       "bm25_scores_checked": 30000,
-      "maximum_bm25_error": 1.7763568394002505e-15
+      "maximum_bm25_error": 0.0
     },
     {
       "condition": "C",
@@ -47,15 +51,15 @@
       "scores_checked": 150000,
       "maximum_cosine_error": 1.1102230246251565e-16,
       "bm25_scores_checked": 30000,
-      "maximum_bm25_error": 1.7763568394002505e-15
+      "maximum_bm25_error": 0.0
     },
     {
       "condition": "C",
       "idf": "smooth",
       "scores_checked": 150000,
-      "maximum_cosine_error": 1.6653345369377348e-16,
+      "maximum_cosine_error": 1.1102230246251565e-16,
       "bm25_scores_checked": 30000,
-      "maximum_bm25_error": 1.7763568394002505e-15
+      "maximum_bm25_error": 0.0
     },
     {
       "condition": "D",
@@ -63,15 +67,15 @@
       "scores_checked": 150000,
       "maximum_cosine_error": 1.1102230246251565e-16,
       "bm25_scores_checked": 30000,
-      "maximum_bm25_error": 1.7763568394002505e-15
+      "maximum_bm25_error": 0.0
     },
     {
       "condition": "D",
       "idf": "smooth",
       "scores_checked": 150000,
-      "maximum_cosine_error": 1.6653345369377348e-16,
+      "maximum_cosine_error": 1.1102230246251565e-16,
       "bm25_scores_checked": 30000,
-      "maximum_bm25_error": 1.7763568394002505e-15
+      "maximum_bm25_error": 0.0
     }
   ],
   "repeatability": {
@@ -84,7 +88,8 @@
     "term_statistics.csv": true,
     "judgments.json": true,
     "queries.json": true,
-    "RQ_DISCUSSION.md": true
+    "RQ_DISCUSSION.md": true,
+    "query_design.json": true
   },
   "normalization_passed": true,
   "hw2_source": {
@@ -99,14 +104,14 @@
   },
   "runs": [
     {
-      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261016T100420.861121Z-0a6eda7c",
-      "run_id": "20261016T100420.861121Z-0a6eda7c",
-      "manifest_sha256": "366ec88953dfdaec14c90933be239361fc9a0af55fefa6c07b1f9b17bd51150c"
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261026T104959.098041Z-9465667d",
+      "run_id": "20261026T104959.098041Z-9465667d",
+      "manifest_sha256": "97c443cec0d882fe0237730b815cb27fc09dba706821571488b57a5b408e92bf"
     },
     {
-      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261016T100424.276082Z-bb959ad8",
-      "run_id": "20261016T100424.276082Z-bb959ad8",
-      "manifest_sha256": "3f459d2b15b55390631c57759e1573c3f5b6e8b805c52af4fb82b492856f7e60"
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261026T105002.926949Z-e9ab4245",
+      "run_id": "20261026T105002.926949Z-e9ab4245",
+      "manifest_sha256": "c75aee84a41e8f19b9701f66d2509382e241104cf1311155f11d39f6f0911ef2"
     }
   ]
 }

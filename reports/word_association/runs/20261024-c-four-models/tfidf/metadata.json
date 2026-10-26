@@ -1,0 +1,60 @@
+{
+  "version": "hw3-word-association-v2-c",
+  "corpus_sha256": "1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7",
+  "snapshot_manifest_sha256": "92de6f6eacc1a6ac347563b8290695d4c20e23c488851b9ad6c789bc7b305a79",
+  "selection_sha256": "3fad570abdefa373f63d794a8ef0208ccccf47f6ded3fe6c54df10d1a0ea926f",
+  "documents": 3000,
+  "sentences": 32656,
+  "tokens": 539158,
+  "input_vocabulary_size": 31662,
+  "sentences_sha256": "994793aac031c7f61ab44a317d3e69b68087189103798a5e46ec8507417b31c9",
+  "document_order_sha256": "a8bada30f4d564a5aef87179e3d1cd07013a36a5eb2ec3aad89908d4d3d274c8",
+  "order": "PMID lexical ascending; source block order; detected sentence order; C token source order after stopword removal",
+  "tokenizer": {
+    "condition": "C",
+    "version": "unicode-word-v1",
+    "regex": "\\p{N}+(?:\\.\\p{N}+)+|[\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N}]*(?:[-‐‑'’][\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N}]*)*",
+    "normalization": "NFC, casefold, curly apostrophe -> apostrophe, Unicode hyphens U+2010/U+2011 -> ASCII hyphen",
+    "unicode_database": "15.0.0",
+    "regex_version": "2026.9.29",
+    "keep_stopwords": false,
+    "stemming": false,
+    "search_compound_expansion": false,
+    "stopwords_sha256": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+    "stopwords_version": "hw2-function-words-v1",
+    "stopwords_count": 132,
+    "source_sha256": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2"
+  },
+  "sentence_rules": "english-rules-v1",
+  "sentence_source_sha256": "1a1e30239b7f5510bda7d3701692058c92e18f5813d62dc869d687d3134412d5",
+  "boundary_policy": "No context crosses documents, abstract blocks or detected sentences; per-document flattened sentence tokens equal whole-block C tokens exactly; windows count retained tokens",
+  "source_sha256": {
+    "ir_hw1/preprocessing.py": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2",
+    "ir_hw1/models.py": "a92e02b3bf648631b42efd3fa5b94318aabf07aec4470dbfc5760c9b5e37b225",
+    "ir_hw3/corpus.py": "f66cf2a752f110b8da1588cd6670a3d9606a258d16a2dbff93c8a9e0d9e12840",
+    "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+    "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+    "ir_hw3/association_sentences.py": "1a1e30239b7f5510bda7d3701692058c92e18f5813d62dc869d687d3134412d5",
+    "ir_hw3/word_association.py": "c3b100dcb1cb8e6c25d7c7b55ce9687bc06061099fc240e836dc4b91cbe26aa8",
+    "ir_hw3/embedding_training.py": "d53a4b63f70830c95ef39404d687aa4135961d0dcdc98ed340c1f35be6c45ce8",
+    "ir_hw3/association_report.py": "001cf21045a4430f5da47514ac6294b38a1bbcf6ed966ecfd99bc92bd0861ad7"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "gensim": "4.4.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "regex": "2026.9.29",
+    "matplotlib": "3.10.8",
+    "streamlit": "1.66.0"
+  },
+  "created_at_utc": "2026-10-24T10:16:43.287862+00:00",
+  "status": "complete",
+  "shape": [
+    3000,
+    31662
+  ],
+  "policy": "TF(d,t) * log10(N/DF(t)); full-vocabulary document row L2, then term column cosine",
+  "full_vocabulary": true
+}

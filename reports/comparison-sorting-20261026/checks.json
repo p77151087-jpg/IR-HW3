@@ -1,0 +1,30 @@
+{
+  "verified_at_utc": "2026-10-26T08:59:08.893496+00:00",
+  "scope": "Full TF/DF condition labels; header-click sorting of comparison overview only",
+  "source_sha256": {
+    "app.py": "0f00ec3b5a2514e2a81faea1fad80a4e6f4a6167a49c48147a1084899b2ebed8",
+    "ir_hw3/result_views.py": "862ec1de72e61662ee88b1495a77ac6acae8d87a9f2c5b66a11023171f3c2c54",
+    "ir_hw3/ranking_overview.js": "8df44f8e9b78ebadea113e384f442711891a4957fa85db2507f2c339e9aeb8f5",
+    "tests/test_app.py": "12ca95f8384117b5d81b8f97970220af86ad684fcff8c820e8b25b9a8bd34694",
+    "tests/test_result_views.py": "620a0f58cc6d0a23f3e520ff00fdfefe915b5889bf209919aedbbf1cdc83b763",
+    "tests/test_query_design.py": "b2983240a4d572ee66b6ea8fc9b9f08f986e39895ef3e0d63bd4e5acce607b61",
+    "README.md": "7357c1ce72abcb3088bee891fe5e10e4903916ed3825bc57a11c7bf73f70b3bd"
+  },
+  "protected_files_checked": 5,
+  "protected_files_changed": [],
+  "pytest": {
+    "tests": 7,
+    "failures_or_errors": 0,
+    "report": "pytest.xml"
+  },
+  "browser_checks": "browser-checks.json",
+  "browser_sort_checks": 20,
+  "screenshots": [
+    "query-labels.png",
+    "header-sorting.png"
+  ],
+  "numerical_verification_rerun": false,
+  "formal_experiments_regenerated": false,
+  "csv_order": "Original default overview order; browser sorting changes display order only",
+  "test_environment_note": "Initial restricted run stalled and was interrupted after three completed tests; successful seven-test run used the same HW3 virtual environment outside the restricted execution sandbox."
+}

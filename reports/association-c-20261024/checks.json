@@ -1,0 +1,82 @@
+{
+  "verified_at_utc": "2026-10-24T10:22:33.121494+00:00",
+  "preprocessing": "C",
+  "run": "reports\\word_association\\runs\\20261024-c-four-models",
+  "run_manifest_sha256": "0e51c3616b9783f0dcb9a6ab532e257d9340b432ae128abf378315b7129ccad8",
+  "source_sha256": {
+    "ir_hw3/embedding_training.py": "d53a4b63f70830c95ef39404d687aa4135961d0dcdc98ed340c1f35be6c45ce8",
+    "ir_hw3/word_association.py": "c3b100dcb1cb8e6c25d7c7b55ce9687bc06061099fc240e836dc4b91cbe26aa8",
+    "ir_hw3/association_validation.py": "35cb0959e7ae3e3519aaf7cad9f9bc7de228871402a531a51b6b8b86d570d21a",
+    "ir_hw3/association_report.py": "001cf21045a4430f5da47514ac6294b38a1bbcf6ed966ecfd99bc92bd0861ad7",
+    "ir_hw3/association_ui.py": "fc2f75c5dcd3ee59e2aecb6ea596202146ec845bbd89a1549add39c0a976da53",
+    "app.py": "d2c88622751001f41d97e8e12c1dbed80752ee5fdf3f5e3100b0d46169be3508",
+    "tests/test_word_association.py": "766fa0af0bc5c9cb2539221a025206c267d6429dc97bfe597197e987f85d2011",
+    "tests/test_association_ui.py": "a39cf039681cac28707c9668066cdef37eafe74dce64003584750904127086f6",
+    "README.md": "4d17f2e27d6e5738d45f47423a458b458b77da76672b2a823826f4f47cc1f492",
+    "docs/WORD_ASSOCIATION.md": "162f39b4d39cb3ff618321081fd266bc7d8009fced25b8d5bbc4749f6fb9cd0c",
+    "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406"
+  },
+  "training": {
+    "documents": 3000,
+    "sentences": 32656,
+    "tokens": 539158,
+    "input_vocabulary_size": 31662,
+    "candidate_pool_size": 17578,
+    "tokenizer": {
+      "condition": "C",
+      "version": "unicode-word-v1",
+      "regex": "\\p{N}+(?:\\.\\p{N}+)+|[\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N}]*(?:[-‐‑'’][\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N}]*)*",
+      "normalization": "NFC, casefold, curly apostrophe -> apostrophe, Unicode hyphens U+2010/U+2011 -> ASCII hyphen",
+      "unicode_database": "15.0.0",
+      "regex_version": "2026.9.29",
+      "keep_stopwords": false,
+      "stemming": false,
+      "search_compound_expansion": false,
+      "stopwords_sha256": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+      "stopwords_version": "hw2-function-words-v1",
+      "stopwords_count": 132,
+      "source_sha256": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2"
+    },
+    "models": [
+      "cbow_w2",
+      "cbow_w5",
+      "skipgram_w2",
+      "skipgram_w5"
+    ]
+  },
+  "artifact_hashes_verified": 62,
+  "numeric_report": "reports/association-c-20261024/numeric.json",
+  "full_pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "236",
+    "time": "58.567",
+    "timestamp": "2026-10-24T18:20:16.882622+08:00",
+    "hostname": "MSI"
+  },
+  "unit_and_ui_are_subsets": true,
+  "protected_files_checked": 105,
+  "protected_files_changed": [],
+  "previous_verification_preserved": true,
+  "retrieval_verification_sha256": "753ba83f13ea095ca56e2b4dbfb0a9d025c4ce19fe3f90f56b08bcc80fed40eb",
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "b_run_removed": true,
+  "removal_record": "reports/association-c-20261024/removed-b.json",
+  "screenshots": [
+    "reports/association-c-20261024/browser-neighbors.png",
+    "reports/association-c-20261024/browser-heatmaps.png",
+    "reports/association-c-20261024/browser-sidebar.png"
+  ],
+  "browser_checks": [
+    "C model loaded after rerun without service restart",
+    "semaglutide TF-IDF begins oral, agonist, weight; new charts match saved C scores",
+    "original heatmaps remain visible",
+    "sidebar and main content explicitly describe C stopword removal"
+  ]
+}

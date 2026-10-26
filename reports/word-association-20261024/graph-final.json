@@ -1,0 +1,115 @@
+{
+  "tier": "Tier 2",
+  "initial_generation": "2026-10-19T02:24:17Z",
+  "final_coverage": {
+    "project": "C-e68890e5a4a7e5b088e6a188-IR-HW3",
+    "signal": "best_effort",
+    "indexed_at": "2026-10-24T06:27:20Z",
+    "metadata": {
+      "generation": "2026-10-24T06:27:20Z",
+      "index_mode": "full",
+      "recorded_at": "2026-10-24T06:27:20Z",
+      "recording_status": "complete",
+      "ignored_files_stored": 0,
+      "ignored_files_total": 0,
+      "hash_records_complete": true,
+      "coverage_version": 3,
+      "generation_matches": true
+    },
+    "paths": [
+      {
+        "requested_path": "app.py",
+        "path": "app.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/association_ui.py",
+        "path": "ir_hw3/association_ui.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "tests/test_association_ui.py",
+        "path": "tests/test_association_ui.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/word_association.py",
+        "path": "ir_hw3/word_association.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/embedding_training.py",
+        "path": "ir_hw3/embedding_training.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "ir_hw3/association_validation.py",
+        "path": "ir_hw3/association_validation.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/test_hw3.ps1",
+        "path": "scripts/test_hw3.ps1",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "scripts/test_hw3.ps1",
+            "kind": "parse_partial",
+            "detail": "7-7",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 7,
+                "end": 7
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scopes": [
+      {
+        "requested_scope": "ir_hw3/association_ui.py",
+        "scope": "ir_hw3/association_ui.py",
+        "total": 0,
+        "has_more": false,
+        "entries": [],
+        "status": "no_recorded_issue"
+      },
+      {
+        "requested_scope": "ir_hw3/embedding_training.py",
+        "scope": "ir_hw3/embedding_training.py",
+        "total": 0,
+        "has_more": false,
+        "entries": [],
+        "status": "no_recorded_issue"
+      }
+    ],
+    "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+  },
+  "additional_traces": [
+    "train_run both depth 1: sole recorded caller embedding_training.main; 19 callees",
+    "association_page both depth 1: sole recorded caller app; 15 callees; no training/ranking call in verified page source"
+  ],
+  "fallback": "New files authored/read directly before auto-index refresh; final coverage metadata_match. PowerShell partial line 7 read directly. No exhaustive completeness claim from graph alone; UI tests prohibit Word2Vec.train and Engine.rank while using the association page."
+}

@@ -1,0 +1,80 @@
+{
+  "reference_only": true,
+  "runtime_dependency_on_hw2": false,
+  "configs": {
+    "cbow_w2": {
+      "alpha": 0.025,
+      "cbow_mean": 1,
+      "epochs": 30,
+      "min_alpha": 0.0001,
+      "min_count": 2,
+      "negative": 5,
+      "ns_exponent": 0.75,
+      "sample": 0.001,
+      "seed": 42,
+      "sg": 0,
+      "shrink_windows": true,
+      "sorted_vocab": 1,
+      "vector_size": 100,
+      "window": 2,
+      "workers": 1
+    },
+    "cbow_w5": {
+      "alpha": 0.025,
+      "cbow_mean": 1,
+      "epochs": 30,
+      "min_alpha": 0.0001,
+      "min_count": 2,
+      "negative": 5,
+      "ns_exponent": 0.75,
+      "sample": 0.001,
+      "seed": 42,
+      "sg": 0,
+      "shrink_windows": true,
+      "sorted_vocab": 1,
+      "vector_size": 100,
+      "window": 5,
+      "workers": 1
+    },
+    "skipgram_w2": {
+      "alpha": 0.025,
+      "cbow_mean": 1,
+      "epochs": 30,
+      "min_alpha": 0.0001,
+      "min_count": 2,
+      "negative": 5,
+      "ns_exponent": 0.75,
+      "sample": 0.001,
+      "seed": 42,
+      "sg": 1,
+      "shrink_windows": true,
+      "sorted_vocab": 1,
+      "vector_size": 100,
+      "window": 2,
+      "workers": 1
+    },
+    "skipgram_w5": {
+      "alpha": 0.025,
+      "cbow_mean": 1,
+      "epochs": 30,
+      "min_alpha": 0.0001,
+      "min_count": 2,
+      "negative": 5,
+      "ns_exponent": 0.75,
+      "sample": 0.001,
+      "seed": 42,
+      "sg": 1,
+      "shrink_windows": true,
+      "sorted_vocab": 1,
+      "vector_size": 100,
+      "window": 5,
+      "workers": 1
+    }
+  },
+  "source_sha256": {
+    "ir_hw2\\embeddings.py": "72467361c674b313b34d298235365164e2b79e5d83d2829154133d40200af336",
+    "ir_hw2\\embedding_experiment.py": "60b4685a3b7cb74cc8a0dfe00882beffa941d0934c81c59129aec341a8493037",
+    "ir_hw1\\sentence_splitter.py": "1bef8e63e57b98b21f2b6fb1c217a06a66d325982febf888058cabb7911d0488",
+    "reports\\hw2\\word_embedding\\summary.json": "333d1cc6677bc14ca08caa9fb8f52886d2b5122ab48f6530365d1b5773572df3"
+  }
+}

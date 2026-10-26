@@ -1,0 +1,280 @@
+{
+  "version": "hw3-word-association-v2-c",
+  "corpus_sha256": "1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7",
+  "snapshot_manifest_sha256": "92de6f6eacc1a6ac347563b8290695d4c20e23c488851b9ad6c789bc7b305a79",
+  "selection_sha256": "3fad570abdefa373f63d794a8ef0208ccccf47f6ded3fe6c54df10d1a0ea926f",
+  "documents": 3000,
+  "sentences": 32656,
+  "tokens": 539158,
+  "input_vocabulary_size": 31662,
+  "sentences_sha256": "994793aac031c7f61ab44a317d3e69b68087189103798a5e46ec8507417b31c9",
+  "document_order_sha256": "a8bada30f4d564a5aef87179e3d1cd07013a36a5eb2ec3aad89908d4d3d274c8",
+  "order": "PMID lexical ascending; source block order; detected sentence order; C token source order after stopword removal",
+  "tokenizer": {
+    "condition": "C",
+    "version": "unicode-word-v1",
+    "regex": "\\p{N}+(?:\\.\\p{N}+)+|[\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N}]*(?:[-‐‑'’][\\p{L}\\p{N}][\\p{L}\\p{M}\\p{N}]*)*",
+    "normalization": "NFC, casefold, curly apostrophe -> apostrophe, Unicode hyphens U+2010/U+2011 -> ASCII hyphen",
+    "unicode_database": "15.0.0",
+    "regex_version": "2026.9.29",
+    "keep_stopwords": false,
+    "stemming": false,
+    "search_compound_expansion": false,
+    "stopwords_sha256": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+    "stopwords_version": "hw2-function-words-v1",
+    "stopwords_count": 132,
+    "source_sha256": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2"
+  },
+  "sentence_rules": "english-rules-v1",
+  "sentence_source_sha256": "1a1e30239b7f5510bda7d3701692058c92e18f5813d62dc869d687d3134412d5",
+  "boundary_policy": "No context crosses documents, abstract blocks or detected sentences; per-document flattened sentence tokens equal whole-block C tokens exactly; windows count retained tokens",
+  "source_sha256": {
+    "ir_hw1/preprocessing.py": "f7108e87d1c19c43e012836adcb6d8b429e4d06c5cdc2bead4a06f71f04919c2",
+    "ir_hw1/models.py": "a92e02b3bf648631b42efd3fa5b94318aabf07aec4470dbfc5760c9b5e37b225",
+    "ir_hw3/corpus.py": "f66cf2a752f110b8da1588cd6670a3d9606a258d16a2dbff93c8a9e0d9e12840",
+    "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+    "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+    "ir_hw3/association_sentences.py": "1a1e30239b7f5510bda7d3701692058c92e18f5813d62dc869d687d3134412d5",
+    "ir_hw3/word_association.py": "c3b100dcb1cb8e6c25d7c7b55ce9687bc06061099fc240e836dc4b91cbe26aa8",
+    "ir_hw3/embedding_training.py": "d53a4b63f70830c95ef39404d687aa4135961d0dcdc98ed340c1f35be6c45ce8",
+    "ir_hw3/association_report.py": "001cf21045a4430f5da47514ac6294b38a1bbcf6ed966ecfd99bc92bd0861ad7"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "gensim": "4.4.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "regex": "2026.9.29",
+    "matplotlib": "3.10.8",
+    "streamlit": "1.66.0"
+  },
+  "created_at_utc": "2026-10-24T10:16:43.287862+00:00",
+  "status": "complete",
+  "name": "skipgram_w2",
+  "architecture": "Skip-Gram",
+  "config": {
+    "vector_size": 100,
+    "window": 2,
+    "min_count": 2,
+    "epochs": 30,
+    "seed": 42,
+    "workers": 1,
+    "sg": 1,
+    "negative": 5,
+    "sample": 0.001,
+    "ns_exponent": 0.75,
+    "alpha": 0.025,
+    "min_alpha": 0.0001,
+    "sorted_vocab": 1,
+    "shrink_windows": true,
+    "cbow_mean": 1
+  },
+  "resolved_additional_parameters": {
+    "hs": 0,
+    "batch_words": 10000,
+    "max_vocab_size": null,
+    "max_final_vocab": null,
+    "null_word": 0,
+    "compute_loss": true
+  },
+  "initialization": "New Word2Vec constructor + build_vocab; no loaded weights or pretrained vectors",
+  "initial_vectors_bytes_sha256": "484dfdaa4cd82a0e3a22a390456ab32f6249f6a3830c31338e24f83718382cd4",
+  "hash_function": "SHA256 first 8 bytes little endian (same as HW2)",
+  "vocabulary_size": 17578,
+  "effective_training_words_all_epochs": 15051543,
+  "raw_training_words_all_epochs": 16174740,
+  "seconds": 26.38387060002424,
+  "epoch_losses": [
+    {
+      "epoch": 1,
+      "loss": 4329103.5,
+      "cumulative_loss": 4329103.5,
+      "seconds": 0.8507191999815404
+    },
+    {
+      "epoch": 2,
+      "loss": 2724261.5,
+      "cumulative_loss": 7053365.0,
+      "seconds": 0.8197448001010343
+    },
+    {
+      "epoch": 3,
+      "loss": 2245948.0,
+      "cumulative_loss": 9299313.0,
+      "seconds": 0.851495899958536
+    },
+    {
+      "epoch": 4,
+      "loss": 1917330.0,
+      "cumulative_loss": 11216643.0,
+      "seconds": 0.8647685999749228
+    },
+    {
+      "epoch": 5,
+      "loss": 1872647.0,
+      "cumulative_loss": 13089290.0,
+      "seconds": 0.82958779996261
+    },
+    {
+      "epoch": 6,
+      "loss": 1833496.0,
+      "cumulative_loss": 14922786.0,
+      "seconds": 0.8257529999827966
+    },
+    {
+      "epoch": 7,
+      "loss": 1803834.0,
+      "cumulative_loss": 16726620.0,
+      "seconds": 0.8475450000260025
+    },
+    {
+      "epoch": 8,
+      "loss": 1518980.0,
+      "cumulative_loss": 18245600.0,
+      "seconds": 0.8084195000119507
+    },
+    {
+      "epoch": 9,
+      "loss": 1471870.0,
+      "cumulative_loss": 19717470.0,
+      "seconds": 0.798323699971661
+    },
+    {
+      "epoch": 10,
+      "loss": 1433860.0,
+      "cumulative_loss": 21151330.0,
+      "seconds": 0.8368532999884337
+    },
+    {
+      "epoch": 11,
+      "loss": 1403506.0,
+      "cumulative_loss": 22554836.0,
+      "seconds": 0.8524711000500247
+    },
+    {
+      "epoch": 12,
+      "loss": 1373254.0,
+      "cumulative_loss": 23928090.0,
+      "seconds": 0.8228776999749243
+    },
+    {
+      "epoch": 13,
+      "loss": 1345814.0,
+      "cumulative_loss": 25273904.0,
+      "seconds": 0.8429456000449136
+    },
+    {
+      "epoch": 14,
+      "loss": 1322102.0,
+      "cumulative_loss": 26596006.0,
+      "seconds": 0.8536664999555796
+    },
+    {
+      "epoch": 15,
+      "loss": 1301162.0,
+      "cumulative_loss": 27897168.0,
+      "seconds": 0.9193068000022322
+    },
+    {
+      "epoch": 16,
+      "loss": 1279618.0,
+      "cumulative_loss": 29176786.0,
+      "seconds": 0.8782273000106215
+    },
+    {
+      "epoch": 17,
+      "loss": 1262674.0,
+      "cumulative_loss": 30439460.0,
+      "seconds": 0.8938748000655323
+    },
+    {
+      "epoch": 18,
+      "loss": 1244800.0,
+      "cumulative_loss": 31684260.0,
+      "seconds": 0.8591221999377012
+    },
+    {
+      "epoch": 19,
+      "loss": 1230612.0,
+      "cumulative_loss": 32914872.0,
+      "seconds": 0.845187500002794
+    },
+    {
+      "epoch": 20,
+      "loss": 950264.0,
+      "cumulative_loss": 33865136.0,
+      "seconds": 0.8641965999267995
+    },
+    {
+      "epoch": 21,
+      "loss": 649136.0,
+      "cumulative_loss": 34514272.0,
+      "seconds": 0.9150330000557005
+    },
+    {
+      "epoch": 22,
+      "loss": 642036.0,
+      "cumulative_loss": 35156308.0,
+      "seconds": 0.8139837000053376
+    },
+    {
+      "epoch": 23,
+      "loss": 634512.0,
+      "cumulative_loss": 35790820.0,
+      "seconds": 0.8412513999501243
+    },
+    {
+      "epoch": 24,
+      "loss": 627868.0,
+      "cumulative_loss": 36418688.0,
+      "seconds": 0.8214683999540284
+    },
+    {
+      "epoch": 25,
+      "loss": 617100.0,
+      "cumulative_loss": 37035788.0,
+      "seconds": 0.7993148000678048
+    },
+    {
+      "epoch": 26,
+      "loss": 610720.0,
+      "cumulative_loss": 37646508.0,
+      "seconds": 0.8321862999582663
+    },
+    {
+      "epoch": 27,
+      "loss": 606544.0,
+      "cumulative_loss": 38253052.0,
+      "seconds": 0.8387617999687791
+    },
+    {
+      "epoch": 28,
+      "loss": 598128.0,
+      "cumulative_loss": 38851180.0,
+      "seconds": 0.944783299928531
+    },
+    {
+      "epoch": 29,
+      "loss": 593772.0,
+      "cumulative_loss": 39444952.0,
+      "seconds": 1.3777724999235943
+    },
+    {
+      "epoch": 30,
+      "loss": 587292.0,
+      "cumulative_loss": 40032244.0,
+      "seconds": 0.9675825999584049
+    }
+  ],
+  "loss_policy": "First differences of cumulative negative-sampling loss in one train call. Float32 accumulation may lose precision; not semantic accuracy or cross-architecture evidence.",
+  "artifacts_sha256": {
+    "epochs.jsonl": "671f96031a6c2f5c2cf518a822ebc3b227a17e483030f48eb2ca1cbb1360ddb9",
+    "epoch_losses.csv": "67cdf2d9dffb48d324210c5b4eefd99d9b9d3c9152d054a733184b511a9ae6c7",
+    "vectors.npy": "6418b837635773c41a5910bf971286c5f639db95dd3121da4c5febe218f3ce41",
+    "vocabulary.csv": "731622dba79e0a067cf20a80ed0d685613c2edbc09e38bc31bd9087df4ba3d2b",
+    "vocabulary.json": "49b6f4c36fc1358229605a310f9d3b456bffd9e6525c420c7b822c52096b0a82",
+    "word2vec.model": "565cd8e4401ecc31c5d39be2a8288f941d9252b1d8375f46abfbcea0d5c96ce4"
+  },
+  "offline_reload_exact": true
+}

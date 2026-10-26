@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="5.454" timestamp="2026-10-24T16:40:45.009316+08:00" hostname="MSI"><testcase classname="tests.test_app" name="test_comparison_shows_raw_dot_and_cosine_from_the_same_query_and_weights" time="4.536"><failure message="assert not ElementList(_list=[Exception(message=&quot;Engine.query() missing 1 required positional argument: 'method'&quot;, stack_trace=['...y&quot;, line 286, in comparison_page\n    _, weights, _ = engine.query(query)\n                    ^^^^^^^^^^^^^^^^^^^'])])&#10; +  where ElementList(_list=[Exception(message=&quot;Engine.query() missing 1 required positional argument: 'method'&quot;, stack_trace=['...y&quot;, line 286, in comparison_page\n    _, weights, _ = engine.query(query)\n                    ^^^^^^^^^^^^^^^^^^^'])]) = AppTest(\n    _script_path='C:\\成大專案\\IR-HW3\\app.py',\n    default_timeout=120,\n    _session_state={$$ID-cd299237507538...              5: Caption()\n            }\n        ),\n        2: SpecialBlock(\n            type='event'\n        )\n    }\n).exception">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001D6068F29C0&gt;
+
+    def test_comparison_shows_raw_dot_and_cosine_from_the_same_query_and_weights(monkeypatch):
+        from ir_hw3.core import Engine
+        calls = []
+        rank = Engine.rank
+    
+        def spy(self, query, method="log_tfidf", **kwargs):
+            calls.append((self, query, method, kwargs))
+            return rank(self, query, method, **kwargs)
+    
+        def unexpected_l2_check(*args, **kwargs):
+            raise AssertionError("The comparison UI should directly compare raw dot and cosine")
+    
+        monkeypatch.setattr(Engine, "rank", spy)
+        monkeypatch.setattr(Engine, "normalization_check", unexpected_l2_check)
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120).run()
+        calls.clear()
+        app.sidebar.radio[0].set_value("方法比較").run()
+&gt;       assert not app.exception
+E       assert not ElementList(_list=[Exception(message="Engine.query() missing 1 required positional argument: 'method'", stack_trace=['...y", line 286, in comparison_page\n    _, weights, _ = engine.query(query)\n                    ^^^^^^^^^^^^^^^^^^^'])])
+E        +  where ElementList(_list=[Exception(message="Engine.query() missing 1 required positional argument: 'method'", stack_trace=['...y", line 286, in comparison_page\n    _, weights, _ = engine.query(query)\n                    ^^^^^^^^^^^^^^^^^^^'])]) = AppTest(\n    _script_path='C:\\成大專案\\IR-HW3\\app.py',\n    default_timeout=120,\n    _session_state={$$ID-cd299237507538...              5: Caption()\n            }\n        ),\n        2: SpecialBlock(\n            type='event'\n        )\n    }\n).exception
+
+tests\test_app.py:154: AssertionError</failure></testcase><testcase classname="tests.test_app" name="test_search_top10_reader_and_oov" time="0.322" /></testsuite></testsuites>

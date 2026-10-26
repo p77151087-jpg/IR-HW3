@@ -10,7 +10,7 @@ from ir_hw3.evaluation import csv_rows, fingerprint, load_judgments, parse_judgm
 from ir_hw3 import experiments
 from ir_hw3.pubmed import parse_response
 from ir_hw3.pubmed_reference import (coverage_rows, extract_metadata, load_metadata,
-    load_rules, metadata_hits, reference_judgments, reference_outputs)
+    LEGACY_RULE_PATH, load_rules, metadata_hits, reference_judgments, reference_outputs)
 from test_core import documents
 
 
@@ -22,7 +22,7 @@ def fixture():
     engine = Engine(documents("nothing", "semaglutide obesity", "semaglutide obesity", "obesity", "semaglutide obesity"), Settings("B"))
     query = [{"qid": "Q01", "text": "semaglutide weight loss obesity",
               "groups": [["semaglutide"], ["obesity", "weight loss"]]}]
-    rules = load_rules()
+    rules = load_rules(LEGACY_RULE_PATH)
     rules["queries"] = {"Q01": rules["queries"]["Q01"]}
     metadata = {"documents": {"1": {"entries": [entry("Semaglutide", "chemical"), entry("Obesity")]},
                               "2": {"entries": []},
@@ -55,7 +55,7 @@ def test_metadata_precedence_fallback_and_no_partial_evidence_merging(monkeypatc
 
 
 def test_metadata_boundaries_and_punctuation_do_not_confuse_glp2():
-    rules = load_rules()
+    rules = load_rules(LEGACY_RULE_PATH)
     group = rules["shared_groups"]["glp1"]
     assert metadata_hits([entry("GLP–1 receptor agonists")], [group])
     assert not metadata_hits([entry("Glucagon-Like Peptide 2"), entry("glucagon")], [group])

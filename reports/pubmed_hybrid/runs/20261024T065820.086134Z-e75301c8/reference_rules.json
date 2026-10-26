@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "rule_version": "pubmed-tfdf-v1",
+  "queries_sha256": "67bab3c355ae30e07ac7471ea8557b132f58dd0add5b22cd1986542cef3a5f61",
+  "sources": [
+    "https://pubmed.ncbi.nlm.nih.gov/help/#mesh-terms-mh"
+  ],
+  "policy": "All query concept groups must match metadata; otherwise independently apply all abstract concept groups. No rankings/scores are read. Binary automatic proxy labels, not human relevance.",
+  "fields": [
+    "mesh",
+    "chemical",
+    "supplementary_concept",
+    "keyword"
+  ],
+  "matching": "NFKC/casefold with whole normalized token sequences; no MeSH tree expansion.",
+  "shared_groups": {},
+  "queries": {
+    "Q01": {
+      "text": "GLP-1",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ]
+      ]
+    },
+    "Q02": {
+      "text": "receptor",
+      "groups": [
+        [
+          "receptor",
+          "receptors"
+        ]
+      ]
+    },
+    "Q03": {
+      "text": "MASLD",
+      "groups": [
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ]
+      ]
+    },
+    "Q04": {
+      "text": "hypertension",
+      "groups": [
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ]
+    },
+    "Q05": {
+      "text": "GLP-1 receptor",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ],
+        [
+          "receptor",
+          "receptors"
+        ]
+      ]
+    },
+    "Q06": {
+      "text": "GLP-1 MASLD",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ],
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ]
+      ]
+    },
+    "Q07": {
+      "text": "GLP-1 hypertension",
+      "groups": [
+        [
+          "glp-1",
+          "glucagon-like peptide-1",
+          "glucagon-like peptide 1"
+        ],
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ]
+    },
+    "Q08": {
+      "text": "receptor MASLD",
+      "groups": [
+        [
+          "receptor",
+          "receptors"
+        ],
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ]
+      ]
+    },
+    "Q09": {
+      "text": "receptor hypertension",
+      "groups": [
+        [
+          "receptor",
+          "receptors"
+        ],
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ]
+    },
+    "Q10": {
+      "text": "MASLD hypertension",
+      "groups": [
+        [
+          "masld",
+          "metabolic dysfunction-associated steatotic liver disease",
+          "metabolic dysfunction associated steatotic liver disease"
+        ],
+        [
+          "hypertension",
+          "hypertensive",
+          "high blood pressure"
+        ]
+      ]
+    }
+  }
+}

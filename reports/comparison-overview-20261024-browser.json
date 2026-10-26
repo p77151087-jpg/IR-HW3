@@ -1,0 +1,99 @@
+{
+  "narrow_before": {
+    "clientHeight": 548,
+    "clientWidth": 359,
+    "firstTitle": "Multisystem Benefits of GLP-1 Microdosing: A Narrative Review.",
+    "overflowWrap": "anywhere",
+    "scrollHeight": 1808,
+    "scrollLeft": 0,
+    "scrollWidth": 1396,
+    "tableWidth": 1396,
+    "viewport": {
+      "height": 524,
+      "width": 414
+    },
+    "whiteSpace": "normal"
+  },
+  "narrow_after": {
+    "clientWidth": 359,
+    "scrollLeft": 1036.800048828125,
+    "scrollWidth": 1396,
+    "viewport": {
+      "height": 524,
+      "width": 414
+    }
+  },
+  "wide": {
+    "bottom": 722.8000030517578,
+    "clientWidth": 1188,
+    "firstRow": [
+      "42668762",
+      "1",
+      "6",
+      "—",
+      "1",
+      "5",
+      "1",
+      "8",
+      "86",
+      "Multisystem Benefits of GLP-1 Microdosing: A Narrative Review."
+    ],
+    "headers": [
+      "PMID",
+      "原始 TF",
+      "Log TF",
+      "僅 IDF",
+      "TF × IDF",
+      "Log TF × IDF",
+      "BM25",
+      "詞命中數",
+      "文章長度",
+      "文章標題"
+    ],
+    "longTitle": "The Effect of Glucagon-like Peptide-1 Receptor Agonists in Total Joint Arthroplasty: Implications, Complications, and Considerations.",
+    "overflowWrap": "anywhere",
+    "scrollLeft": 208,
+    "scrollWidth": 1396,
+    "titleHeight": 65.5999984741211,
+    "top": 162.8000030517578,
+    "viewport": {
+      "height": 900,
+      "width": 1440
+    },
+    "whiteSpace": "normal"
+  },
+  "final": {
+    "clientWidth": 359,
+    "firstRow": [
+      "42668762",
+      "1",
+      "6",
+      "—",
+      "1",
+      "5",
+      "1",
+      "8",
+      "86",
+      "Multisystem Benefits of GLP-1 Microdosing: A Narrative Review."
+    ],
+    "headers": [
+      "PMID",
+      "原始 TF",
+      "Log TF",
+      "僅 IDF",
+      "TF × IDF",
+      "Log TF × IDF",
+      "BM25",
+      "詞命中數",
+      "文章長度",
+      "文章標題"
+    ],
+    "scrollLeft": 488,
+    "scrollWidth": 1396,
+    "viewport": {
+      "height": 524,
+      "width": 414
+    }
+  },
+  "viewport_override_reset": true
+}

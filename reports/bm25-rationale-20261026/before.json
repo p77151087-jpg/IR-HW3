@@ -1,0 +1,8 @@
+{
+  "data/queries.json": "5600448ae2bfa3b97a7c524d1b41790fa789a83d78771f63563f06f3fa380ae0",
+  "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+  "ir_hw3/evaluation.py": "0be10ff7a0b4d59b0e471a4c8a5d669df52e38a065384aac108781ae3e3e68f1",
+  "reports/verification.json": "753ba83f13ea095ca56e2b4dbfb0a9d025c4ce19fe3f90f56b08bcc80fed40eb",
+  "data\\corpus\\glp1-3000-20261015\\snapshot.json": "92de6f6eacc1a6ac347563b8290695d4c20e23c488851b9ad6c789bc7b305a79",
+  "data\\corpus\\glp1-3000-20261015\\abstracts.jsonl": "1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7"
+}

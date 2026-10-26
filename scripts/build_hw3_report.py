@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from ir_hw3.core import Engine, METHODS as ALL_METHODS, VECTOR_METHODS, Settings, LOGARITHM_BASE, BM25_PARAMETERS, BM25_FORMULA
 from ir_hw3.corpus import load_corpus
+from ir_hw3.evaluation import fingerprint, load_queries
 
 
 
@@ -66,13 +67,15 @@ def independent_metrics(ranking: list[dict], labels: dict, k: int) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--report", type=Path, default=ROOT / "reports/HW3_REPORT_BM25.md")
+    parser.add_argument("--report", type=Path)
     parser.add_argument("--analysis", type=Path, help="固定的 log10 analysis 目錄；省略時選最新相容來源。")
     args = parser.parse_args()
     analysis = args.analysis
     if analysis is None:
         candidates = sorted((ROOT / "reports/pubmed_hybrid/analysis").glob("*/verification.json"), reverse=True)
-        analysis = next((p.parent for p in candidates if read_json(p).get("logarithm_base") == LOGARITHM_BASE), None)
+        active_hash = fingerprint(load_queries())
+        analysis = next((p.parent for p in candidates if read_json(p).get("logarithm_base") == LOGARITHM_BASE
+                         and read_json(p).get("queries_sha256") == active_hash), None)
     if analysis is None:
         raise ValueError("請先執行 evaluate_pubmed_reference.py 產生 log10 實驗。")
     analysis = analysis.resolve()
@@ -82,7 +85,12 @@ def main() -> None:
     MAIN, REPEAT, WEAK = [Path(r["output"]).resolve() for r in evidence["runs"]]
     if any(not p.is_relative_to(ROOT) for p in (MAIN, REPEAT, WEAK)):
         raise ValueError("引用的 run 必須位於本專案內。")
-    report = args.report.resolve()
+    is_tfdf = read_json(MAIN / "manifest.json").get("query_design_version") == "tfdf-v1"
+    report = (args.report or ROOT / "reports" / ("HW3_REPORT_TFDF.md" if is_tfdf else "HW3_REPORT_BM25.md")).resolve()
+    if is_tfdf:
+        from ir_hw3.query_design import build_design_report
+        print(json.dumps(build_design_report(analysis, report), ensure_ascii=False))
+        return
     assets = report.with_name(report.stem + "_assets")
     if not report.is_relative_to(ROOT) or not assets.is_relative_to(ROOT):
         raise ValueError("報告輸出必須位於 HW3 專案內。")

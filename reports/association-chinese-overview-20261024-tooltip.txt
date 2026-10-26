@@ -1,0 +1,4 @@
+										676 circle TF-IDF cosine 相似度: 0.235051225491; Embedding cosine 相似度: 0.132613359604; 模型: CBOW，視窗 2; 詞對: insulin ／ receptor; 詞對編號: 34; TF-IDF 相似度: 0.235051; Embedding 相似度: 0.132613; 共同出現摘要篇數: 430
+										677 circle TF-IDF cosine 相似度: 0.235051225491; Embedding cosine 相似度: 0.127271765964; 模型: CBOW，視窗 5; 詞對: insulin ／ receptor; 詞對編號: 34; TF-IDF 相似度: 0.235051; Embedding 相似度: 0.127272; 共同出現摘要篇數: 430
+										678 circle TF-IDF cosine 相似度: 0.235051225491; Embedding cosine 相似度: 0.279891198782; 模型: Skip-Gram，視窗 2; 詞對: insulin ／ receptor; 詞對編號: 34; TF-IDF 相似度: 0.235051; Embedding 相似度: 0.279891; 共同出現摘要篇數: 430
+										679 circle TF-IDF cosine 相似度: 0.235051225491; Embedding cosine 相似度: 0.289887589309; 模型: Skip-Gram，視窗 5; 詞對: insulin ／ receptor; 詞對編號: 34; TF-IDF 相似度: 0.235051; Embedding 相似度: 0.289888; 共同出現摘要篇數: 430

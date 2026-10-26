@@ -1,0 +1,77 @@
+{
+  "verified_at_utc": "2026-10-26T09:50:40.632999+00:00",
+  "source_sha256": {
+    "app.py": "ac923b56ff00030bb7adc9aa147b93dbb76b590d89b73b5a18b165b0a7bac88f",
+    "ir_hw3/result_views.py": "7cf76d0e44096d624e4d868b8af6063e72551dcff83d587847fab2c8c6129472",
+    "tests/test_result_views.py": "f39705a0daaf40231adcbe2bd0a706382d48b9b43e63b9b1130cc80153c20f18",
+    "tests/test_app.py": "b8489d31cdde5417c48d5bf6dfc38f37dadf921d0b9086bf602020e031db580a",
+    "README.md": "1f2ac8e1acbb1f96dc7e4da24d5b753f8a04ba1239f78319c40e238db8ec5354",
+    "docs/HW3_REQUIREMENTS.md": "996055f8c256222c56769ce3a8de682af45caa6c09874df882c750ab4326aa3a"
+  },
+  "tests": {
+    "focused": {
+      "tests": 21,
+      "failures_or_errors": 0
+    },
+    "full": {
+      "tests": 249,
+      "failures_or_errors": 0
+    }
+  },
+  "focused_is_subset_of_full": true,
+  "display_validation": "display-checks.json",
+  "full_numerical_verification": "../verification.json",
+  "verification_sha256": "5b058574fb05aedfbb9cc1fa7414d4d6833fdcbfd1fe0970b056958dfee55220",
+  "previous_verification_preserved": "verification.before.json",
+  "protected_files_checked": 372,
+  "protected_files_changed": [],
+  "new_weak_rule_runs": [
+    {
+      "run_id": "20261026T094940.671339Z-e208025f",
+      "manifest_sha256_matches": true,
+      "outputs_checked": 11,
+      "changed_outputs": [],
+      "current_display_source_hashes": {
+        "app.py": true,
+        "ir_hw3/result_views.py": true
+      }
+    },
+    {
+      "run_id": "20261026T094943.519293Z-60ee9e38",
+      "manifest_sha256_matches": true,
+      "outputs_checked": 11,
+      "changed_outputs": [],
+      "current_display_source_hashes": {
+        "app.py": true,
+        "ir_hw3/result_views.py": true
+      }
+    }
+  ],
+  "baseline_csvs_bitwise_unchanged": {
+    "rankings.csv": true,
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "normalization.csv": true
+  },
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "screenshots": [
+    "browser-l2.png",
+    "browser-l2-details.png"
+  ],
+  "browser_example": {
+    "query": "GLP-1",
+    "method": "log_tfidf",
+    "first_pmid": "42624784",
+    "query_norm_before_display": "0.225970",
+    "query_norm_after_display": "1.000000",
+    "document_norm_before_display": "4.064740",
+    "document_norm_after_display": "1.000000",
+    "max_cosine_difference_display": "6.94e-18",
+    "complete_ranking_equal": true
+  },
+  "limits": "Direct display checks cover C + standard IDF, five vector methods and ten fixed queries. The separate independent scoring verification covers six preprocessing/IDF settings. BM25 is excluded from explicit L2 comparison; no manual relevance judgments were added."
+}

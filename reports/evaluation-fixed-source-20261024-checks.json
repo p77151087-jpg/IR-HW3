@@ -1,0 +1,34 @@
+{
+  "scope": "固定網站評估來源並移除人工／歷史頁籤與來源選單；補充弱規則與十查詢平均說明",
+  "verified_at_utc": "2026-10-24T09:32:54.850291+00:00",
+  "judgment_source": "pubmed_hybrid",
+  "pytest_report": "reports\\evaluation-fixed-source-20261024-full-r2.xml",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "232",
+    "time": "50.867",
+    "timestamp": "2026-10-24T17:31:52.996470+08:00",
+    "hostname": "MSI"
+  },
+  "sha256": {
+    "app.py": "4f98c54c4f75ed2ad368335998fccc8f07fc8684233aea5910b73760e7eca763",
+    "tests/test_app.py": "8c3c5e3b342542676ca8088aef993059f8a1d1fdd059d585a25cbfdfc0d00d87",
+    "tests/test_spelling_ui.py": "03acfb805f8d3c76e71bb5e4ee9649eecfc6f566a52f2529af37a6dff9856f7c",
+    "tests/test_annotation_conflicts.py": "039336677d4708278997e16632afc76d042dfbe1346b19d22446f9857531ffda",
+    "README.md": "37a635f3a0aa08a5577edccc8a3bc8aec5ce19d0ed36b17c5e67afefc23e82a5",
+    "docs/PUBMED_REFERENCE.md": "514a0fe427dbeb3f4299dfbc8a01177a9388d8fa0db24e7ddb4453756d23542d",
+    "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+    "ir_hw3/evaluation.py": "0be10ff7a0b4d59b0e471a4c8a5d669df52e38a065384aac108781ae3e3e68f1",
+    "ir_hw3/pubmed_reference.py": "6d4994c4c0c7fa53c9720225f4279f871f5a9297ff1a9a2dd5896a3900526f1a",
+    "data/queries.json": "5600448ae2bfa3b97a7c524d1b41790fa789a83d78771f63563f06f3fa380ae0",
+    "data/reference_rules/pubmed-tfdf-v1.json": "b18a91c749e506147bbabb7dc0b73e91a2a9c57613afb1ef60c6575fe63019ba"
+  },
+  "screenshot": "reports/evaluation-fixed-source-20261024-page.png",
+  "formal_experiments_regenerated": false,
+  "scoring_or_labeling_rules_changed": false,
+  "annotation_components": "保留，改由隔離測試頁驗證；網站不載入或改寫人工標註",
+  "test_scope_note": "網站來源切換已移除，校字與評估隔離的 UI 檢查只測固定 pubmed_hybrid；後端 human／weak 來源原測試保留。"
+}

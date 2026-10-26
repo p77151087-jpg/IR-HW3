@@ -1,0 +1,32 @@
+{
+  "scope": "Q01～Q10 與全部查詢平均的六方法四指標圖表檢視",
+  "verified_at_utc": "2026-10-24T09:40:47.925664+00:00",
+  "pytest_report": "reports\\evaluation-query-charts-20261024-full.xml",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "232",
+    "time": "57.639",
+    "timestamp": "2026-10-24T17:39:32.396432+08:00",
+    "hostname": "MSI"
+  },
+  "source_sha256": {
+    "app.py": "da671aa2c96fad138264c936b3855c6d9d5a8e1bd521e400999516389b4ede12",
+    "tests/test_app.py": "99d915e1b4a98a881d6f60d81509c58d09eebdea603677752239712b74aedbdd",
+    "README.md": "ac1ab1d8a95c3d3385f676fe1b904b6383863e0c3569b322d931e8b5908478d5",
+    "ir_hw3/evaluation.py": "0be10ff7a0b4d59b0e471a4c8a5d669df52e38a065384aac108781ae3e3e68f1",
+    "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+    "data/queries.json": "5600448ae2bfa3b97a7c524d1b41790fa789a83d78771f63563f06f3fa380ae0"
+  },
+  "checks": [
+    "十個查詢各四張圖、每圖六種方法，數值與既有逐查詢結果逐值相同",
+    "切換檢視不重新執行評估；切回平均的表格數值不變",
+    "k 切換保留查詢選擇並要求重跑；沒有參考正例的查詢不繪零分圖",
+    "單查詢為 RR，平均模式為 MRR；四圖維持 0–1 刻度"
+  ],
+  "screenshot": "reports/evaluation-query-charts-20261024-Q01.png",
+  "formulas_or_labeling_changed": false,
+  "formal_experiments_regenerated": false
+}

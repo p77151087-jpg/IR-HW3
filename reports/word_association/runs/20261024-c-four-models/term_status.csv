@@ -1,0 +1,11 @@
+﻿term,cf,df,tfidf,cbow_w2,cbow_w5,skipgram_w2,skipgram_w5,in_candidate_pool
+semaglutide,2107,708,ok,ok,ok,ok,ok,True
+liraglutide,539,244,ok,ok,ok,ok,ok,True
+dulaglutide,203,100,ok,ok,ok,ok,ok,True
+tirzepatide,1264,431,ok,ok,ok,ok,ok,True
+insulin,1249,595,ok,ok,ok,ok,ok,True
+glucose,945,445,ok,ok,ok,ok,ok,True
+obesity,2830,1307,ok,ok,ok,ok,ok,True
+diabetes,2514,1534,ok,ok,ok,ok,ok,True
+receptor,3530,2354,ok,ok,ok,ok,ok,True
+glp-1,5493,1783,ok,ok,ok,ok,ok,True

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="6.087" timestamp="2026-10-24T14:09:20.704524+08:00" hostname="MSI"><testcase classname="tests.test_association_ui" name="test_model_switch_k_oov_and_charts_do_not_train_or_rank" time="3.107"><failure message="assert 4 == 5&#10; +  where 4 = len(         model  documents  sentences  ...  vocabulary    seconds  offline_reload\n0      cbow_w2       3000      32656 ...            True\n3  skipgram_w5       3000      32656  ...       17694  53.175811            True\n\n[4 rows x 7 columns])&#10; +    where          model  documents  sentences  ...  vocabulary    seconds  offline_reload\n0      cbow_w2       3000      32656 ...            True\n3  skipgram_w5       3000      32656  ...       17694  53.175811            True\n\n[4 rows x 7 columns] = Dataframe().value&#10; +  and   5 = len(   rank  term    cosine     關係\n0     1  with  0.386352  此方法特有\n1     2   and  0.365028  此方法特有\n2     3    in  0.360701  此方法特有\n3     4     a  0.355396  此方法特有\n4     5    to  0.352775  此方法特有)&#10; +    where    rank  term    cosine     關係\n0     1  with  0.386352  此方法特有\n1     2   and  0.365028  此方法特有\n2     3    in  0.360701  此方法特有\n3     4     a  0.355396  此方法特有\n4     5    to  0.352775  此方法特有 = Dataframe().value">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001F20E0E7D10&gt;
+
+    def test_model_switch_k_oov_and_charts_do_not_train_or_rank(monkeypatch):
+        from gensim.models import Word2Vec
+        from ir_hw3.core import Engine
+        def forbidden(*args, **kwargs):
+            raise AssertionError("The comparison UI must never train or rank documents")
+        app = start()
+        original_search = dict(app.session_state["active_search"])
+        monkeypatch.setattr(Word2Vec, "train", forbidden)
+        monkeypatch.setattr(Engine, "rank", forbidden)
+        app.sidebar.radio[0].set_value(PAGE).run()
+        assert not app.exception, str(app.exception)
+        assert [m.value for m in app.metric] == ["3,000", "32,656", "738,616", "17,694"]
+        first_neighbors = app.dataframe[0].value.copy()
+        widget(app, "selectbox", "Embedding 模型").set_value("skipgram_w5").run()
+        widget(app, "selectbox", "近鄰 k").set_value(5).run()
+        assert not app.exception
+&gt;       assert len(app.dataframe[0].value) == len(app.dataframe[1].value) == 5
+E       assert 4 == 5
+E        +  where 4 = len(         model  documents  sentences  ...  vocabulary    seconds  offline_reload\n0      cbow_w2       3000      32656 ...            True\n3  skipgram_w5       3000      32656  ...       17694  53.175811            True\n\n[4 rows x 7 columns])
+E        +    where          model  documents  sentences  ...  vocabulary    seconds  offline_reload\n0      cbow_w2       3000      32656 ...            True\n3  skipgram_w5       3000      32656  ...       17694  53.175811            True\n\n[4 rows x 7 columns] = Dataframe().value
+E        +  and   5 = len(   rank  term    cosine     關係\n0     1  with  0.386352  此方法特有\n1     2   and  0.365028  此方法特有\n2     3    in  0.360701  此方法特有\n3     4     a  0.355396  此方法特有\n4     5    to  0.352775  此方法特有)
+E        +    where    rank  term    cosine     關係\n0     1  with  0.386352  此方法特有\n1     2   and  0.365028  此方法特有\n2     3    in  0.360701  此方法特有\n3     4     a  0.355396  此方法特有\n4     5    to  0.352775  此方法特有 = Dataframe().value
+
+tests\test_association_ui.py:35: AssertionError</failure></testcase><testcase classname="tests.test_association_ui" name="test_pair_form_and_fixed_45_rows_and_downloads" time="0.534" /></testsuite></testsuites>

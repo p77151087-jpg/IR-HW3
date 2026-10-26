@@ -1,0 +1,22 @@
+{
+  "verified_at_utc": "2026-10-26T10:47:17.485726+00:00",
+  "scope": "Remove formula column from the corpus method-description table only",
+  "source_sha256": {
+    "app.py": "c0918866f324baa0e20f09dfc79ab47f1aa99619dfd67e500df9e5b7e34ccbfa",
+    "tests/test_app.py": "6512bade39c23cf02c8c43a89e323c5c29d708c713070bf1c5299f831e4a5e74",
+    "README.md": "ea8445b600d4272af39a7d3f9186d5f1f1d7a0b5cc6e027597a91db236d72c5d"
+  },
+  "tests": 1,
+  "failures_or_errors": 0,
+  "protected_files_unchanged": 4,
+  "protected_files_changed": [],
+  "displayed_columns": [
+    "方法",
+    "意義"
+  ],
+  "methods": 6,
+  "browser_verified": true,
+  "screenshot": "page.png",
+  "numerical_verification_rerun": false,
+  "formal_outputs_regenerated": false
+}

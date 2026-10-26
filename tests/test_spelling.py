@@ -1,4 +1,5 @@
 import itertools
+import importlib.util
 
 import pytest
 
@@ -6,6 +7,23 @@ from ir_hw1.models import Document, TextBlock
 from ir_hw3.spelling import _normalize_vocabulary, build_vocabulary, edit_distance, suggest_query
 from ir_hw3.spelling import SpellingIndex, replace_selected_term
 from ir_hw3.corpus import ORIGINAL_SNAPSHOT, load_corpus
+
+
+def test_cached_index_survives_module_reload_without_rebuilding_candidates():
+    from ir_hw3 import spelling
+    spec = importlib.util.spec_from_file_location("spelling_reload_fixture", spelling.__file__)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    cached = module.SpellingIndex({"insulin": 30, "glucose": 40, "glp-1": 10})
+    query = "insulinn GLP-1"
+    expected = module.suggest_query(query, cached)
+    hits = cached.candidates.cache_info().hits
+
+    # Streamlit may retain the resource after Python recreates the module class.
+    spec.loader.exec_module(module)
+    assert not isinstance(cached, module.SpellingIndex)
+    assert module.suggest_query(query, cached) == expected
+    assert cached.candidates.cache_info().hits == hits + 1
 
 
 @pytest.mark.parametrize("left,right,expected", [

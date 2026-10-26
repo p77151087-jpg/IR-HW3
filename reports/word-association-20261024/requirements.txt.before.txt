@@ -1,0 +1,6 @@
+streamlit==1.66.0
+altair==6.3.0
+defusedxml==0.7.1
+nltk==3.9.2
+regex==2026.9.29
+pytest==9.1.1

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="84.739" timestamp="2026-10-24T17:13:06.465942+08:00" hostname="MSI"><testcase classname="tests.test_app" name="test_evaluation_opens_on_results_with_collapsed_details_and_hides_stale_charts" time="21.889"><failure message="AssertionError: assert ['效能比較', '人工標註', '完整摘要'] == ['效能比較', '人工標註', '實驗紀錄']&#10;  &#10;  At index 2 diff: '完整摘要' != '實驗紀錄'&#10;  Use -v to get more diff">isolated_manual_file = WindowsPath('C:/成大專案/IR-HW3/tmp/evaluation-layout-20261024-focus/test_evaluation_opens_on_resul0/manual.json')
+
+    def test_evaluation_opens_on_results_with_collapsed_details_and_hides_stale_charts(isolated_manual_file):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120).run()
+        app.sidebar.radio[0].set_value("效能評估").run()
+        assert not app.exception
+&gt;       assert [tab.label for tab in app.tabs[:3]] == ["效能比較", "人工標註", "實驗紀錄"]
+E       AssertionError: assert ['效能比較', '人工標註', '完整摘要'] == ['效能比較', '人工標註', '實驗紀錄']
+E         
+E         At index 2 diff: '完整摘要' != '實驗紀錄'
+E         Use -v to get more diff
+
+tests\test_app.py:318: AssertionError</failure></testcase><testcase classname="tests.test_app" name="test_zero_evaluation_denominator_is_not_zero_score" time="30.802" /><testcase classname="tests.test_app" name="test_pubmed_reference_ui_discloses_sources_and_keeps_manual_empty" time="31.374" /></testsuite></testsuites>

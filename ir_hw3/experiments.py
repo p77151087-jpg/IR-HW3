@@ -18,6 +18,7 @@ from .core import (BM25_FORMULA, BM25_PARAMETERS, CONDITIONS, IDF_MODES,
 from .corpus import ROOT, abstract_text, sha256
 from .evaluation import (atomic_json, csv_rows, evaluate, evaluation_accounting,
                          fingerprint, load_queries, query_status)
+from .normalization import DOCUMENT_L2_SCOPE, normalization_comparison
 
 def matches_concept(text: str, term: str) -> bool:
     """Trailing alphabetic fragments allow declared prefixes neuroprotect*, etc."""
@@ -61,6 +62,10 @@ def _source_hashes() -> dict[str, str]:
              ROOT / "scripts/test_hw3.ps1", ROOT / "scripts/verify_hw3.py"]
     paths.append(ROOT / "scripts/expand_corpus.py")
     paths.extend(sorted((ROOT / "data/reference_rules").glob("*.json")))
+    paths.extend(sorted((ROOT / "data/query_design").glob("*.json")))
+    for relative in ("docs/QUERY_DESIGN_TFDF.md", "scripts/design_tfdf_queries.py"):
+        if (ROOT / relative).is_file():
+            paths.append(ROOT / relative)
     if (ROOT / "docs/PUBMED_REFERENCE.md").is_file():
         paths.append(ROOT / "docs/PUBMED_REFERENCE.md")
     if (ROOT / "docs/BM25.md").is_file():
@@ -103,6 +108,10 @@ def run_experiment(engine: Engine, manifest: dict, *, output: Path | None = None
     if type(k) is not int or k < 1:
         raise ValueError("k 必須為正整數。")
     queries = load_queries()
+    from .query_design import load_design
+    design = load_design(queries)
+    if design and design["corpus_sha256"] != manifest["sha256"]:
+        raise ValueError("TF/DF 查詢分類只適用其固定語料；請為其他快照另建查詢設計。")
     source = "weak_rules" if judgments is None else judgments["source"]
     if judgments is None:
         judgments = weak_judgments(engine, queries, manifest["sha256"])
@@ -121,8 +130,16 @@ def run_experiment(engine: Engine, manifest: dict, *, output: Path | None = None
             ranking = engine.rank(query["text"], method, limit=None)
             rankings.extend({"qid": query["qid"], "method": method, **row} for row in ranking)
             if method in VECTOR_METHODS:
+                check = normalization_comparison(engine, query["text"], method)
                 normalization.append({"qid": query["qid"], "method": method,
-                                      **engine.normalization_check(query["text"], method)})
+                                      "normalization_scope": DOCUMENT_L2_SCOPE,
+                                      "query_unchanged": check["query_unchanged"],
+                                      "query_norm_before": check["query_norm_before"],
+                                      "query_norm_after": check["query_norm_after"],
+                                      "evaluated": bool(check["rows"]),
+                                      "same_ranking": check["same_ranking"],
+                                      "max_score_difference": check["max_score_difference"],
+                                      "retrieved": check["retrieved_before"]})
         for doc_id in candidate_pool(engine, query["text"]):
             pools.append({"qid": query["qid"], "pmid": doc_id, "grade": -1, "reason": "",
                           "title": engine.documents[doc_id].title})
@@ -141,6 +158,8 @@ def run_experiment(engine: Engine, manifest: dict, *, output: Path | None = None
         (staging / name).write_bytes(csv_rows(rows))
     atomic_json(staging / "judgments.json", judgments)
     atomic_json(staging / "queries.json", queries)
+    if design:
+        atomic_json(staging / "query_design.json", design)
     reference_files = []
     if source == "pubmed_hybrid":
         provenance = judgments["reference_provenance"]
@@ -150,6 +169,7 @@ def run_experiment(engine: Engine, manifest: dict, *, output: Path | None = None
     configuration = {"schema_version": 2, "status": "complete", "run_id": run_id,
                      "created_at_utc": now.isoformat().replace("+00:00", "Z"),
                      "settings": asdict(engine.settings), "methods": list(METHODS),
+                     "query_design_version": design["design_version"] if design else None,
                      "documents": engine.n, "vocabulary": len(engine.df),
                      "tokens": sum(engine.cf.values()), "corpus_sha256": manifest["sha256"],
                      "queries_sha256": fingerprint(queries), "judgments_sha256": fingerprint(judgments),
@@ -165,6 +185,10 @@ def run_experiment(engine: Engine, manifest: dict, *, output: Path | None = None
                      "bm25_parameters": dict(BM25_PARAMETERS),
                      "scoring": {method: "bm25" if method == "bm25" else "cosine" for method in METHODS},
                      "normalization_methods": list(VECTOR_METHODS),
+                     "normalization_scope": DOCUMENT_L2_SCOPE,
+                     "query_normalization": "none; unchanged query weights; original query norm remains in cosine denominator",
+                     "normalization_evaluated": sum(row["evaluated"] for row in normalization),
+                     "normalization_skipped_zero_results": sum(not row["evaluated"] for row in normalization),
                      "normalization_excluded": {"bm25": "Not a cosine model; explicit L2 comparison does not apply."},
                      "formulas": {"tf": "f", "log_tf": "1 + log10(f), f > 0", "idf": "binary presence * IDF",
                                   "tfidf": "f * IDF", "log_tfidf": "(1 + log10(f)) * IDF",
@@ -185,14 +209,17 @@ def run_experiment(engine: Engine, manifest: dict, *, output: Path | None = None
         configuration["limitations"].extend(LIMITATIONS)
     (staging / "RQ_DISCUSSION.md").write_text(rq_discussion(configuration, summary), encoding="utf-8")
     configuration["outputs_sha256"] = {
-        name: sha256(staging / name) for name in [*outputs, "judgments.json", "queries.json", "RQ_DISCUSSION.md", *reference_files]}
+        name: sha256(staging / name) for name in [*outputs, "judgments.json", "queries.json", "RQ_DISCUSSION.md", *reference_files,
+                                                *(["query_design.json"] if design else [])]}
     atomic_json(staging / "manifest.json", configuration)
     _require_available_output(output)
     if output.exists():
         output.rmdir()  # Only the verified empty destination.
     _publish_run(staging, output)
     return {"output": str(output), "manifest": configuration, "summary": summary, "query_status": statuses,
-            "normalization_passed": all(row["same_ranking"] and row["max_score_difference"] < 1e-10 for row in normalization)}
+            "normalization_passed": all(row["query_unchanged"] and (not row["evaluated"] or
+                                        (row["same_ranking"] and row["max_score_difference"] < 1e-10))
+                                        for row in normalization)}
 
 def _read_run(output: Path, *, legacy: bool = False) -> dict:
     output = Path(output).resolve()
@@ -362,10 +389,13 @@ def rq_discussion(configuration: dict, summary: list[dict]) -> str:
              "TF 反映重複，僅 IDF 使用詞項出現與否，TF-IDF 同時使用文件內頻率與跨文件區辨力。"
              "控制語料、前處理、查詢、IDF 形式與 cosine 後，再比較逐查詢排名；沒有預設最佳方法。", "",
              "## RQ4：L2 normalization", "",
-             "對非零向量，cos(q,d)=q·d/(||q||||d||)，等於兩個 L2 單位向量的點積。"
-             "所以正確 cosine 在顯式正規化前後分數與排名相同（容許浮點誤差）。"
-             "raw dot 與 normalized dot 的差異另列為補充對照，不能將 raw dot 稱作 cosine。"
-             "完整檢查見 normalization.csv，僅含原五種向量方法；第六種 BM25 不適用此 L2 等價檢查。", "",
+             "本次依題目只將文件向量 d 正規化為 d'=d/||d||，查詢 q 的權重保持原值。"
+             "前後皆用標準 cosine：cos(q,d')=q·d'/(||q||||d'||)。"
+             "因此文件 L2 前後分數與排名相同（容許浮點誤差）；查詢沒有另做 L2。"
+             "raw dot 與 cosine 的不同 scoring 另列補充對照；文件 L2 後的點積仍須除以查詢 norm，"
+             "不能將它或 raw dot 直接稱作 cosine。"
+             "完整檢查見 normalization.csv，明記 documents_only、查詢 norm 不變、是否可比較及差值。"
+             "零結果列略過；僅含原五種向量方法，第六種 BM25 不適用此 L2 等價檢查。", "",
              "## RQ5：評估指標", "",
              "P@k 的分母固定為 k；MRR 為完整返回排名的第一個已知相關結果倒數；"
              "nDCG@k 使用 gain=2^grade−1；Recall@k 的分母是已知相關文件數。"
@@ -384,7 +414,7 @@ def rq_discussion(configuration: dict, summary: list[dict]) -> str:
                   "只比較排名指標，不能將 BM25 原始分數直接與 cosine 大小比較。BM25 也屬詞彙方法，仍受自動標籤偏差影響。"])
     if configuration["judgment_source"] == "pubmed_hybrid":
         lines.extend(["", "## PubMed 參考標籤的規則與限制", "",
-                      "每個查詢的兩組概念均須由 MeSH、藥物／化學物質、補充概念或關鍵字支持，才記為 metadata 正例。"
+                      "每個查詢的所有概念組均須由 MeSH、藥物／化學物質、補充概念或關鍵字支持，才記為 metadata 正例。"
                       "缺少欄位或概念依據不足時，獨立套用原摘要 weak rule；不是把缺少 MeSH 當作不相關。"
                       "所有規則先於比較固定，不使用排名或分數。0／1 是規則結果，沒有人工確認的 2 級相關性。", "",
                       "reference_rules.json 保存完整詞表；reference_labels.csv 保存逐筆來源、理由與欄位依據；"
@@ -394,4 +424,11 @@ def rq_discussion(configuration: dict, summary: list[dict]) -> str:
                       "MeSH 不全為人工標引；關鍵字及回退仍可能偏向詞彙方法。參考 docs/PUBMED_REFERENCE.md。"])
     lines.extend(["", "若使用自動參考或弱標籤，數字只驗證實驗流程與此規則下的表現，不能聲稱已證明真實檢索品質。"
                   "人工標註可由多方法 Top 20 的聯集起步，但需交代 pooling 偏差，並補查池外文件。", ""])
+    if configuration.get("query_design_version") == "tfdf-v1":
+        lines.extend(["## 本次 TF/DF 查詢設計", "",
+                      "Q01–Q04 為高 TF／高 DF、低 TF／高 DF、高 TF／低 DF、低 TF／低 DF；Q05–Q10 為四類的六種兩兩搭配。",
+                      "類別依 C 基準的命中文件平均 TF 與 DF 比例；每篇文件仍使用實際 TF。完整分布與門檻保存於 query_design.json。",
+                      "單詞 cosine 查詢端的正權重倍數會抵消，文件端 weighting／完整 norm 仍不同。雙詞可觀察相對詞項權重的影響。",
+                      "配對參考集合要求兩個概念同時成立；檢索本身依非零分數排序，不是 AND 篩選。",
+                      "少數配對的參考正例可能少於 k；P@k 分母仍固定 k，不用製造標籤補滿。這些是自動概念代理標籤，並非人工答案。", ""])
     return "\n".join(lines)

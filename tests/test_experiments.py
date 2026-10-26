@@ -41,6 +41,13 @@ def test_default_runs_are_unique_reproducible_and_preserve_legacy_results(exampl
     assert first["manifest"]["created_at_utc"].endswith("Z")
     assert first["manifest"]["logarithm_base"] == 10
     assert first["manifest"]["weighting_version"] == "log10-v1"
+    assert first["manifest"]["normalization_scope"] == "documents_only"
+    import csv
+    with (Path(first["output"]) / "normalization.csv").open(encoding="utf-8-sig", newline="") as stream:
+        normalization = list(csv.DictReader(stream))
+    assert normalization and all(row["normalization_scope"] == "documents_only" for row in normalization)
+    assert all(row["query_unchanged"] == "True" for row in normalization)
+    assert all(float(row["query_norm_before"]) == float(row["query_norm_after"]) for row in normalization)
     assert first["manifest"]["formulas"]["standard_idf"] == "log10(N / DF)"
     assert "RQ_DISCUSSION.md" in first["manifest"]["outputs_sha256"]
     for name in first["manifest"]["outputs_sha256"]:

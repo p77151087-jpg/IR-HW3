@@ -1,0 +1,44 @@
+{
+  "url": "http://127.0.0.1:8503/",
+  "models": [
+    {
+      "model": "CBOW · window 2",
+      "selected": true,
+      "visible_control": "- combobox \"Embedding 模型\" [active]: CBOW · window 2"
+    },
+    {
+      "model": "CBOW · window 5",
+      "selected": true,
+      "visible_control": "- combobox \"Embedding 模型\" [active]: CBOW · window 5"
+    },
+    {
+      "model": "Skip-Gram · window 2",
+      "selected": true,
+      "visible_control": "- combobox \"Embedding 模型\" [active]: Skip-Gram · window 2"
+    },
+    {
+      "model": "Skip-Gram · window 5",
+      "selected": true,
+      "visible_control": "- combobox \"Embedding 模型\" [active]: Skip-Gram · window 5"
+    }
+  ],
+  "verified": [
+    "single-word insulin submission",
+    "k=20 returns 20 neighbors in both spaces",
+    "GLP‑1 normalized to glp-1 in pair comparison",
+    "OOV returns zero rows and NA overlap",
+    "45-row CSV download SHA256 equals saved pairs.csv",
+    "desktop side-by-side heatmaps, common [-1,1] scale and labeled scatter",
+    "narrow viewport remains usable",
+    "returning to page restores insulin / glp-1 / receptor form inputs",
+    "search spelling candidate adoption remains functional",
+    "evaluation page still shows Q01 original query semaglutide weight loss obesity"
+  ],
+  "final_alerts": [],
+  "development_refresh": "Function caches cleared once after code hot reload; fresh connection and final cross-page flow retested without errors",
+  "viewport": "Temporary desktop override reset to original size",
+  "screenshots": [
+    "browser-neighbors.png",
+    "browser-heatmaps.png"
+  ]
+}

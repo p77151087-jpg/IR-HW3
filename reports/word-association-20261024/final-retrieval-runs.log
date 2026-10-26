@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "reason": "Final UI form restoration only; scoring sources unchanged. New formal validation runs capture the final source hashes.",
+  "runs": [
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261024T063413.473870Z-9791a89a",
+      "manifest_sha256": "6ec2ded4d27820c7a6500a51691b03d67b56b76892c30b963ba783f19d420420"
+    },
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261024T063427.992321Z-6dc3f9c5",
+      "manifest_sha256": "e08450066ca4753ad3af50152ef97e3cc32269c2aa5a513210dd2d817a90c925"
+    }
+  ],
+  "outputs": {
+    "metrics_per_query.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "metrics_summary.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "query_status.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "rankings.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "normalization.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "annotation_pool.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "term_statistics.csv": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "judgments.json": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "queries.json": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    },
+    "RQ_DISCUSSION.md": {
+      "repeat": true,
+      "unchanged_from_numeric": true
+    }
+  }
+}

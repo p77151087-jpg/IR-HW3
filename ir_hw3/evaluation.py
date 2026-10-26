@@ -46,12 +46,24 @@ def empty_judgments(corpus_sha: str, queries: list[dict]) -> dict:
     return {"schema_version": 1, "source": "human", "corpus_sha256": corpus_sha,
             "queries_sha256": fingerprint(queries), "judgments": {}}
 
-def judgment_path(corpus_sha: str) -> Path:
-    """Keep existing manual.json bound to its corpus; never silently migrate it."""
+def judgment_path(corpus_sha: str, queries: list[dict] | None = None) -> Path:
+    """Keep old corpus/query judgments intact; never relabel reused Q01 IDs."""
     versioned = ROOT / "data/judgments/by-corpus" / corpus_sha / "manual.json"
+    query_hash = fingerprint(queries) if queries is not None else None
+    by_query = versioned.parent / "by-queries" / (query_hash or "unknown") / "manual.json"
+    query_conflict = False
+    for candidate in (JUDGMENTS, versioned):
+        if candidate.exists():
+            stored = json.loads(candidate.read_text(encoding="utf-8"))
+            if stored.get("corpus_sha256") == corpus_sha:
+                if query_hash is None or stored.get("queries_sha256") == query_hash:
+                    return candidate
+                query_conflict = True
+    if query_hash and (query_conflict or by_query.exists() or
+                       any(q.get("design_version") for q in queries)):
+        return by_query
     if JUDGMENTS.exists():
-        stored = json.loads(JUDGMENTS.read_text(encoding="utf-8"))
-        return JUDGMENTS if stored.get("corpus_sha256") == corpus_sha else versioned
+        return versioned
     return versioned if versioned.exists() else JUDGMENTS
 
 def validate_judgments(value: dict, corpus_sha: str, queries: list[dict], document_ids) -> None:
@@ -73,7 +85,7 @@ def validate_judgments(value: dict, corpus_sha: str, queries: list[dict], docume
 
 def load_judgments(corpus_sha: str, queries: list[dict], document_ids,
                    path: Path | None = None) -> dict:
-    path = judgment_path(corpus_sha) if path is None else Path(path)
+    path = judgment_path(corpus_sha, queries) if path is None else Path(path)
     value = json.loads(path.read_text(encoding="utf-8")) if path.exists() else empty_judgments(corpus_sha, queries)
     validate_judgments(value, corpus_sha, queries, document_ids)
     if value["source"] != "human":
@@ -89,7 +101,7 @@ def save_judgments(corpus_sha: str, queries: list[dict], document_ids,
     All comparisons happen before applying updates; -1 removes a judgment.
     """
     with _LOCK:
-        path = judgment_path(corpus_sha) if path is None else Path(path)
+        path = judgment_path(corpus_sha, queries) if path is None else Path(path)
         value = load_judgments(corpus_sha, queries, document_ids, path)
         for (qid, doc_id), original in (expected or {}).items():
             if value["judgments"].get(qid, {}).get(doc_id) != original:

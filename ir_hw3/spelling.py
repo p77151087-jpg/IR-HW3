@@ -194,7 +194,9 @@ def suggest_query(query: str, vocabulary: Mapping[str, int] | SpellingIndex) -> 
     Digits, non-ASCII, uppercase/mixed-case biomedical names, short words and
     punctuated compounds remain untouched; checks use the original spelling.
     """
-    index = vocabulary if isinstance(vocabulary, SpellingIndex) else SpellingIndex(vocabulary)
+    # Streamlit can retain an index after a module reload recreates its class.
+    # Mapping has stable identity; a prepared index can keep its candidate LRU.
+    index = SpellingIndex(vocabulary) if isinstance(vocabulary, Mapping) else vocabulary
     normalized = index.counts
     changes = []
     protected = []

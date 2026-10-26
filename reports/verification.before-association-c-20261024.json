@@ -1,0 +1,113 @@
+{
+  "logarithm_base": 10,
+  "weighting_version": "log10-v1",
+  "documents": 3000,
+  "queries": 10,
+  "methods": 6,
+  "independent_cosine_scores_checked": 900000,
+  "maximum_cosine_error": 1.1102230246251565e-16,
+  "independent_bm25_scores_checked": 180000,
+  "maximum_bm25_error": 0.0,
+  "bm25_parameters": {
+    "version": "bm25-log10-v1",
+    "k1": 1.2,
+    "b": 0.75,
+    "logarithm_base": 10,
+    "idf": "log10(1 + (N - DF + 0.5) / (DF + 0.5))",
+    "query_tf": "linear actual count; no k3 saturation",
+    "length": "post-preprocessing abstract tokens; avgdl includes all N documents"
+  },
+  "normalization_methods": [
+    "tf",
+    "log_tf",
+    "idf",
+    "tfidf",
+    "log_tfidf"
+  ],
+  "settings_checked": [
+    {
+      "condition": "B",
+      "idf": "standard",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16,
+      "bm25_scores_checked": 30000,
+      "maximum_bm25_error": 0.0
+    },
+    {
+      "condition": "B",
+      "idf": "smooth",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16,
+      "bm25_scores_checked": 30000,
+      "maximum_bm25_error": 0.0
+    },
+    {
+      "condition": "C",
+      "idf": "standard",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16,
+      "bm25_scores_checked": 30000,
+      "maximum_bm25_error": 0.0
+    },
+    {
+      "condition": "C",
+      "idf": "smooth",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16,
+      "bm25_scores_checked": 30000,
+      "maximum_bm25_error": 0.0
+    },
+    {
+      "condition": "D",
+      "idf": "standard",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16,
+      "bm25_scores_checked": 30000,
+      "maximum_bm25_error": 0.0
+    },
+    {
+      "condition": "D",
+      "idf": "smooth",
+      "scores_checked": 150000,
+      "maximum_cosine_error": 1.1102230246251565e-16,
+      "bm25_scores_checked": 30000,
+      "maximum_bm25_error": 0.0
+    }
+  ],
+  "repeatability": {
+    "metrics_per_query.csv": true,
+    "metrics_summary.csv": true,
+    "query_status.csv": true,
+    "rankings.csv": true,
+    "normalization.csv": true,
+    "annotation_pool.csv": true,
+    "term_statistics.csv": true,
+    "judgments.json": true,
+    "queries.json": true,
+    "RQ_DISCUSSION.md": true,
+    "query_design.json": true
+  },
+  "normalization_passed": true,
+  "hw2_source": {
+    "checked": 93,
+    "changed": [],
+    "source_available": true
+  },
+  "judgment_source": "weak_rules",
+  "settings": {
+    "condition": "C",
+    "idf": "standard"
+  },
+  "runs": [
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261024T065948.825794Z-0b266d8a",
+      "run_id": "20261024T065948.825794Z-0b266d8a",
+      "manifest_sha256": "efeab1efda0adf7ff22059b8b6fefbc5be7881662881ad9fecc2737270e97036"
+    },
+    {
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261024T065951.320078Z-369cda3c",
+      "run_id": "20261024T065951.320078Z-369cda3c",
+      "manifest_sha256": "278ea06592f9f0ee8cb6880344a773a1885a52f18218238e2fdf6ca1760e9e63"
+    }
+  ]
+}

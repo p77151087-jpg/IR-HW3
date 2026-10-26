@@ -1,0 +1,60 @@
+{
+  "scope": "詞彙關聯互動更新、中文預選詞、前 k 名關係說明與原有圖表直接顯示",
+  "verified_at_utc": "2026-10-24T10:07:21.382463+00:00",
+  "pytest_report": "reports/association-interaction-20261024-full.xml",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "234",
+    "time": "59.341",
+    "timestamp": "2026-10-24T18:05:28.031307+08:00",
+    "hostname": "MSI"
+  },
+  "focused_ui_report": "reports/association-interaction-20261024-focus.xml",
+  "focused_pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "5",
+    "time": "8.720",
+    "timestamp": "2026-10-24T18:04:57.468528+08:00",
+    "hostname": "MSI"
+  },
+  "sha256": {
+    "ir_hw3/association_ui.py": "038c54948baf3a964ba4e7fee676aede3a6b9e99a699ca0931f1b9cfbd88ed7f",
+    "tests/test_association_ui.py": "a3610f404ff8aafb2f264589b49dabbe3d6e544ca319be69ef7629b2d5a3b798",
+    "README.md": "bb9d0d99b5252dbcd62fe984b6d37523051a949b57488a2915a2fceff87230d9",
+    "docs/WORD_ASSOCIATION.md": "f82af3d03a035772e946e0b83907de6bdaeaebc805362379524cf37a2ee9d5cd",
+    "ir_hw3/word_association.py": "4c3a8a681f4c11216085045afdfe22b5e64444ed8545de7fe7bbb99ee67f7074",
+    "reports/word_association/runs/20261024-four-models/manifest.json": "6473ffb56452eacd5758e233972051d383a809364f45392ba30808ffe34db1b3",
+    "reports/word_association/runs/20261024-four-models/results.json": "f7598e2ac51d735832d68097fff02935d3399cd3e1c417c87811b170ff0294dd"
+  },
+  "unchanged_vs_previous_check": [
+    "ir_hw3/word_association.py",
+    "reports/word_association/runs/20261024-four-models/manifest.json",
+    "reports/word_association/runs/20261024-four-models/results.json"
+  ],
+  "previous_check": "reports/association-layout-20261024-checks.json",
+  "artifact_hashes_verified": 60,
+  "screenshots": [
+    "reports/association-interaction-20261024-neighbors.png",
+    "reports/association-interaction-20261024-presets.png",
+    "reports/association-interaction-20261024-heatmap.png",
+    "reports/association-interaction-20261024-scatter.png"
+  ],
+  "checks": [
+    "選單代填英文；單詞及詞對均於按鈕提交後更新，手動編輯不被舊預選詞覆蓋",
+    "semaglutide 換 insulin，長條圖與表格排名及 cosine 對照原計算結果一致",
+    "重複提交同一設定說明結果維持相同",
+    "只在這邊前 k 名並非另一邊不存在或不相關",
+    "原兩張固定十詞熱圖與 45 詞對散點直接顯示，數據、色階、負分保留",
+    "IAB 實測 insulin 圖表更新，以及 obesity／diabetes 中文預選、代填與提交",
+    "原有禁止訓練與文件排名、模型切換、OOV、返回頁面與下載測試通過"
+  ],
+  "models_retrained": false,
+  "formal_outputs_regenerated": false,
+  "scoring_or_candidate_pool_changed": false
+}

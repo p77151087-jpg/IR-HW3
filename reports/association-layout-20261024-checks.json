@@ -1,0 +1,41 @@
+{
+  "scope": "Embedding／TF-IDF 詞彙頁的三分區、白話說明與收合明細",
+  "verified_at_utc": "2026-10-24T09:56:11.141474+00:00",
+  "pytest_report": "reports\\association-layout-20261024-full.xml",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "232",
+    "time": "57.852",
+    "timestamp": "2026-10-24T17:52:56.561257+08:00",
+    "hostname": "MSI"
+  },
+  "focused_ui_report": "reports/association-layout-20261024-focus.xml",
+  "sha256": {
+    "ir_hw3/association_ui.py": "487430c312e4dde70172b6d7bb13a3bac8beb36d0f532781ecfbc16ae9705dde",
+    "tests/test_association_ui.py": "0719241dbc7f181b59e62b49c7dfe2ff35351462848f9ba6332b54289edcff62",
+    "README.md": "04c07c587f95b26ca3b2b901cd8a582ecd5b71a230b1c80085b9754b1e699511",
+    "docs/WORD_ASSOCIATION.md": "d4c06e3ed02897c8a6cf604795706e12217831e80c2861693f823ce10101f200",
+    "ir_hw3/word_association.py": "4c3a8a681f4c11216085045afdfe22b5e64444ed8545de7fe7bbb99ee67f7074",
+    "ir_hw3/embedding_training.py": "b44456f835bea9265c4e4992940ee2fee10431fedb4bbd01817b8b898ee4b02d",
+    "reports/word_association/runs/20261024-four-models/manifest.json": "6473ffb56452eacd5758e233972051d383a809364f45392ba30808ffe34db1b3",
+    "reports/word_association/runs/20261024-four-models/results.json": "f7598e2ac51d735832d68097fff02935d3399cd3e1c417c87811b170ff0294dd"
+  },
+  "screenshots": [
+    "reports/association-layout-20261024-start.png",
+    "reports/association-layout-20261024-results.png"
+  ],
+  "checks": [
+    "三分區、中文欄位、設定與模型明細預設收合",
+    "近鄰排名與 cosine 對照原計算結果相同",
+    "五方法詞對原數值與六位小數顯示一致",
+    "缺詞顯示無法計算而非零分，保留未收錄與零向量原因",
+    "單詞與詞對提交、返回頁面保存、熱圖與散點色階及下載均保留",
+    "介面測試禁止 Word2Vec.train 與 Engine.rank"
+  ],
+  "models_retrained": false,
+  "formal_outputs_regenerated": false,
+  "scoring_or_candidate_pool_changed": false
+}

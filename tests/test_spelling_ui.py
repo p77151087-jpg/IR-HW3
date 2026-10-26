@@ -91,8 +91,7 @@ def test_delayed_button_click_in_streamlit_cannot_replace_new_input():
     assert app.session_state["active_search"] == initial
 
 
-@pytest.mark.parametrize("source", ["人工標註", "規則弱標籤（示範）", "PubMed 主題參考＋弱規則回退"])
-def test_adoption_never_changes_formal_evaluation_queries(monkeypatch, source):
+def test_adoption_never_changes_formal_evaluation_queries(monkeypatch):
     from ir_hw3 import evaluation
     received = []
     evaluate = evaluation.evaluate
@@ -105,10 +104,10 @@ def test_adoption_never_changes_formal_evaluation_queries(monkeypatch, source):
     widget(app, "button", "insulin").click().run()
     assert app.session_state["active_search"]["query"] == "insulin"
     app.sidebar.radio[0].set_value("效能評估").run()
-    widget(app, "radio", "評估標註來源").set_value(source).run()
     widget(app, "button", "執行六種方法評估").click().run()
     assert not app.exception
     assert received and received[-1][0] == load_queries()
+    assert received[-1][1] == "pubmed_hybrid"
     assert all(query["text"] != "insulin" for query in received[-1][0])
 
 

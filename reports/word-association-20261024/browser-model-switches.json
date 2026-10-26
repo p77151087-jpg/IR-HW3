@@ -1,0 +1,22 @@
+[
+  {
+    "model": "CBOW · window 2",
+    "selected": true,
+    "visible_control": "- combobox \"Embedding 模型\" [active]: CBOW · window 2"
+  },
+  {
+    "model": "CBOW · window 5",
+    "selected": true,
+    "visible_control": "- combobox \"Embedding 模型\" [active]: CBOW · window 5"
+  },
+  {
+    "model": "Skip-Gram · window 2",
+    "selected": true,
+    "visible_control": "- combobox \"Embedding 模型\" [active]: Skip-Gram · window 2"
+  },
+  {
+    "model": "Skip-Gram · window 5",
+    "selected": true,
+    "visible_control": "- combobox \"Embedding 模型\" [active]: Skip-Gram · window 5"
+  }
+]

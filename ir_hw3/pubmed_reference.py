@@ -16,7 +16,8 @@ from .evaluation import fingerprint
 from .pubmed import parse_response, readable
 
 SOURCE = "pubmed_hybrid"
-RULE_PATH = ROOT / "data/reference_rules/pubmed-v1.json"
+LEGACY_RULE_PATH = ROOT / "data/reference_rules/pubmed-v1.json"
+RULE_PATH = ROOT / "data/reference_rules/pubmed-tfdf-v1.json"
 LIMITATIONS = [
     "Automatic metadata/lexical proxy labels; not human judgments or official PubMed query relevance.",
     "MeSH indexing may be automated; author keywords, substances and indexing coverage are incomplete and heterogeneous.",
@@ -133,6 +134,8 @@ def reference_judgments(engine, queries: list[dict], corpus_sha: str, metadata: 
     from .experiments import weak_judgments
     if set(metadata["documents"]) != set(engine.documents) or set(rules["queries"]) != {q["qid"] for q in queries}:
         raise ValueError("PubMed metadata／規則與語料或查詢 ID 不符。")
+    if rules.get("queries_sha256") and rules["queries_sha256"] != fingerprint(queries):
+        raise ValueError("PubMed 參考規則與查詢版本不符；相同 Q01 編號不能沿用不同查詢的標籤。")
     weak = weak_judgments(engine, queries, corpus_sha)
     result = {"schema_version": 1, "source": SOURCE, "corpus_sha256": corpus_sha,
               "queries_sha256": fingerprint(queries), "judgments": {}, "limitations": LIMITATIONS,
@@ -165,8 +168,9 @@ def reference_judgments(engine, queries: list[dict], corpus_sha: str, metadata: 
 
 
 def build_reference(engine, queries: list[dict], manifest: dict, snapshot: Path = SNAPSHOT) -> dict:
+    rule_path = RULE_PATH if any(q.get("design_version") == "tfdf-v1" for q in queries) else LEGACY_RULE_PATH
     return reference_judgments(engine, queries, manifest["sha256"],
-                               load_metadata(engine.documents, manifest, snapshot), load_rules())
+                               load_metadata(engine.documents, manifest, snapshot), load_rules(rule_path))
 
 
 def coverage_rows(judgments: dict) -> list[dict]:
