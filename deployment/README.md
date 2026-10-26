@@ -33,3 +33,5 @@
 - HW2 原始保護指紋：93 個檔案全部不變；本次未對 HW2 執行修改或部署。
 
 更新分支的實際指令：重建並核對清單後執行 `scripts/prepare_cloud_commit.py`（隔離 index、保留工作樹），再執行 `git push origin refs/heads/codex/streamlit-cloud`；不切換到精簡分支刪除本機歷史資料。
+
+- 乾淨部署包：僅複製 allowlist 與 manifest 到獨立暫存目錄，再執行完整 cloud_app 介面與後端保護檢查，全部通過；作業題目 PDF 亦已納入。路徑大小寫與常見憑證簽章掃描通過。

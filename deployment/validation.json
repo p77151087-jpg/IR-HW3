@@ -335,5 +335,20 @@
         "manifest_sha256": "bea8c01ed5e98973e5e6eb79d048ea3626d5f192cd6882ada5b9d553190f95fc"
       }
     ]
-  }
+  },
+  "isolated_allowlist_package_test": {
+    "status": "passed",
+    "entrypoint": "cloud_app.py",
+    "six_methods_top10": true,
+    "spelling_explicit_adoption": true,
+    "highlight_reader": true,
+    "four_models_neighbors_pairs_heatmaps_scatter": true,
+    "evaluation_saved_reports_downloads": true,
+    "blocked_backend_calls": 12,
+    "direct_write_blocked": true,
+    "protected_files_unchanged": 187,
+    "peak_working_set_mib_windows": 601.57
+  },
+  "path_case_check": "passed",
+  "credential_signature_scan": "passed (word-boundary-aware; public PubMed URL slug matches excluded)"
 }

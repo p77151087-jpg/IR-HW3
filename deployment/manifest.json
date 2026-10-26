@@ -578,13 +578,13 @@
     },
     {
       "path": "deployment/README.md",
-      "bytes": 4961,
-      "sha256": "dededc6befadc3a3152059ea31dc60f82e828df2f6a5517a7183e506c490c273"
+      "bytes": 5194,
+      "sha256": "f0a2a71c900a11af355b788d05c5371c75770740b4947d4d8d4aa3ac60bbc55c"
     },
     {
       "path": "deployment/validation.json",
-      "bytes": 11971,
-      "sha256": "00a85b6494336ef4017acc6ab718cf716c0f52301ed2748684529c398ff1b4c3"
+      "bytes": 12563,
+      "sha256": "c6cc9f3649d9ed4acccc044fa691acfdfb0bfa1dcbd163633d31f6557f789e93"
     },
     {
       "path": "docs/ANNOTATION_GUIDE.md",
@@ -605,6 +605,11 @@
       "path": "docs/HW3_REQUIREMENTS.md",
       "bytes": 6448,
       "sha256": "5f80cad762d78713178a923fb82e57d57c5353daeae270ebdd94affec1c04758"
+    },
+    {
+      "path": "docs/Homework-3.pdf",
+      "bytes": 260511,
+      "sha256": "4d06d4018ee0a4bfcdc40f33476f89e1d837cadf02ec62a0d892c0160ab00dc5"
     },
     {
       "path": "docs/PUBMED_REFERENCE.md",
@@ -1178,8 +1183,8 @@
     },
     {
       "path": "scripts/build_cloud_bundle.py",
-      "bytes": 4784,
-      "sha256": "1c3b1bae38a0ab690562cf47125224bec90f55a1bd45d19345f546edc29ba8db"
+      "bytes": 4821,
+      "sha256": "0466705e01964f3d8bfa967091d2fab35f0704316ec033e2148934549fa429b0"
     },
     {
       "path": "scripts/build_hw3_report.py",
@@ -1327,6 +1332,6 @@
       "sha256": "766fa0af0bc5c9cb2539221a025206c267d6429dc97bfe597197e987f85d2011"
     }
   ],
-  "total_bytes": 307515479,
-  "files_fingerprint_sha256": "d4e4bfb64675c9b776d24d19b0ee2f3b5a8cef47c3cb2fef2aea857ecaa8ccd4"
+  "total_bytes": 307776852,
+  "files_fingerprint_sha256": "12454131f12b4a5280503dc5243b22acfb8d21754d79d39f9472111acf7ab658"
 }

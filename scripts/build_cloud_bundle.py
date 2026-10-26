@@ -20,6 +20,7 @@ def selected_files():
     names = {"app.py", "cloud_app.py", "README.md", "AGENTS.md", ".gitignore", ".gitattributes",
              ".streamlit/config.toml", "requirements.txt", "requirements-lock.txt", "pyproject.toml",
              "start_hw3.cmd", "stop_background_hw3.cmd"}
+    names.add("docs/Homework-3.pdf")
     for folder, pattern in [("ir_hw1", "*.py"), ("ir_hw3", "*.py"), ("ir_hw3", "*.js"),
                             ("scripts", "*.py"), ("scripts", "*.ps1"), ("tests", "*.py"),
                             ("resources", "*.json"), ("docs", "*.md"), ("deployment", "*.md")]:
