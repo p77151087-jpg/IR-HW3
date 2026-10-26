@@ -4,7 +4,7 @@
 - Branch：`codex/streamlit-cloud`
 - Main file：`cloud_app.py`
 - Python：**3.12**（本機 3.12.14）
-- 網站：待實際部署與匿名驗證後填入；localhost 不是公開網址。
+- 網站：https://p77151087-ir-hw3.streamlit.app/ （使用者於 2026/10/27 提供部署網址與網站畫面；匿名操作及雲端日誌仍待獨立核對）
 
 部署分支採 `manifest.json` 的逐檔 allowlist，額外包含 manifest 本身；`main` 與既有歷史保留。原始語料、C 四模型 run 和保存評估的 manifest、原始副檔逐位元保留，不重訓、不刪除原 run 的 hash 項目。單檔必須小於 100 MiB。所有檔案透過 `.gitattributes` 禁止換行轉換，避免 Windows/Linux checkout 改變歷史 SHA256。
 
@@ -26,7 +26,7 @@
 - Python 3.12 x86_64 Linux binary wheels 與全相依已成功解析及下載；實際 Linux 執行仍須以 Community Cloud build/runtime logs 確認。本機 pip check 通過。
 - Git 診斷：實際根目錄為 IR-HW3，core.bare=false、無 GIT_DIR/GIT_WORK_TREE 污染、原始 main/remote 可正常讀取；不刪除 .git、不 force push。採隔離 index 建立展示分支，main、工作樹與歷史資料不因篩選而刪除。
 
-機器可讀證據見 validation.json；公開部署與匿名操作仍待確認。
+機器可讀證據見 validation.json；公開網址已由使用者提供；匿名操作與雲端日誌仍待獨立核對。
 
 - 獨立檢索數值：900,000 cosine 分數，最大誤差 1.11e-16；180,000 BM25 分數誤差 0。B/C/D × standard/smooth 六設定全部通過；文件 L2 等價及兩次實驗逐位元重現通過。驗證 run 與 verification.json 另存 tmp/cloud-validation/numeric，沒有覆寫 reports/verification.json 或舊 run。
 - 最終展示 AppTest 峰值 Windows working set：600.98 MiB（包含六方法、四模型、圖表與評估）；這是單程序本機測量，Linux 實際使用量待部署日誌確認。快取為共享模型/engine 加有限筆數的查詢快取，不產生全詞彙密集相似度矩陣。
@@ -35,3 +35,5 @@
 更新分支的實際指令：重建並核對清單後執行 `scripts/prepare_cloud_commit.py`（隔離 index、保留工作樹），再執行 `git push origin refs/heads/codex/streamlit-cloud`；不切換到精簡分支刪除本機歷史資料。
 
 - 乾淨部署包：僅複製 allowlist 與 manifest 到獨立暫存目錄，再執行完整 cloud_app 介面與後端保護檢查，全部通過；作業題目 PDF 亦已納入。路徑大小寫與常見憑證簽章掃描通過。
+
+2026/10/27：依使用者要求移除側欄「雲端展示版」提示框。cloud_app 介面煙霧測試通過，Top 10 正常；程序級展示模式與後端寫入拒絕持續啟用，demo_policy.py 未修改。

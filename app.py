@@ -691,8 +691,6 @@ try:
     with st.sidebar:
         st.markdown('<p class="eyebrow">BIOMEDICAL INFORMATION RETRIEVAL</p>', unsafe_allow_html=True)
         st.title("BioSearch · HW3")
-        if is_demo():
-            st.info("雲端展示版：搜尋、模型比較與下載；正式資料與成果唯讀。")
         page = st.radio("工作頁", ["語料與設定", "搜尋與排名", "方法比較", "效能評估", "Embedding／TF-IDF 詞彙關聯"], index=1)
         st.divider()
         st.caption("檢索固定設定：C 前處理（切詞＋移除停用詞）\n\nIDF：log10(N / DF)")

@@ -216,8 +216,9 @@
     "ir_hw3/embedding_training.py": "d53a4b63f70830c95ef39404d687aa4135961d0dcdc98ed340c1f35be6c45ce8"
   },
   "cloud_deployment": {
-    "status": "pending",
-    "public_url": null
+    "status": "user_reported_live",
+    "public_url": "https://p77151087-ir-hw3.streamlit.app/",
+    "independent_cloud_ui_verification": null
   },
   "numeric_validation": {
     "logarithm_base": 10,
@@ -350,5 +351,13 @@
     "peak_working_set_mib_windows": 601.57
   },
   "path_case_check": "passed",
-  "credential_signature_scan": "passed (word-boundary-aware; public PubMed URL slug matches excluded)"
+  "credential_signature_scan": "passed (word-boundary-aware; public PubMed URL slug matches excluded)",
+  "banner_update_20261027": {
+    "banner_removed": true,
+    "cloud_read_only_enabled": true,
+    "backend_write_blocked": true,
+    "top10_rendered": true,
+    "app_sha256": "2e4e201e792ff0df6e1fa668faeadf668fd25ca049fe322f1df51a451e09a8cd",
+    "policy_sha256": "af941e26f230f9b5a35bc9158309c6242c2c45ee795a243107007b7aae74c2fa"
+  }
 }

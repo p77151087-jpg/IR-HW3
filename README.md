@@ -2,7 +2,7 @@
 
 ## Streamlit Community Cloud 展示版
 
-儲存庫：[p77151087-jpg/IR-HW3](https://github.com/p77151087-jpg/IR-HW3)。部署分支 `codex/streamlit-cloud`，入口 `cloud_app.py`，Python **3.12**。公開網站尚待部署成功後填入；目前 localhost 只供本機使用。
+公開網站：[BioSearch · HW3](https://p77151087-ir-hw3.streamlit.app/)。儲存庫：[p77151087-jpg/IR-HW3](https://github.com/p77151087-jpg/IR-HW3)。部署分支 `codex/streamlit-cloud`，入口 `cloud_app.py`，Python **3.12**。2026/10/27 移除側欄展示版提示框，後端唯讀保護持續啟用。
 
 展示版保留六方法 Top 10／分數、明確採用的拼字候選、原始摘要／命中高亮／計分說明、四模型近鄰與詞對比較、熱圖／散點／整體分析，以及已保存的評估圖表和報告下載。雲端後端拒絕訓練、語料擴充／下載、標註儲存／匯入與實驗保存；互動評估只在記憶體計算。C 前處理、公式、模型與歷史成果不變。本機 `app.py` 保留原功能，`start_hw3.cmd` 繼續使用 localhost:8503。
 
