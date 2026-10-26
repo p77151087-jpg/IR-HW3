@@ -1,0 +1,2 @@
+# Hash-bound snapshots and historical artifacts must keep their exact bytes.
+* -text whitespace=cr-at-eol

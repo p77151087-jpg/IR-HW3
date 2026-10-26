@@ -1,6 +1,0 @@
-{
-  "queries_sha256": "9bd41035cfb0944ee65171f47575454433befb0a433866765b09dd12a5dd7c6d",
-  "queries_file_sha256": "6cdfbf07b76973a416ac7ae724e90327f018ffabb04d4a7478334a3c413c0ed4",
-  "reference_rules_file_sha256": "35d110bce39b52a24a3e2804ba16ad67c43261eaae217f99e710dc82964d7b1c",
-  "description": "Prior biomedical-intent Q01-Q10 preserved before TF/DF query replacement."
-}

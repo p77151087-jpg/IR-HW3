@@ -9,6 +9,4 @@ font = "sans serif"
 gatherUsageStats = false
 
 [server]
-address = "127.0.0.1"
-port = 8503
 headless = true

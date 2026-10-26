@@ -327,7 +327,13 @@ def association_page(root, expected_corpus):
     st.caption("這裡比較詞與詞的關聯，與文件搜尋排名及檢索評估分開。")
     st.caption("本頁統一採 C 前處理：切詞＋移除停用詞。TF-IDF 與四組 Embedding 都由去停用詞後的摘要重新建立。")
     available = []
-    for path in sorted((root / "reports/word_association/runs").glob("*/manifest.json"), reverse=True):
+    from .demo_policy import is_demo
+    if is_demo():
+        from .cloud_results import ASSOCIATION_RUN
+        candidates = [root / ASSOCIATION_RUN / "manifest.json"]
+    else:
+        candidates = sorted((root / "reports/word_association/runs").glob("*/manifest.json"), reverse=True)
+    for path in candidates:
         manifest = json.loads(path.read_text(encoding="utf-8"))
         if (manifest.get("status") == "complete" and manifest.get("version") == VERSION
                 and manifest.get("corpus_sha256") == expected_corpus
@@ -335,6 +341,8 @@ def association_page(root, expected_corpus):
                 and manifest.get("tokenizer", {}).get("keep_stopwords") is False):
             available.append(path.parent)
     if not available:
+        if is_demo():
+            raise ValueError("缺少指定的完整 C 詞彙模型；展示版不會訓練或下載。")
         st.warning("尚無這批 3,000 篇的完整 C 詞彙關聯成果。完成訓練與輸出後才會顯示。")
         st.code(r".\.venv\Scripts\python.exe -B -X utf8 -m ir_hw3.embedding_training", language="powershell")
         return

@@ -17,6 +17,7 @@ from ir_hw3.experiments import candidate_pool, run_experiment, weak_judgments
 from ir_hw3.pubmed_reference import build_reference, concept_groups, coverage_rows, load_rules
 from ir_hw3.query_design import design_markdown, load_design
 from ir_hw3.result_views import ranking_details, ranking_overview, overview_html, top10_changes, normalization_comparison
+from ir_hw3.demo_policy import is_demo
 
 REFERENCE_LABEL = "PubMed 主題參考＋弱規則回退"
 SOURCE_LABELS = {"人工標註": "human", REFERENCE_LABEL: "pubmed_hybrid", "規則弱標籤（示範）": "weak_rules"}
@@ -671,7 +672,7 @@ def evaluation_page(engine, queries, manifest, signature):
         if result.get("key") == state_key:
             downloads(result["summary"], "下載平均指標", "metrics-summary.csv")
             downloads(result["detail"], "下載逐查詢指標", "metrics-per-query.csv")
-        if st.button("匯出這組設定的完整實驗與 RQ 解讀"):
+        if not is_demo() and st.button("匯出這組設定的完整實驗與 RQ 解讀"):
             try:
                 with st.spinner("保存排名、指標、正規化檢查與來源雜湊…"):
                     exported = run_experiment(engine, manifest, judgments=judgments, k=k)
@@ -690,6 +691,8 @@ try:
     with st.sidebar:
         st.markdown('<p class="eyebrow">BIOMEDICAL INFORMATION RETRIEVAL</p>', unsafe_allow_html=True)
         st.title("BioSearch · HW3")
+        if is_demo():
+            st.info("雲端展示版：搜尋、模型比較與下載；正式資料與成果唯讀。")
         page = st.radio("工作頁", ["語料與設定", "搜尋與排名", "方法比較", "效能評估", "Embedding／TF-IDF 詞彙關聯"], index=1)
         st.divider()
         st.caption("檢索固定設定：C 前處理（切詞＋移除停用詞）\n\nIDF：log10(N / DF)")
@@ -710,6 +713,9 @@ try:
         association_page(ROOT, manifest["sha256"])
     else:
         evaluation_page(engine, queries, manifest, signature)
+        if is_demo():
+            from ir_hw3.cloud_results import saved_results
+            saved_results()
     all_drafts = {version: rows for version, rows in st.session_state.get("annotation_drafts", {}).items() if rows}
     if all_drafts:
         with st.sidebar:

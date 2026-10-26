@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="5.434" timestamp="2026-10-26T17:30:19.418957+08:00" hostname="MSI"><testcase classname="tests.test_app" name="test_comparison_shows_raw_dot_and_cosine_from_the_same_query_and_weights" time="4.823" /></testsuite></testsuites>

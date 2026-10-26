@@ -1,5 +1,13 @@
 # BioSearch · IR-HW3
 
+## Streamlit Community Cloud 展示版
+
+儲存庫：[p77151087-jpg/IR-HW3](https://github.com/p77151087-jpg/IR-HW3)。部署分支 `codex/streamlit-cloud`，入口 `cloud_app.py`，Python **3.12**。公開網站尚待部署成功後填入；目前 localhost 只供本機使用。
+
+展示版保留六方法 Top 10／分數、明確採用的拼字候選、原始摘要／命中高亮／計分說明、四模型近鄰與詞對比較、熱圖／散點／整體分析，以及已保存的評估圖表和報告下載。雲端後端拒絕訓練、語料擴充／下載、標註儲存／匯入與實驗保存；互動評估只在記憶體計算。C 前處理、公式、模型與歷史成果不變。本機 `app.py` 保留原功能，`start_hw3.cmd` 繼續使用 localhost:8503。
+
+部署清單、逐檔 SHA256、Linux 環境設定、更新方式與驗證狀態見 [deployment/README.md](deployment/README.md)。依 `requirements.txt` 安裝 Linux 套件，不搬移 Windows 虛擬環境；平台管理 address/port。更新展示分支前必須重建部署清單、核對完整模型與副檔、驗證展示版，再推送指定分支。原始實驗紀錄不改寫。
+
 本專案獨立位於 `C:\成大專案\IR-HW3`。目前使用 **3,000 篇 GLP-1 英文 PubMed 摘要**：完整保留原 1,000 篇快照，依相同搜尋條件增加 2,000 篇。沿用原始 tokenizer 與五方法檢索／評估，另依使用者要求加入第六種 BM25。HW2 的程式、資料、模型與環境未修改。繳交日期：2026/10/27。
 
 ## 目前十個預設查詢：TF/DF 四類＋六種搭配
