@@ -27,3 +27,9 @@
 - Git 診斷：實際根目錄為 IR-HW3，core.bare=false、無 GIT_DIR/GIT_WORK_TREE 污染、原始 main/remote 可正常讀取；不刪除 .git、不 force push。採隔離 index 建立展示分支，main、工作樹與歷史資料不因篩選而刪除。
 
 機器可讀證據見 validation.json；公開部署與匿名操作仍待確認。
+
+- 獨立檢索數值：900,000 cosine 分數，最大誤差 1.11e-16；180,000 BM25 分數誤差 0。B/C/D × standard/smooth 六設定全部通過；文件 L2 等價及兩次實驗逐位元重現通過。驗證 run 與 verification.json 另存 tmp/cloud-validation/numeric，沒有覆寫 reports/verification.json 或舊 run。
+- 最終展示 AppTest 峰值 Windows working set：600.98 MiB（包含六方法、四模型、圖表與評估）；這是單程序本機測量，Linux 實際使用量待部署日誌確認。快取為共享模型/engine 加有限筆數的查詢快取，不產生全詞彙密集相似度矩陣。
+- HW2 原始保護指紋：93 個檔案全部不變；本次未對 HW2 執行修改或部署。
+
+更新分支的實際指令：重建並核對清單後執行 `scripts/prepare_cloud_commit.py`（隔離 index、保留工作樹），再執行 `git push origin refs/heads/codex/streamlit-cloud`；不切換到精簡分支刪除本機歷史資料。

@@ -578,13 +578,13 @@
     },
     {
       "path": "deployment/README.md",
-      "bytes": 3990,
-      "sha256": "fa5b0c672184a03be54001d3857f9be311b796523765d3675b3a9e9fd64d4a63"
+      "bytes": 4961,
+      "sha256": "dededc6befadc3a3152059ea31dc60f82e828df2f6a5517a7183e506c490c273"
     },
     {
       "path": "deployment/validation.json",
-      "bytes": 8296,
-      "sha256": "a7952a8e6e49a886a19f4d4c9d4694fc032d4ff11f6575918f6c83d82257f71c"
+      "bytes": 11971,
+      "sha256": "00a85b6494336ef4017acc6ab718cf716c0f52301ed2748684529c398ff1b4c3"
     },
     {
       "path": "docs/ANNOTATION_GUIDE.md",
@@ -1327,6 +1327,6 @@
       "sha256": "766fa0af0bc5c9cb2539221a025206c267d6429dc97bfe597197e987f85d2011"
     }
   ],
-  "total_bytes": 307510833,
-  "files_fingerprint_sha256": "3684737deb55090a070e91f51093f0e5738c0e69b180ed28611fcd967196330b"
+  "total_bytes": 307515479,
+  "files_fingerprint_sha256": "d4e4bfb64675c9b776d24d19b0ee2f3b5a8cef47c3cb2fef2aea857ecaa8ccd4"
 }

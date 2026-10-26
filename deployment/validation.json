@@ -132,15 +132,17 @@
     "validated_at_utc": "2026-10-26T15:45:41.633186+00:00"
   },
   "cloud_entry_test": {
-    "passed": true,
+    "status": "passed",
+    "entrypoint": "cloud_app.py",
     "six_methods_top10": true,
     "spelling_explicit_adoption": true,
-    "highlights": true,
+    "highlight_reader": true,
     "four_models_neighbors_pairs_heatmaps_scatter": true,
-    "evaluation_and_downloads": true,
+    "evaluation_saved_reports_downloads": true,
     "blocked_backend_calls": 12,
     "direct_write_blocked": true,
-    "protected_files_unchanged": 190
+    "protected_files_unchanged": 190,
+    "peak_working_set_mib_windows": 600.98
   },
   "linux_python312_wheels": {
     "resolved": true,
@@ -216,5 +218,122 @@
   "cloud_deployment": {
     "status": "pending",
     "public_url": null
+  },
+  "numeric_validation": {
+    "logarithm_base": 10,
+    "weighting_version": "log10-v1",
+    "documents": 3000,
+    "queries": 10,
+    "methods": 6,
+    "independent_cosine_scores_checked": 900000,
+    "maximum_cosine_error": 1.1102230246251565e-16,
+    "independent_bm25_scores_checked": 180000,
+    "maximum_bm25_error": 0.0,
+    "bm25_parameters": {
+      "version": "bm25-log10-v1",
+      "k1": 1.2,
+      "b": 0.75,
+      "logarithm_base": 10,
+      "idf": "log10(1 + (N - DF + 0.5) / (DF + 0.5))",
+      "query_tf": "linear actual count; no k3 saturation",
+      "length": "post-preprocessing abstract tokens; avgdl includes all N documents"
+    },
+    "normalization_methods": [
+      "tf",
+      "log_tf",
+      "idf",
+      "tfidf",
+      "log_tfidf"
+    ],
+    "normalization_scope": "documents_only",
+    "query_normalization": "none; unchanged query weights; original query norm remains in cosine denominator",
+    "normalization_evaluated": 50,
+    "normalization_skipped_zero_results": 0,
+    "settings_checked": [
+      {
+        "condition": "B",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "B",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "C",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "C",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "D",
+        "idf": "standard",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      },
+      {
+        "condition": "D",
+        "idf": "smooth",
+        "scores_checked": 150000,
+        "maximum_cosine_error": 1.1102230246251565e-16,
+        "bm25_scores_checked": 30000,
+        "maximum_bm25_error": 0.0
+      }
+    ],
+    "repeatability": {
+      "metrics_per_query.csv": true,
+      "metrics_summary.csv": true,
+      "query_status.csv": true,
+      "rankings.csv": true,
+      "normalization.csv": true,
+      "annotation_pool.csv": true,
+      "term_statistics.csv": true,
+      "judgments.json": true,
+      "queries.json": true,
+      "RQ_DISCUSSION.md": true,
+      "query_design.json": true
+    },
+    "normalization_passed": true,
+    "hw2_source": {
+      "checked": 93,
+      "changed": [],
+      "source_available": true
+    },
+    "judgment_source": "weak_rules",
+    "settings": {
+      "condition": "C",
+      "idf": "standard"
+    },
+    "runs": [
+      {
+        "output": "C:\\成大專案\\IR-HW3\\tmp\\cloud-validation\\numeric\\first",
+        "run_id": "20261026T155044.481215Z-4cd4d44d",
+        "manifest_sha256": "5e8c6141cdd6cfdd378dcee68a87b7d8854ebaff2b3861d5b5fb3eceb1facb5b"
+      },
+      {
+        "output": "C:\\成大專案\\IR-HW3\\tmp\\cloud-validation\\numeric\\second",
+        "run_id": "20261026T155048.337625Z-dccf6656",
+        "manifest_sha256": "bea8c01ed5e98973e5e6eb79d048ea3626d5f192cd6882ada5b9d553190f95fc"
+      }
+    ]
   }
 }
