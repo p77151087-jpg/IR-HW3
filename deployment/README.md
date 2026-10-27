@@ -4,7 +4,7 @@
 - Branch：`codex/streamlit-cloud`
 - Main file：`cloud_app.py`
 - Python：**3.12**（本機 3.12.14）
-- 網站：https://p77151087-ir-hw3.streamlit.app/ （使用者於 2026/10/27 提供部署網址與網站畫面；匿名操作及雲端日誌仍待獨立核對）
+- 網站：https://p77151087-ir-hw3.streamlit.app/ （2026/10/27 已核對新版線上功能、啟動日誌與匿名 HTTP 存取）
 
 部署分支採 `manifest.json` 的逐檔 allowlist，額外包含 manifest 本身；`main` 與既有歷史保留。原始語料、C 四模型 run 和保存評估的 manifest、原始副檔逐位元保留，不重訓、不刪除原 run 的 hash 項目。單檔必須小於 100 MiB。所有檔案透過 `.gitattributes` 禁止換行轉換，避免 Windows/Linux checkout 改變歷史 SHA256。
 
@@ -26,7 +26,7 @@
 - Python 3.12 x86_64 Linux binary wheels 與全相依已成功解析及下載；實際 Linux 執行仍須以 Community Cloud build/runtime logs 確認。本機 pip check 通過。
 - Git 診斷：實際根目錄為 IR-HW3，core.bare=false、無 GIT_DIR/GIT_WORK_TREE 污染、原始 main/remote 可正常讀取；不刪除 .git、不 force push。採隔離 index 建立展示分支，main、工作樹與歷史資料不因篩選而刪除。
 
-機器可讀證據見 validation.json；公開網址已由使用者提供；匿名操作與雲端日誌仍待獨立核對。
+機器可讀證據見 validation.json；公開網址已由使用者提供；此次更新的線上驗證結果見下方重新部署紀錄。
 
 - 獨立檢索數值：900,000 cosine 分數，最大誤差 1.11e-16；180,000 BM25 分數誤差 0。B/C/D × standard/smooth 六設定全部通過；文件 L2 等價及兩次實驗逐位元重現通過。驗證 run 與 verification.json 另存 tmp/cloud-validation/numeric，沒有覆寫 reports/verification.json 或舊 run。
 - 最終展示 AppTest 峰值 Windows working set：600.98 MiB（包含六方法、四模型、圖表與評估）；這是單程序本機測量，Linux 實際使用量待部署日誌確認。快取為共享模型/engine 加有限筆數的查詢快取，不產生全詞彙密集相似度矩陣。
@@ -44,6 +44,6 @@
 
 部署前完整測試 264 passed；PCA、t-SNE 各驗證 16 詞對案例、32 個空間投影及重現性，原始 cosine 最大誤差 4.44e-16。cloud_app 通過六方法、四模型、PCA／t-SNE、perplexity、讀圖說明及 12 個後端拒寫入口；190 個受保護檔案指紋未變，Windows 峰值 working set 614.18 MiB。新增兩個相依的 Python 3.12 Linux wheels 可取得，pip check 通過。驗證摘要保存於 validation.json 的 redeploy_20261027；完整輸出另存 tmp/redeploy-20261027。
 
-推送後須在原公開網址確認「比較兩個詞」的 PCA／t-SNE 選項與讀圖說明，並查看 Community Cloud 新相依安裝及啟動日誌。
+已在原公開網址確認「比較兩個詞」的 PCA／t-SNE、perplexity 5→3 及讀圖說明；原始 cosine 保持不變。Cloud 日誌確認 scikit-learn 1.9.1／threadpoolctl 3.7.0 安裝成功，Python 3.12.15、Uvicorn 正常啟動。全新的匿名 HTTP 工作階段（未提供開發者憑證）開啟首頁及實際 App 路徑均為 200。此次實際部署功能提交為 49c24c9；後續文件驗證提交不變更功能。
 
 乾淨部署包驗證通過：只包含 allowlist 的 269 個檔案（含 manifest），六方法、四模型、PCA／t-SNE 與唯讀後端均正常；187 個已發布的受保護資料／模型檔案 hash 不變，未發布人工草稿。

@@ -216,9 +216,11 @@
     "ir_hw3/embedding_training.py": "d53a4b63f70830c95ef39404d687aa4135961d0dcdc98ed340c1f35be6c45ce8"
   },
   "cloud_deployment": {
-    "status": "user_reported_live",
+    "status": "live_verified",
     "public_url": "https://p77151087-ir-hw3.streamlit.app/",
-    "independent_cloud_ui_verification": null
+    "code_commit": "49c24c950e87186d151f400c07787ccd2291bce2",
+    "independent_cloud_ui_verification": true,
+    "anonymous_http_without_developer_credentials": true
   },
   "numeric_validation": {
     "logarithm_base": 10,
@@ -462,6 +464,42 @@
       "direct_write_blocked": true,
       "protected_files_unchanged": 187,
       "peak_working_set_mib_windows": 610.98
+    },
+    "cloud_runtime_verification": {
+      "status": "passed",
+      "date_local": "2026-10-27",
+      "code_commit": "49c24c950e87186d151f400c07787ccd2291bce2",
+      "url": "https://p77151087-ir-hw3.streamlit.app/",
+      "python_runtime": "3.12.15",
+      "linux_new_dependencies_installed": {
+        "scikit-learn": "1.9.1",
+        "threadpoolctl": "3.7.0"
+      },
+      "ui_checks": {
+        "homepage_top10": true,
+        "pca": true,
+        "tsne": true,
+        "perplexity_5_to_3": true,
+        "reading_guide": true,
+        "original_cosine_unchanged": true,
+        "banner_absent": true
+      },
+      "anonymous_http": [
+        {
+          "status": 200,
+          "final_host": "p77151087-ir-hw3.streamlit.app",
+          "final_path": "/",
+          "developer_credentials_supplied": false,
+          "html_received": true
+        },
+        {
+          "status": 200,
+          "final_host": "p77151087-ir-hw3.streamlit.app",
+          "final_path": "/~/+/",
+          "developer_credentials_supplied": false,
+          "html_received": true
+        }
+      ]
     }
   }
 }
