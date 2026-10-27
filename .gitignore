@@ -3,3 +3,11 @@ __pycache__/
 *.pyc
 .pytest_cache/
 tmp/
+.env
+.env.*
+.streamlit/secrets.toml
+*.log
+data/judgments/
+output/
+# Deployment branch tracks only the explicit allowlist; local archives stay here.
+reports/

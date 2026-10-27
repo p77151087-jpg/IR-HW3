@@ -104,14 +104,14 @@
   },
   "runs": [
     {
-      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261026T104959.098041Z-9465667d",
-      "run_id": "20261026T104959.098041Z-9465667d",
-      "manifest_sha256": "97c443cec0d882fe0237730b815cb27fc09dba706821571488b57a5b408e92bf"
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261027T033916.348986Z-60b444ce",
+      "run_id": "20261027T033916.348986Z-60b444ce",
+      "manifest_sha256": "1a0949ef398893fbb0276ca84a42e5a664f39e6de8927c1f55599f80b4ae6ed4"
     },
     {
-      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261026T105002.926949Z-e9ab4245",
-      "run_id": "20261026T105002.926949Z-e9ab4245",
-      "manifest_sha256": "c75aee84a41e8f19b9701f66d2509382e241104cf1311155f11d39f6f0911ef2"
+      "output": "C:\\成大專案\\IR-HW3\\reports\\weak_rules\\runs\\20261027T033920.559169Z-4b343d43",
+      "run_id": "20261027T033920.559169Z-4b343d43",
+      "manifest_sha256": "a66351d09678a53c56d9ad8ab5c8aab38c789d8e57a1959993c418c6efc2e77a"
     }
   ]
 }
