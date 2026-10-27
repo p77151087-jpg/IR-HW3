@@ -59,6 +59,19 @@ def main():
         assert len([frame for frame in app.dataframe if "關係" in frame.value.columns]) == 2
     widget(app, "button", "比較詞對").click().run()
     healthy(app)
+    pair_scores = next(frame.value.copy() for frame in app.dataframe if "cosine_display" in frame.value.columns)
+    def projection_html():
+        return [item.proto.srcdoc for item in app.get("iframe") if 'viewBox="0 0 520 520"' in item.proto.srcdoc]
+    assert len(projection_html()) == 2 and all("主成分 1" in html for html in projection_html())
+    assert any("PCA、t-SNE 與 X／Y 怎麼看？" in item.value for item in app.tabs[1].markdown)
+    widget(app, "radio", "XY 降維方式").set_value("tsne").run()
+    healthy(app)
+    assert len(projection_html()) == 2 and all("t-SNE 維度 1" in html for html in projection_html())
+    widget(app, "selectbox", "鄰近範圍（perplexity）").set_value(3).run()
+    healthy(app)
+    assert next(frame.value for frame in app.dataframe if "cosine_display" in frame.value.columns).equals(pair_scores)
+    widget(app, "radio", "XY 降維方式").set_value("pca").run()
+    healthy(app)
     assert len(app.get("download_button")) >= 6
     # Exercise backend functions directly, without their UI and with invalid args:
     # policy must reject them before validating inputs or touching the filesystem.
@@ -104,6 +117,7 @@ def main():
     print(json.dumps({"status": "passed", "entrypoint": "cloud_app.py", "six_methods_top10": True,
                       "spelling_explicit_adoption": True, "highlight_reader": True,
                       "four_models_neighbors_pairs_heatmaps_scatter": True,
+                      "pca_tsne_switch_perplexity_reading_guide_scores_unchanged": True,
                       "evaluation_saved_reports_downloads": True, "blocked_backend_calls": len(blocked),
                       "direct_write_blocked": True, "protected_files_unchanged": len(before),
                       "peak_working_set_mib_windows": peak_mib}, ensure_ascii=False))

@@ -359,5 +359,109 @@
     "top10_rendered": true,
     "app_sha256": "2e4e201e792ff0df6e1fa668faeadf668fd25ca049fe322f1df51a451e09a8cd",
     "policy_sha256": "af941e26f230f9b5a35bc9158309c6242c2c45ee795a243107007b7aae74c2fa"
+  },
+  "redeploy_20261027": {
+    "source_main_commit": "fbc13eb18dd9e570060e6b97ed1c426487b09ca8",
+    "local_full_tests": {
+      "tests": 264,
+      "failures": 0,
+      "errors": 0
+    },
+    "cloud_entry_test": {
+      "status": "passed",
+      "entrypoint": "cloud_app.py",
+      "six_methods_top10": true,
+      "spelling_explicit_adoption": true,
+      "highlight_reader": true,
+      "four_models_neighbors_pairs_heatmaps_scatter": true,
+      "pca_tsne_switch_perplexity_reading_guide_scores_unchanged": true,
+      "evaluation_saved_reports_downloads": true,
+      "blocked_backend_calls": 12,
+      "direct_write_blocked": true,
+      "protected_files_unchanged": 190,
+      "peak_working_set_mib_windows": 614.18
+    },
+    "new_linux_wheels": [
+      "scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "threadpoolctl-3.7.0-py3-none-any.whl"
+    ],
+    "projection_validation": {
+      "pca": {
+        "status": "passed",
+        "manifest_sha256": "0e51c3616b9783f0dcb9a6ab532e257d9340b432ae128abf378315b7129ccad8",
+        "corpus_sha256": "1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7",
+        "model_pair_cases": 16,
+        "space_projections_checked": 32,
+        "projection": "pca",
+        "perplexity": null,
+        "repeat_exact": true,
+        "maximum_errors": {
+          "geometry": 8.215650382226158e-15,
+          "cosine": 4.440892098500626e-16,
+          "variance": 4.440892098500626e-16,
+          "affinity": 0.0,
+          "kl_objective": 0.0
+        },
+        "sources_sha256": {
+          "ir_hw3/association_projection.py": "79413b9f787ba34b7cb576a2a9d3697015b9fd230f55d0c16d9f4b3c60df1e73",
+          "ir_hw3/association_ui.py": "d6b067e1c7547977f89fd019ebf79051efde2b3475e2c09332fd8d2207a7ab71",
+          "ir_hw3/word_association.py": "c3b100dcb1cb8e6c25d7c7b55ce9687bc06061099fc240e836dc4b91cbe26aa8",
+          "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+          "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+          "scripts/verify_association_projection.py": "38745eb8148048301740f05feac75170459413d5eb97f39b945de27eb38bc789",
+          "requirements.txt": "f4a6f2a65f180b7197efcd4b69d4c433a567a03f1fb08467631c8556059e11a5",
+          "requirements-lock.txt": "02e94763aecca2c53469262e6d7d562bb3b312fe1c6dae95f7b52b53cf79c8eb"
+        }
+      },
+      "tsne": {
+        "status": "passed",
+        "manifest_sha256": "0e51c3616b9783f0dcb9a6ab532e257d9340b432ae128abf378315b7129ccad8",
+        "corpus_sha256": "1166fc12efdabe5e9713e816d47e244b0b51ab19d7ba677f602d26c722f0f4c7",
+        "model_pair_cases": 16,
+        "space_projections_checked": 32,
+        "projection": "tsne",
+        "perplexity": 5.0,
+        "repeat_exact": true,
+        "maximum_errors": {
+          "geometry": 0.0,
+          "cosine": 4.440892098500626e-16,
+          "variance": 0.0,
+          "affinity": 1.3877787807814457e-17,
+          "kl_objective": 3.885780586188048e-16
+        },
+        "sources_sha256": {
+          "ir_hw3/association_projection.py": "79413b9f787ba34b7cb576a2a9d3697015b9fd230f55d0c16d9f4b3c60df1e73",
+          "ir_hw3/association_ui.py": "d6b067e1c7547977f89fd019ebf79051efde2b3475e2c09332fd8d2207a7ab71",
+          "ir_hw3/word_association.py": "c3b100dcb1cb8e6c25d7c7b55ce9687bc06061099fc240e836dc4b91cbe26aa8",
+          "ir_hw3/core.py": "6ec1bc0f2ee9935008e50b2682e6906e5cd5b359fac0e296021137a3d2c24e9a",
+          "resources/stopwords.json": "d907482b2aabc0443ae05c95e0c9685ef6f8ff8789370a34c004a498d1abc406",
+          "scripts/verify_association_projection.py": "38745eb8148048301740f05feac75170459413d5eb97f39b945de27eb38bc789",
+          "requirements.txt": "f4a6f2a65f180b7197efcd4b69d4c433a567a03f1fb08467631c8556059e11a5",
+          "requirements-lock.txt": "02e94763aecca2c53469262e6d7d562bb3b312fe1c6dae95f7b52b53cf79c8eb"
+        }
+      }
+    },
+    "source_sha256": {
+      "ir_hw3/association_projection.py": "79413b9f787ba34b7cb576a2a9d3697015b9fd230f55d0c16d9f4b3c60df1e73",
+      "ir_hw3/association_ui.py": "d6b067e1c7547977f89fd019ebf79051efde2b3475e2c09332fd8d2207a7ab71",
+      "requirements.txt": "f4a6f2a65f180b7197efcd4b69d4c433a567a03f1fb08467631c8556059e11a5",
+      "scripts/verify_cloud.py": "c4f802e00d1956d0ffc822d1dc39a2d87ea21ffa4563d89a774fdc200fcd5611",
+      "cloud_app.py": "8d9a5a27233fedd5724a9273fa5af05d999e68ac0f0b6bd8dea172f3ac82525f",
+      "ir_hw3/demo_policy.py": "af941e26f230f9b5a35bc9158309c6242c2c45ee795a243107007b7aae74c2fa"
+    },
+    "isolated_package_test": {
+      "status": "passed",
+      "entrypoint": "cloud_app.py",
+      "six_methods_top10": true,
+      "spelling_explicit_adoption": true,
+      "highlight_reader": true,
+      "four_models_neighbors_pairs_heatmaps_scatter": true,
+      "pca_tsne_switch_perplexity_reading_guide_scores_unchanged": true,
+      "evaluation_saved_reports_downloads": true,
+      "blocked_backend_calls": 12,
+      "direct_write_blocked": true,
+      "protected_files_unchanged": 187,
+      "peak_working_set_mib_windows": 610.98
+    }
   }
 }

@@ -37,3 +37,13 @@
 - 乾淨部署包：僅複製 allowlist 與 manifest 到獨立暫存目錄，再執行完整 cloud_app 介面與後端保護檢查，全部通過；作業題目 PDF 亦已納入。路徑大小寫與常見憑證簽章掃描通過。
 
 2026/10/27：依使用者要求移除側欄「雲端展示版」提示框。cloud_app 介面煙霧測試通過，Top 10 正常；程序級展示模式與後端寫入拒絕持續啟用，demo_policy.py 未修改。
+
+## 2026/10/27 重新部署：PCA／t-SNE 詞對投影
+
+來源為 main `fbc13eb`。同步詞對 PCA／t-SNE、perplexity 切換、中文讀圖說明，以及 scikit-learn 1.9.1／threadpoolctl 3.7.0；Python 維持 3.12。原始 C 模型、語料、檢索及評估公式、已保存報告未修改，側欄提示框持續移除。
+
+部署前完整測試 264 passed；PCA、t-SNE 各驗證 16 詞對案例、32 個空間投影及重現性，原始 cosine 最大誤差 4.44e-16。cloud_app 通過六方法、四模型、PCA／t-SNE、perplexity、讀圖說明及 12 個後端拒寫入口；190 個受保護檔案指紋未變，Windows 峰值 working set 614.18 MiB。新增兩個相依的 Python 3.12 Linux wheels 可取得，pip check 通過。驗證摘要保存於 validation.json 的 redeploy_20261027；完整輸出另存 tmp/redeploy-20261027。
+
+推送後須在原公開網址確認「比較兩個詞」的 PCA／t-SNE 選項與讀圖說明，並查看 Community Cloud 新相依安裝及啟動日誌。
+
+乾淨部署包驗證通過：只包含 allowlist 的 269 個檔案（含 manifest），六方法、四模型、PCA／t-SNE 與唯讀後端均正常；187 個已發布的受保護資料／模型檔案 hash 不變，未發布人工草稿。

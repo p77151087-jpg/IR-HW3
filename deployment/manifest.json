@@ -28,8 +28,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 36595,
-      "sha256": "81e37589c2be47515bd83e53e5af3f3d7fecc1b45aae41d1113361030e32745d"
+      "bytes": 38407,
+      "sha256": "ad8028e451a5039b8638a5f2fb48a94ca411ef90e3e191af51c2d26c6754b78a"
     },
     {
       "path": "app.py",
@@ -578,13 +578,13 @@
     },
     {
       "path": "deployment/README.md",
-      "bytes": 5529,
-      "sha256": "506bcce3c88ce2909b49663a89b17601ba4e3b4ad8c133db85da5458143abe95"
+      "bytes": 6777,
+      "sha256": "93c1ba3a10a50c8953e52b102817642221190ce5d9008a157f71896283721057"
     },
     {
       "path": "deployment/validation.json",
-      "bytes": 12995,
-      "sha256": "8313224f271c66306062d3ebc2571c5531699e157a166c68370043c6db24a6d4"
+      "bytes": 18141,
+      "sha256": "495500b5e1e27632410105b144aff8fe3011a23217ac396d0ab27483dbca8c11"
     },
     {
       "path": "docs/ANNOTATION_GUIDE.md",
@@ -623,8 +623,8 @@
     },
     {
       "path": "docs/WORD_ASSOCIATION.md",
-      "bytes": 12072,
-      "sha256": "d952de760841e857e5c3ccc4cd7d1a13beb8eed0209b3cc5ff5d356884942b33"
+      "bytes": 18660,
+      "sha256": "153ff6dfeed1c79540e1ce165ebf4dfaac72b43b9eb44ff9970b1f92907a7976"
     },
     {
       "path": "ir_hw1/__init__.py",
@@ -652,6 +652,11 @@
       "sha256": "448b4c4139b3a5c5fa12ea1d6bf02e504a471ea133ccc069907832f227e8d81f"
     },
     {
+      "path": "ir_hw3/association_projection.py",
+      "bytes": 9522,
+      "sha256": "79413b9f787ba34b7cb576a2a9d3697015b9fd230f55d0c16d9f4b3c60df1e73"
+    },
+    {
       "path": "ir_hw3/association_report.py",
       "bytes": 13121,
       "sha256": "001cf21045a4430f5da47514ac6294b38a1bbcf6ed966ecfd99bc92bd0861ad7"
@@ -663,8 +668,8 @@
     },
     {
       "path": "ir_hw3/association_ui.py",
-      "bytes": 28321,
-      "sha256": "a66214b3eebd3477dfe11ffdd9edd1e2d49a04ddc3c48000079b07039f445a6a"
+      "bytes": 36896,
+      "sha256": "d6b067e1c7547977f89fd019ebf79051efde2b3475e2c09332fd8d2207a7ab71"
     },
     {
       "path": "ir_hw3/association_validation.py",
@@ -1168,13 +1173,13 @@
     },
     {
       "path": "requirements-lock.txt",
-      "bytes": 1003,
-      "sha256": "b5ff72c5b4393ab02be51d5e881fe91abc29d68f9025a0ae72c95abf0afe1e10"
+      "bytes": 1046,
+      "sha256": "02e94763aecca2c53469262e6d7d562bb3b312fe1c6dae95f7b52b53cf79c8eb"
     },
     {
       "path": "requirements.txt",
-      "bytes": 167,
-      "sha256": "57c00e4b5c9c64696a866be8f786f4eb454fc438ad948d823c4aa3175959c8f6"
+      "bytes": 208,
+      "sha256": "f4a6f2a65f180b7197efcd4b69d4c433a567a03f1fb08467631c8556059e11a5"
     },
     {
       "path": "resources/stopwords.json",
@@ -1232,9 +1237,14 @@
       "sha256": "8a40accd7f58b4debf98970922faf1440e9838ae7277c798f976db6fdc30cd43"
     },
     {
+      "path": "scripts/verify_association_projection.py",
+      "bytes": 6690,
+      "sha256": "38745eb8148048301740f05feac75170459413d5eb97f39b945de27eb38bc789"
+    },
+    {
       "path": "scripts/verify_cloud.py",
-      "bytes": 5629,
-      "sha256": "55fad666e49485bba808d39062672984e3e1b3b85a2ef08656af04e15e04f771"
+      "bytes": 6659,
+      "sha256": "c4f802e00d1956d0ffc822d1dc39a2d87ea21ffa4563d89a774fdc200fcd5611"
     },
     {
       "path": "scripts/verify_hw3.py",
@@ -1272,9 +1282,14 @@
       "sha256": "6512bade39c23cf02c8c43a89e323c5c29d708c713070bf1c5299f831e4a5e74"
     },
     {
+      "path": "tests/test_association_projection.py",
+      "bytes": 8390,
+      "sha256": "6564a33dba079ad3d4e29a59d20659da36bd84709f509f8298541fba8d01550a"
+    },
+    {
       "path": "tests/test_association_ui.py",
-      "bytes": 16992,
-      "sha256": "b11488f8382cfdf9ee79a571752a16fb9e1f931709058f73315cf765bd956275"
+      "bytes": 21736,
+      "sha256": "52056518ec162baf5d8739952550c499d0980a9a2c5f4e1645d9ad5cb695e107"
     },
     {
       "path": "tests/test_bm25.py",
@@ -1332,6 +1347,6 @@
       "sha256": "766fa0af0bc5c9cb2539221a025206c267d6429dc97bfe597197e987f85d2011"
     }
   ],
-  "total_bytes": 307777564,
-  "files_fingerprint_sha256": "76eff7b8e84a2f17f80a567d76f1681c9e4678e03de30f9fd5e82ff29dc92527"
+  "total_bytes": 307831393,
+  "files_fingerprint_sha256": "5bb9c3384a6150c7eead6920c22b57e0ad144d8277dd2750d4b2ada081bb6cc5"
 }

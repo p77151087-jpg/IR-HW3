@@ -155,6 +155,44 @@ def test_pair_form_and_fixed_45_rows_and_downloads(monkeypatch):
     assert not app.exception
 
 
+def test_pair_xy_maps_follow_submitted_pair_and_model_without_changing_saved_charts(monkeypatch):
+    from ir_hw3 import association_ui
+    captured = []
+    original = association_ui.get_word_maps
+    def record(*args):
+        value = original(*args)
+        captured.append((args[2:], value))
+        return value
+    monkeypatch.setattr(association_ui, "get_word_maps", record)
+    app = start()
+    app.sidebar.radio[0].set_value(PAGE).run()
+    assert not app.exception
+    assert captured[-1][0] == ("cbow_w2", "insulin", "glucose")
+    first = captured[-1][1]
+    assert first["terms"] == association_ui.FIXED_TERMS
+    assert len([el for el in app.get("iframe") if "viewBox=\"0 0 520 520\"" in el.proto.srcdoc]) == 2
+    saved_fixed = [chart_data(chart) for mark in ("rect", "circle") for chart in charts_of_type(app, mark)]
+    widget(app, "selectbox", "預選詞 A（中文提示）").set_value("semaglutide").run()
+    assert captured[-1][0] == ("cbow_w2", "insulin", "glucose")
+    widget(app, "text_input", "詞 B").set_value("liraglutide")
+    widget(app, "button", "比較詞對").click().run()
+    assert captured[-1][0] == ("cbow_w2", "semaglutide", "liraglutide")
+    assert any("不是各自的前十名" in row.value for row in app.caption)
+    tfidf_rows = captured[-1][1]["spaces"]["tfidf"]["rows"]
+    embedding_rows = captured[-1][1]["spaces"]["embedding"]["rows"]
+    widget(app, "selectbox", "Embedding 模型").set_value("skipgram_w5").run()
+    assert captured[-1][1]["spaces"]["tfidf"]["rows"] == tfidf_rows
+    assert captured[-1][1]["spaces"]["embedding"]["rows"] != embedding_rows
+    assert len(app.tabs[2].get("vega_lite_chart")) == 3
+    # Fixed heatmaps can follow the selected model as before; the 180-point scatter stays exact.
+    assert chart_data(charts_of_type(app, "circle")[0]).equals(saved_fixed[-1])
+    widget(app, "text_input", "詞 A").set_value("unknownwordxyz")
+    widget(app, "button", "比較詞對").click().run()
+    assert captured[-1][1]["status"] == "unavailable"
+    assert not [el for el in app.get("iframe") if "viewBox=\"0 0 520 520\"" in el.proto.srcdoc]
+    assert not app.exception
+
+
 def test_returning_to_page_restores_submitted_word_and_pair_fields():
     app = start()
     app.sidebar.radio[0].set_value(PAGE).run()
@@ -170,6 +208,50 @@ def test_returning_to_page_restores_submitted_word_and_pair_fields():
     assert widget(app, "text_input", "詞 A").value == "glp-1"
     assert widget(app, "text_input", "詞 B").value == "receptor"
     assert any("實際分析詞：insulin" in row.value for row in app.caption)
+
+
+def test_pair_pca_tsne_switch_keeps_scores_words_and_saved_charts(monkeypatch):
+    from ir_hw3 import association_ui
+    captured = []
+    original = association_ui.get_word_maps
+    def record(*args):
+        value = original(*args)
+        captured.append(value)
+        return value
+    monkeypatch.setattr(association_ui, "get_word_maps", record)
+    app = start()
+    app.sidebar.radio[0].set_value(PAGE).run()
+    pca = captured[-1]
+    guide = "\n".join(row.value for row in app.tabs[1].markdown)
+    assert "PCA、t-SNE 與 X／Y 怎麼看？" in guide
+    assert "X 是第一主成分" in guide and "Y 是第二主成分" in guide
+    assert "t-SNE：看局部近鄰與群聚" in guide
+    assert "33.8% 保留" in guide and "66.2% 沒呈現" in guide
+    assert "這不是搜尋正確率" in guide and "t-SNE 沒有這項變異保留比例" in guide
+    assert "以 insulin／glucose 為例" in guide
+    pair_table = next(frame.value.copy() for frame in app.dataframe if "cosine_display" in frame.value.columns)
+    saved_scatter = chart_data(charts_of_type(app, "circle")[0]).copy()
+    widget(app, "radio", "XY 降維方式").set_value("tsne").run()
+    assert not app.exception
+    tsne = captured[-1]
+    assert tsne["projection"] == "tsne" and tsne["terms"] == pca["terms"]
+    assert widget(app, "selectbox", "鄰近範圍（perplexity）").value == 5
+    assert all(data["diagnostics"]["parameters"]["perplexity"] == 5 for data in tsne["spaces"].values())
+    assert all(data["retained_variance"] is None for data in tsne["spaces"].values())
+    assert not any("二維保留差異量" in row.value for row in app.tabs[1].caption)
+    assert any("群與群的距離" in row.value for row in app.tabs[1].caption)
+    html = [el.proto.srcdoc for el in app.get("iframe") if 'viewBox="0 0 520 520"' in el.proto.srcdoc]
+    assert len(html) == 2 and all("t-SNE 維度 1" in text and "主成分" not in text for text in html)
+    widget(app, "selectbox", "鄰近範圍（perplexity）").set_value(3).run()
+    updated = captured[-1]
+    assert updated["spaces"]["tfidf"]["diagnostics"]["parameters"]["perplexity"] == 3
+    assert updated["spaces"]["tfidf"]["rows"] != tsne["spaces"]["tfidf"]["rows"]
+    assert next(frame.value for frame in app.dataframe if "cosine_display" in frame.value.columns).equals(pair_table)
+    assert chart_data(charts_of_type(app, "circle")[0]).equals(saved_scatter)
+    widget(app, "radio", "XY 降維方式").set_value("pca").run()
+    assert captured[-1] == pca
+    assert len(app.tabs[2].get("vega_lite_chart")) == 3
+    assert not app.exception
 
 
 def test_submitted_word_updates_chart_data_and_same_request_explains_no_change(monkeypatch):

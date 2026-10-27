@@ -5,9 +5,11 @@ from pathlib import Path
 import altair as alt
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 
 from .word_association import (AssociationRun, FIXED_TERMS, MODEL_NAMES, VERSION, neighbors,
                                pair_score, single_term, overlap)
+from .association_projection import compare_word_maps, word_map_svg
 
 PAGE = "Embedding／TF-IDF 詞彙關聯"
 MODEL_LABELS = {key: name.replace(" · window ", "，視窗 ") for key, name in MODEL_NAMES.items()}
@@ -61,6 +63,87 @@ def get_run(root, signature):
 def get_neighbors(root, signature, model, term, k):
     run = get_run(root, signature)
     return (neighbors(run.tfidf, term, run.pool, k), neighbors(run.models[model], term, run.pool, k))
+
+
+@st.cache_data(max_entries=64, show_spinner=False)
+def get_word_maps(root, signature, model, left, right, projection="pca", perplexity=3.0):
+    run = get_run(root, signature)
+    return compare_word_maps(run.tfidf, run.models[model], left, right, projection, perplexity)
+
+
+def pair_word_maps(root, signature, model, left, right):
+    st.subheader("同一組詞的 XY 空間對照")
+    projection = st.radio("XY 降維方式", ["pca", "tsne"], horizontal=True,
+                          format_func=lambda value: "PCA" if value == "pca" else "t-SNE",
+                          key="assoc_xy_projection")
+    if projection == "tsne":
+        with st.expander("t-SNE 設定"):
+            perplexity = st.selectbox("鄰近範圍（perplexity）", [2, 3, 5], index=2,
+                                      key="assoc_tsne_perplexity",
+                                      help="影響局部近鄰的呈現；本圖約十個詞，所以採小值。不同設定可能得到不同群聚，沒有預設哪個較正確。")
+            st.caption("固定 seed＝42、exact、最多 1,000 次迭代；兩張圖使用相同設定。設定不同可能改變圖形。")
+        maps = get_word_maps(str(root), signature, model, left, right, projection, perplexity)
+    else:
+        maps = get_word_maps(str(root), signature, model, left, right)
+    if maps["status"] != "ok":
+        st.info("XY 圖需要兩個詞在這兩種方法中都有有效向量；目前無法完整對照，因此不補造座標。")
+        return
+    st.write("橘色是詞 A、藍色是詞 B；灰色是兩圖共用的參考詞。虛線連接這次比較的兩個詞；相同詞 A／B 合併為紫色點。")
+    st.caption(f"實際詞對：{left} ／ {right}。兩圖使用相同 {len(maps['terms'])} 個詞：固定十個參考詞，加上這次輸入並去重。這不是各自的前十名近鄰。")
+    st.caption(f"右圖使用 {MODEL_LABELS[model]}；可在上方「比較設定」切換四組模型。滑鼠停在點或詞名可看中文座標提示。")
+    for column, key, title in zip(st.columns(2), ("tfidf", "embedding"),
+                                  ("TF-IDF：文章分布空間", f"Embedding：{MODEL_LABELS[model]}")):
+        data = maps["spaces"][key]
+        with column:
+            st.markdown(f"**{title}**")
+            detail = (f"二維保留差異量：{data['retained_variance']:.1%}" if projection == "pca"
+                      else f"t-SNE · perplexity＝{data['diagnostics']['parameters']['perplexity']:g}")
+            st.caption(f"原始 cosine：{data['pair_cosine']:.6f} · {detail}")
+            svg = word_map_svg(data, maps["pair"], maps["extent"], title, projection)
+            # The HTML-only sanitizer drops inline SVG. An isolated, script-free
+            # component preserves SVG hover titles and equal X/Y units at any width.
+            components.html('<html><head><style>html,body{margin:0;padding:0;overflow:hidden}'
+                            'svg{width:100%!important;height:400px!important;box-sizing:border-box}'
+                            '</style></head><body>' + svg + '</body></html>', height=402, scrolling=False)
+    st.markdown("#### PCA、t-SNE 與 X／Y 怎麼看？")
+    st.write("每個點是一個詞。PCA、t-SNE 把原本很多維的詞向量，縮成平面上的 X、Y 兩個座標，方便觀察哪些詞靠近或聚在一起。")
+    st.markdown("**PCA：看主要差異與整體分布。** X 是第一主成分，保留這組詞最多差異的方向；Y 是第二主成分，與 X 垂直，保留次多差異。這兩個方向沒有預先指定的醫學主題。")
+    st.markdown("**t-SNE：看局部近鄰與群聚。** X、Y 是演算法為這組詞安排的平面位置，沒有固定的主題意義，也不是 PCA 的主成分。")
+    st.caption("X、Y 不是 TF、IDF、相似度或正確率；數字大不代表比較重要，負座標也不代表負相關。")
+    st.markdown("##### 二維保留差異量是什麼？")
+    st.write("這是 PCA 的指標：表示 X、Y 兩個方向保留了目前這組詞向量原本多少變異。比例越低，平面圖沒有呈現的差異越多。")
+    st.markdown("以 **33.8%** 為例：把原本的差異想成 100 份，平面保留約 33.8 份（**33.8% 保留**）；其餘約 66.2 份（**66.2% 沒呈現**）沒有呈現在這張平面圖中。這是讀法範例，實際比例以 PCA 圖旁的數字為準。")
+    st.markdown("**這不是搜尋正確率。** 百分比只描述畫面中這組詞的投影資訊，不代表找到多少相關文章；t-SNE 沒有這項變異保留比例。")
+    reference = next(term for term in maps["terms"] if term not in maps["pair"])
+    st.markdown("**用目前詞彙看圖**")
+    st.write(f"以 {left}／{right} 為例：先找橘色詞 A、藍色詞 B，再看看它們是否與灰色的 {reference} 聚在附近。左圖觀察文章分布的投影，右圖觀察上下文特徵的投影；靠近只表示這張二維圖呈現的接近程度。")
+    st.caption(f"這組詞的原始 cosine：TF-IDF＝{maps['spaces']['tfidf']['pair_cosine']:.6f}；{MODEL_LABELS[model]}＝{maps['spaces']['embedding']['pair_cosine']:.6f}。圖用來輔助觀察，原始關聯仍看 cosine；分數不是方法的正確率。")
+    st.caption("左右兩圖各自降維，不能直接比較左右的 X、Y 數字或線段長度；換詞或模型後，排列也可能改變。")
+    if projection == "pca":
+        st.caption(f"目前 PCA 二維保留差異量：TF-IDF {maps['spaces']['tfidf']['retained_variance']:.1%}、Embedding {maps['spaces']['embedding']['retained_variance']:.1%}；代表保留這組詞多少變異，比例越低，平面遺失的資訊越多。")
+    else:
+        st.caption("t-SNE 偏重局部近鄰；群與群的距離、群大小及左右圖的線段長度，不能直接解讀成原始關聯強弱。X／Y 沒有特定主題意義，也不是 PCA 主成分。")
+        st.caption("目前約十個詞，僅作探索性示意；換詞、模型或 perplexity 都可能改變排列。固定 seed 方便重現，不代表群聚已經驗證。")
+    if projection == "pca" and any(data["rank"] < 2 for data in maps["spaces"].values()):
+        st.caption("部分空間的有效變化不足兩個方向，因此點可能排成直線或重合；沒有加入隨機位移。")
+    if maps["missing"]:
+        st.caption("兩圖共同略過沒有有效向量的參考詞：" + "、".join(row["term"] for row in maps["missing"]))
+    with st.expander("XY 圖的詞集、座標與投影方式"):
+        st.write("共同詞集：" + "、".join(maps["terms"]))
+        st.write("TF-IDF 使用完整摘要維度的詞欄向量，Embedding 使用保存的 100 維詞向量；僅複製畫面中的詞並做詞向量 L2，不重訓 Embedding，也不改變原始 cosine。")
+        if projection == "pca":
+            st.write("兩空間分別置中並以完整 SVD 計算 PCA；二維保留差異量越低，投影遺失的資訊越多。")
+        else:
+            st.write("t-SNE 直接使用完整詞向量，沒有先縮成 PCA 二維。L2 後的 Euclidean 距離反映 cosine 方向關係，再由 t-SNE 尋找局部近鄰排列。perplexity 必須小於有效詞數；若詞集縮小，兩圖同步調低。")
+            st.caption("KL 是投影最佳化的診斷值，不是保留比例、正確率，也不拿來判斷 TF-IDF／Embedding 哪個較好。")
+            st.json({"TF-IDF": maps["spaces"]["tfidf"]["diagnostics"],
+                     "Embedding": maps["spaces"]["embedding"]["diagnostics"]})
+            st.markdown("方法參考：[scikit-learn t-SNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html)、[原作者說明](https://lvdmaaten.github.io/tsne/)。")
+        st.caption("詞向量 L2 讓距離對應原始 cosine 的方向關係；這是詞彙視覺化步驟，與方法比較頁的文件 L2 實驗分開。")
+        rows = [{"方法": "TF-IDF" if key == "tfidf" else MODEL_LABELS[model], **row}
+                for key, data in maps["spaces"].items() for row in data["rows"]]
+        st.dataframe(pd.DataFrame(rows).rename(columns={"term": "詞彙", "role": "角色", "x": "X", "y": "Y"}),
+                     hide_index=True, width="stretch")
 
 
 def heatmap(space, title):
@@ -134,7 +217,7 @@ def related_words(chosen, signature, run, model, k):
         st.caption("在固定共同候選池找近鄰，排除自身；只返回 cosine>0，不以零分補足 k。同分先取 12 位小數再按詞典序。返回不足 k 時，重疊分母仍為請求 k。")
 
 
-def compare_two_words(run):
+def compare_two_words(run, model, root, signature):
     st.write("輸入兩個詞，觀察 TF-IDF 與四組 Embedding 模型各自算出的關聯程度。")
     previous_left, previous_right = st.session_state.get("assoc_submitted_pair", ("insulin", "glucose"))
     preset_a, preset_b = st.columns(2)
@@ -174,6 +257,7 @@ def compare_two_words(run):
             states = {"ok": "可計算", "oov": "詞表未收錄", "zero_vector": "向量為零"}
             st.dataframe(pd.DataFrame([{"方法": row["method_label"], "詞 A": states[row["詞A狀態"]],
                                        "詞 B": states[row["詞B狀態"]]} for row in display]), hide_index=True)
+    pair_word_maps(root, signature, model, a_term, b_term)
 
 
 def overlap_calculation(results):
@@ -376,7 +460,7 @@ def association_page(root, expected_corpus):
     with words:
         related_words(chosen, signature, run, model, k)
     with pair:
-        compare_two_words(run)
+        compare_two_words(run, model, chosen, signature)
     with overall:
         overall_analysis(run, results, model, k)
     with st.expander("下載與重現"):
