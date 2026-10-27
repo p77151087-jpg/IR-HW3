@@ -222,6 +222,13 @@ def test_pair_pca_tsne_switch_keeps_scores_words_and_saved_charts(monkeypatch):
     app = start()
     app.sidebar.radio[0].set_value(PAGE).run()
     pca = captured[-1]
+    guide = "\n".join(row.value for row in app.tabs[1].markdown)
+    assert "PCA、t-SNE 與 X／Y 怎麼看？" in guide
+    assert "X 是第一主成分" in guide and "Y 是第二主成分" in guide
+    assert "t-SNE：看局部近鄰與群聚" in guide
+    assert "33.8% 保留" in guide and "66.2% 沒呈現" in guide
+    assert "這不是搜尋正確率" in guide and "t-SNE 沒有這項變異保留比例" in guide
+    assert "以 insulin／glucose 為例" in guide
     pair_table = next(frame.value.copy() for frame in app.dataframe if "cosine_display" in frame.value.columns)
     saved_scatter = chart_data(charts_of_type(app, "circle")[0]).copy()
     widget(app, "radio", "XY 降維方式").set_value("tsne").run()

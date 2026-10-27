@@ -105,9 +105,22 @@ def pair_word_maps(root, signature, model, left, right):
             components.html('<html><head><style>html,body{margin:0;padding:0;overflow:hidden}'
                             'svg{width:100%!important;height:400px!important;box-sizing:border-box}'
                             '</style></head><body>' + svg + '</body></html>', height=402, scrolling=False)
-    st.write("讀法：在同一張圖內看兩詞相對於其他詞的位置與群聚；靠近表示這張二維圖呈現的接近程度。判斷原始向量的關聯，仍看上方 cosine。")
+    st.markdown("#### PCA、t-SNE 與 X／Y 怎麼看？")
+    st.write("每個點是一個詞。PCA、t-SNE 把原本很多維的詞向量，縮成平面上的 X、Y 兩個座標，方便觀察哪些詞靠近或聚在一起。")
+    st.markdown("**PCA：看主要差異與整體分布。** X 是第一主成分，保留這組詞最多差異的方向；Y 是第二主成分，與 X 垂直，保留次多差異。這兩個方向沒有預先指定的醫學主題。")
+    st.markdown("**t-SNE：看局部近鄰與群聚。** X、Y 是演算法為這組詞安排的平面位置，沒有固定的主題意義，也不是 PCA 的主成分。")
+    st.caption("X、Y 不是 TF、IDF、相似度或正確率；數字大不代表比較重要，負座標也不代表負相關。")
+    st.markdown("##### 二維保留差異量是什麼？")
+    st.write("這是 PCA 的指標：表示 X、Y 兩個方向保留了目前這組詞向量原本多少變異。比例越低，平面圖沒有呈現的差異越多。")
+    st.markdown("以 **33.8%** 為例：把原本的差異想成 100 份，平面保留約 33.8 份（**33.8% 保留**）；其餘約 66.2 份（**66.2% 沒呈現**）沒有呈現在這張平面圖中。這是讀法範例，實際比例以 PCA 圖旁的數字為準。")
+    st.markdown("**這不是搜尋正確率。** 百分比只描述畫面中這組詞的投影資訊，不代表找到多少相關文章；t-SNE 沒有這項變異保留比例。")
+    reference = next(term for term in maps["terms"] if term not in maps["pair"])
+    st.markdown("**用目前詞彙看圖**")
+    st.write(f"以 {left}／{right} 為例：先找橘色詞 A、藍色詞 B，再看看它們是否與灰色的 {reference} 聚在附近。左圖觀察文章分布的投影，右圖觀察上下文特徵的投影；靠近只表示這張二維圖呈現的接近程度。")
+    st.caption(f"這組詞的原始 cosine：TF-IDF＝{maps['spaces']['tfidf']['pair_cosine']:.6f}；{MODEL_LABELS[model]}＝{maps['spaces']['embedding']['pair_cosine']:.6f}。圖用來輔助觀察，原始關聯仍看 cosine；分數不是方法的正確率。")
+    st.caption("左右兩圖各自降維，不能直接比較左右的 X、Y 數字或線段長度；換詞或模型後，排列也可能改變。")
     if projection == "pca":
-        st.caption("兩張圖各自用 PCA 壓成二維，X／Y 是各自的主成分，不是同一組意義。兩圖使用相同刻度與等比例 XY；不將左右座標或線段長度直接當成關聯強弱比較。投影會失真，換詞後也會重新投影。")
+        st.caption(f"目前 PCA 二維保留差異量：TF-IDF {maps['spaces']['tfidf']['retained_variance']:.1%}、Embedding {maps['spaces']['embedding']['retained_variance']:.1%}；代表保留這組詞多少變異，比例越低，平面遺失的資訊越多。")
     else:
         st.caption("t-SNE 偏重局部近鄰；群與群的距離、群大小及左右圖的線段長度，不能直接解讀成原始關聯強弱。X／Y 沒有特定主題意義，也不是 PCA 主成分。")
         st.caption("目前約十個詞，僅作探索性示意；換詞、模型或 perplexity 都可能改變排列。固定 seed 方便重現，不代表群聚已經驗證。")
